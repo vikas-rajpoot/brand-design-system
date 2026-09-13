@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Brand AI-Ready Specification",
+  "type": "object",
+  "required": ["specVersion", "slug", "foundation", "tokens"],
+  "properties": {
+    "specVersion": { "type": "integer", "minimum": 1 },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "changelog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["version", "summary"],
+        "properties": {
+          "version": { "type": "integer" },
+          "summary": { "type": "string" }
+        }
+      }
+    },
+    "foundation": {
+      "type": "object",
+      "required": ["name", "positioning", "audience", "personality", "voice"],
+      "properties": {
+        "name": { "type": "string" },
+        "positioning": { "type": "string" },
+        "audience": { "type": "array", "items": { "type": "string" } },
+        "personality": { "type": "array", "items": { "type": "string" } },
+        "voice": { "type": "string" }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "description": "Mirrors 04-design-tokens/tokens.json",
+      "required": ["schemaVersion", "tokens"],
+      "properties": {
+        "schemaVersion": { "type": "integer" },
+        "tokens": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "layer", "category", "value"],
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "layer": { "enum": ["primitive", "semantic", "component"] },
+              "category": { "type": "string" },
+              "value": {},
+              "reference": { "type": "string" },
+              "theme": { "enum": ["light", "dark"] }
+            }
+          }
+        }
+      }
+    },
+    "subsystems": {
+      "type": "object",
+      "description": "Map of folder name -> relative doc path, for every generated subsystem beyond foundation/tokens",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

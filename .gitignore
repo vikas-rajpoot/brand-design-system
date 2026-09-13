@@ -1,0 +1,19 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/settings.json
+*.swp
+
+# Node (in case any subsystem output includes a build)
+node_modules/
+npm-debug.log*
+
+# Logs
+*.log
+
+# Env
+.env
+.env.local
