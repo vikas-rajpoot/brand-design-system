@@ -12,6 +12,12 @@ customization kit, not a single product.
 - **Never generate in one go**: No autonomous batch-generation of multiple subsystems or decisions. Work proceeds strictly through an interactive decision gate.
 - **Mandatory Cohesive Options with Pros & Cons**: For each brand decision, present 2–4 cohesive options with Brand Cohesion Rationale, Pros, and Cons.
 - **Explicit User Selection Gate**: Always wait for user feedback/confirmation (e.g. "this one selected") before writing/locking files and advancing to the next item.
+- **Interactive HTML Options Preview**: Deliver options as a self-contained, interactive HTML preview in `brand/<project-slug>/options/` (e.g. `01-logo-system-v1.html`) featuring live SVG renders, mobile/desktop mockups, and mode toggles.
+- **Dedicated Immutable Options Archive (`options/`)**:
+  - Save all proposed options under `brand/<project-slug>/options/` with sequential numbering and descriptive filenames.
+  - **Strict Immutability**: NEVER update/overwrite or delete existing option files. All history is strictly append-only (use `-v2.html`, `-v3.html` on revisions).
+- **Zero Premature Writes**: Do NOT write or alter files in official subsystem folders (`01-logo-system/`, etc.) until explicit user selection.
+- **Explicit User Selection Gate**: Always wait for user feedback/confirmation (e.g. "Concept 1 selected") before writing/locking files and advancing to the next item.
 
 
 ## Source-of-truth order (highest first)

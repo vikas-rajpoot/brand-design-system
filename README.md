@@ -16,7 +16,12 @@ This system **never generates brand decisions, tokens, or subsystems in one go**
    - **Brand Cohesion Rationale**: How the option aligns with approved foundation values and tokens.
    - **Pros**: Strategic advantages and strengths.
    - **Cons**: Potential trade-offs or constraints.
-4. **Explicit User Selection Gate**: The system pauses and waits for user feedback or confirmation (*"this one selected"*). It commits the approved decision to files (`status: approved`) **only when explicitly confirmed**, and only then advances to the next step.
+4. **Interactive HTML Options Preview**: Every option set is delivered as a self-contained, interactive HTML file in `brand/<project-slug>/options/` (e.g. `01-logo-system-v1.html`) featuring live SVG renders, mobile & desktop mockups, dark/light theme toggles, and side-by-side matrices.
+5. **Dedicated Immutable Options Archive (`options/`)**:
+   - All proposed options are saved in `brand/<project-slug>/options/` with sequential numbering and descriptive filenames.
+   - **Strict Immutability**: Option files are **never updated/overwritten or deleted**. Revisions are strictly append-only (e.g., `-v2.html`, `-v3.html`), preserving the full evolutionary history.
+6. **Zero Premature Writes**: Official subsystem directories (`01-logo-system/`, etc.) remain completely untouched until the user gives explicit selection.
+7. **Explicit User Selection Gate**: The system pauses and waits for user feedback or confirmation (*"Concept 1 selected"*). It commits the approved decision to official files (`status: approved`) **only when explicitly confirmed**, and only then advances to the next step.
 
 ## How It Works
 

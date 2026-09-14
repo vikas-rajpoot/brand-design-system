@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinetiq — Logo System Options (v1)</title>
+  <style>
+    :root {
+      --bg-canvas: #090b10;
+      --bg-card: #12151e;
+      --bg-card-hover: #171b26;
+      --border-subtle: #1f2533;
+      --border-active: #3b82f6;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-violet: #8b5cf6;
+      --accent-cyan: #06b6d4;
+      --accent-blue: #2563eb;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Geist", Helvetica, Arial, sans-serif;
+      --font-mono: "Geist Mono", "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    [data-theme="light"] {
+      --bg-canvas: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --border-subtle: #e2e8f0;
+      --border-active: #2563eb;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding: 32px 24px 80px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(139, 92, 246, 0.15);
+      color: #a78bfa;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      margin-bottom: 8px;
+    }
+
+    .badge-immutable {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-top: 4px;
+      max-width: 720px;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-toggle {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s;
+    }
+
+    .btn-toggle:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-active);
+    }
+
+    /* Decision banner */
+    .decision-banner {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: var(--radius-md);
+      padding: 18px 24px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .banner-text h4 {
+      font-size: 15px;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+
+    .banner-text p {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .banner-action code {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: #93c5fd;
+      border: 1px solid rgba(147, 197, 253, 0.2);
+    }
+
+    /* Concept Grid */
+    .concepts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 28px;
+      margin-bottom: 48px;
+    }
+
+    .concept-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .concept-card:hover {
+      border-color: rgba(139, 92, 246, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .concept-card.recommended {
+      border-color: var(--accent-violet);
+    }
+
+    .recommended-flag {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+    }
+
+    .concept-header {
+      margin-bottom: 18px;
+    }
+
+    .concept-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .concept-name {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .concept-tagline {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    /* Live Preview Stages */
+    .preview-stage {
+      background: #000000;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      min-height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    [data-theme="light"] .preview-stage {
+      background: #f1f5f9;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      width: 100%;
+      margin-top: 14px;
+    }
+
+    .preview-mini-tile {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .mini-label {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    /* Specs & Rationale */
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin: 14px 0 6px;
+    }
+
+    .text-block {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .swatches {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    .swatch-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    /* Pros & Cons */
+    .pro-con-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .pro-column, .con-column {
+      font-size: 12px;
+    }
+
+    .pro-column h5 {
+      color: #34d399;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .con-column h5 {
+      color: #f87171;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .pro-column ul, .con-column ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .pro-column li::before {
+      content: "✓ ";
+      color: #34d399;
+      font-weight: bold;
+    }
+
+    .con-column li::before {
+      content: "• ";
+      color: #f87171;
+    }
+
+    /* Selection Footer inside Card */
+    .card-footer {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-select {
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      color: #c4b5fd;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-select:hover {
+      background: var(--accent-violet);
+      color: #ffffff;
+    }
+
+    /* Comparison Table */
+    .comparison-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 40px;
+    }
+
+    .comparison-section h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    th {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* App & Desktop Mockup Showcase */
+    .mockup-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 40px;
+    }
+
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .mockup-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Mobile Phone Frame */
+    .phone-frame {
+      width: 280px;
+      height: 560px;
+      margin: 0 auto;
+      background: #000000;
+      border: 6px solid #27272a;
+      border-radius: 40px;
+      padding: 16px 14px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .phone-notch {
+      width: 80px;
+      height: 18px;
+      background: #27272a;
+      border-radius: 10px;
+      margin: 0 auto 12px;
+    }
+
+    .phone-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .phone-content {
+      flex: 1;
+      background: #0f1219;
+      border-radius: 14px;
+      border: 1px solid #1e2433;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .phone-diff-line {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    .diff-del { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+    .diff-add { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    .diff-neutral { color: #94a3b8; }
+
+    .agent-pill {
+      margin-top: auto;
+      background: rgba(139, 92, 246, 0.2);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      padding: 6px 10px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      color: #c4b5fd;
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #06b6d4;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Desktop Window */
+    .desktop-frame {
+      background: #0c0f17;
+      border: 1px solid #1e2433;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .desktop-titlebar {
+      background: #151a24;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #1e2433;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .window-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .desktop-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sync-banner {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #34d399;
+      font-family: var(--font-mono);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div>
+        <span class="badge-pill badge-immutable">● IMMUTABLE PROPOSAL (v1)</span>
+        <span class="badge-pill">STEP 01: LOGO SYSTEM</span>
+        <h1 class="title">Kinetiq — Logo System Proposals</h1>
+        <p class="subtitle">
+          Interactive evaluation gallery for the Kinetiq identity. Compare live vector lockups, app icons, favicons, cross-device mockups, and strategic pros & cons before committing.
+        </p>
+      </div>
+      <div class="controls">
+        <button class="btn-toggle" onclick="toggleTheme()">
+          <span id="theme-icon">☀️</span> <span id="theme-label">Light Mode</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Decision Banner -->
+    <div class="decision-banner">
+      <div class="banner-text">
+        <h4>Interactive Decision Gate Active</h4>
+        <p>No changes will be written to <code>brand/kinetiq/01-logo-system/</code> until your explicit selection. This proposal file is permanently preserved.</p>
+      </div>
+      <div class="banner-action">
+        Reply in chat: <code>Concept 1 Selected</code> or <code>Concept 2 Selected</code>
+      </div>
+    </div>
+
+    <!-- 3 Concepts Cards -->
+    <div class="concepts-grid">
+
+      <!-- ================= CONCEPT 1 ================= -->
+      <div class="concept-card recommended" id="card-c1">
+        <span class="recommended-flag">Recommended</span>
+        <div class="concept-header">
+          <div class="concept-num">Option 01</div>
+          <div class="concept-name">The Kinetic Prism</div>
+          <div class="concept-tagline">Quantum Chevron & Continuous Sync Loop</div>
+        </div>
+
+        <!-- Live SVG Stage -->
+        <div class="preview-stage">
+          <!-- Horizontal Lockup -->
+          <svg width="280" height="70" viewBox="0 0 280 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="prism-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#8B5CF6" />
+                <stop offset="60%" stop-color="#6366F1" />
+                <stop offset="100%" stop-color="#06B6D4" />
+              </linearGradient>
+              <filter id="glow-c1" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            <!-- Prism Glyph -->
+            <g transform="translate(10, 8)" filter="url(#glow-c1)">
+              <!-- Left Anchor Stem -->
+              <path d="M 8 6 C 8 3.79 9.79 2 12 2 L 18 2 C 20.21 2 22 3.79 22 6 L 22 46 C 22 48.21 20.21 50 18 50 L 12 50 C 9.79 50 8 48.21 8 46 Z" fill="url(#prism-gradient)" />
+              <!-- Chevron Top Branch -->
+              <path d="M 18 20 L 38 4 C 39.5 2.8 41.5 2.8 43 4 L 47 7 C 48.5 8.2 48.5 10.5 47 11.7 L 27 27 Z" fill="#8B5CF6" />
+              <!-- Chevron Bottom Branch (Continuous Loop) -->
+              <path d="M 27 25 L 47 41 C 48.5 42.2 48.5 44.5 47 45.7 L 43 48.8 C 41.5 50 39.5 50 38 48.8 L 18 32 Z" fill="#06B6D4" />
+              <!-- Ambient Quantum Core -->
+              <circle cx="28" cy="26" r="3.5" fill="#FFFFFF" opacity="0.9" />
+            </g>
+            <!-- Wordmark: Kinetiq -->
+            <text x="74" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Geist', 'Inter', sans-serif" font-weight="700" font-size="28" fill="#F3F4F6" letter-spacing="-0.03em">Kineti<tspan fill="url(#prism-gradient)">q</tspan></text>
+            <!-- Subtitle -->
+            <text x="75" y="52" font-family="'Geist Mono', monospace" font-weight="500" font-size="9" fill="#9CA3AF" letter-spacing="0.16em">AGENTIC MOBILE IDE</text>
+          </svg>
+
+          <!-- Mini sub-previews (Stacked, App Icon, Favicon) -->
+          <div class="preview-grid">
+            <div class="preview-mini-tile">
+              <!-- App Icon -->
+              <svg width="44" height="44" viewBox="0 0 44 44">
+                <rect width="44" height="44" rx="10" fill="#12151e" stroke="#2a3042" stroke-width="1.5" />
+                <g transform="translate(4, 2) scale(0.68)">
+                  <path d="M 8 6 C 8 3.79 9.79 2 12 2 L 18 2 C 20.21 2 22 3.79 22 6 L 22 46 C 22 48.21 20.21 50 18 50 L 12 50 C 9.79 50 8 48.21 8 46 Z" fill="url(#prism-gradient)" />
+                  <path d="M 18 20 L 38 4 C 39.5 2.8 41.5 2.8 43 4 L 47 7 C 48.5 8.2 48.5 10.5 47 11.7 L 27 27 Z" fill="#8B5CF6" />
+                  <path d="M 27 25 L 47 41 C 48.5 42.2 48.5 44.5 47 45.7 L 43 48.8 C 41.5 50 39.5 50 38 48.8 L 18 32 Z" fill="#06B6D4" />
+                </g>
+              </svg>
+              <span class="mini-label">App Icon</span>
+            </div>
+
+            <div class="preview-mini-tile">
+              <!-- Favicon 24px -->
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <rect width="24" height="24" rx="5" fill="#090b10" />
+                <path d="M 5 4 L 9 4 L 9 20 L 5 20 Z M 8 10 L 17 4 L 19 6 L 11 12 Z M 11 12 L 19 18 L 17 20 L 8 14 Z" fill="url(#prism-gradient)" />
+              </svg>
+              <span class="mini-label">Favicon</span>
+            </div>
+
+            <div class="preview-mini-tile">
+              <!-- CLI Badge -->
+              <span style="font-family: monospace; font-size: 10px; color: #38bdf8; background: #000; padding: 3px 6px; border-radius: 4px; border: 1px solid #1e293b;">&gt; k_</span>
+              <span class="mini-label">CLI Prompt</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title">Color Palette & Fonts</div>
+        <div class="swatches">
+          <div class="swatch"><span class="swatch-dot" style="background: #8b5cf6;"></span> #8B5CF6</div>
+          <div class="swatch"><span class="swatch-dot" style="background: #06b6d4;"></span> #06B6D4</div>
+          <div class="swatch"><span class="swatch-dot" style="background: #0d0e12;"></span> #0D0E12</div>
+        </div>
+        <p class="text-block"><strong>Typography:</strong> Geist Sans (Bold 700) + Geist Mono for sub-lockup badges.</p>
+
+        <div class="section-title">Brand Cohesion Rationale</div>
+        <p class="text-block">
+          Directly embodies the <strong>Nimble</strong> and <strong>Electric</strong> foundation values. The forward chevron (<code>&gt;</code>) signals terminal execution and agentic action, while the dual-branch loop signifies real-time state continuity between mobile and desktop.
+        </p>
+
+        <div class="pro-con-grid">
+          <div class="pro-column">
+            <h5>Pros</h5>
+            <ul>
+              <li>Instant recognition at 16px</li>
+              <li>High-velocity aesthetic</li>
+              <li>Signature 'q' tail treatment</li>
+            </ul>
+          </div>
+          <div class="con-column">
+            <h5>Cons</h5>
+            <ul>
+              <li>Needs flat fallback for CLI</li>
+              <li>Gradient requires discipline</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <span style="font-size: 11px; color: var(--text-muted);">Slug: kinetiq-c1</span>
+          <button class="btn-select" onclick="copySelection('Concept 1 Selected')">Select Concept 1</button>
+        </div>
+      </div>
+
+
+      <!-- ================= CONCEPT 2 ================= -->
+      <div class="concept-card" id="card-c2">
+        <div class="concept-header">
+          <div class="concept-num">Option 02</div>
+          <div class="concept-name">The Twin Nodes</div>
+          <div class="concept-tagline">Dual-Core Parity & Synchronized Nexus</div>
+        </div>
+
+        <!-- Live SVG Stage -->
+        <div class="preview-stage">
+          <!-- Horizontal Lockup -->
+          <svg width="280" height="70" viewBox="0 0 280 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="cobalt-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3B82F6" />
+                <stop offset="100%" stop-color="#1D4ED8" />
+              </linearGradient>
+              <linearGradient id="mint-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#34D399" />
+                <stop offset="100%" stop-color="#059669" />
+              </linearGradient>
+            </defs>
+            <!-- Twin Nodes Glyph -->
+            <g transform="translate(12, 10)">
+              <!-- Mobile Node (Left Pill) -->
+              <rect x="6" y="2" width="12" height="46" rx="6" fill="url(#cobalt-grad)" />
+              <!-- Desktop Node (Right Pill) -->
+              <rect x="24" y="2" width="12" height="46" rx="6" fill="url(#mint-grad)" />
+              <!-- Nexus Bridge / K Crossbar -->
+              <path d="M 12 25 L 30 25" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" />
+              <circle cx="21" cy="25" r="4" fill="#FFFFFF" />
+            </g>
+            <!-- Wordmark: Kinetiq -->
+            <text x="74" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-weight="700" font-size="27" fill="#F3F4F6" letter-spacing="-0.02em">KINETIQ</text>
+            <!-- Monospaced Subtitle Badge -->
+            <rect x="198" y="21" width="36" height="18" rx="4" fill="rgba(37, 99, 235, 0.2)" stroke="#2563EB" stroke-width="1" />
+            <text x="204" y="34" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="10" fill="#60A5FA">IDE</text>
+            <text x="75" y="52" font-family="'JetBrains Mono', monospace" font-weight="500" font-size="9" fill="#9CA3AF" letter-spacing="0.14em">CROSS-PLATFORM CONTINUUM</text>
+          </svg>
+
+          <!-- Mini sub-previews -->
+          <div class="preview-grid">
+            <div class="preview-mini-tile">
+              <svg width="44" height="44" viewBox="0 0 44 44">
+                <rect width="44" height="44" rx="10" fill="#0b0f19" stroke="#1e293b" stroke-width="1.5" />
+                <g transform="translate(7, 4) scale(0.68)">
+                  <rect x="6" y="2" width="12" height="46" rx="6" fill="url(#cobalt-grad)" />
+                  <rect x="24" y="2" width="12" height="46" rx="6" fill="url(#mint-grad)" />
+                  <circle cx="21" cy="25" r="4" fill="#FFFFFF" />
+                </g>
+              </svg>
+              <span class="mini-label">App Icon</span>
+            </div>
+
+            <div class="preview-mini-tile">
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <rect width="24" height="24" rx="5" fill="#090b10" />
+                <rect x="5" y="4" width="5" height="16" rx="2.5" fill="#3B82F6" />
+                <rect x="14" y="4" width="5" height="16" rx="2.5" fill="#10B981" />
+                <circle cx="12" cy="12" r="2" fill="#FFFFFF" />
+              </svg>
+              <span class="mini-label">Favicon</span>
+            </div>
+
+            <div class="preview-mini-tile">
+              <span style="font-family: monospace; font-size: 10px; color: #10b981; background: #000; padding: 3px 6px; border-radius: 4px; border: 1px solid #1e293b;">[||] sync</span>
+              <span class="mini-label">CLI Prompt</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title">Color Palette & Fonts</div>
+        <div class="swatches">
+          <div class="swatch"><span class="swatch-dot" style="background: #2563eb;"></span> #2563EB</div>
+          <div class="swatch"><span class="swatch-dot" style="background: #10b981;"></span> #10B981</div>
+          <div class="swatch"><span class="swatch-dot" style="background: #090a0f;"></span> #090A0F</div>
+        </div>
+        <p class="text-block"><strong>Typography:</strong> Inter (SemiBold 600) + JetBrains Mono for system indicators.</p>
+
+        <div class="section-title">Brand Cohesion Rationale</div>
+        <p class="text-block">
+          Embodies the <strong>Engineered</strong> and <strong>Zero-Compromise Parity</strong> foundation pillars. The two synchronized pills physically symbolize mobile and desktop as equal architectural nodes linked by a live data bus.
+        </p>
+
+        <div class="pro-con-grid">
+          <div class="pro-column">
+            <h5>Pros</h5>
+            <ul>
+              <li>Extremely dependable & enterprise-ready</li>
+              <li>Flawless monochrome conversion</li>
+              <li>Dismantles "mobile is a toy" bias</li>
+            </ul>
+          </div>
+          <div class="con-column">
+            <h5>Cons</h5>
+            <ul>
+              <li>More rigid/architectural</li>
+              <li>Less playful kinetic energy</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <span style="font-size: 11px; color: var(--text-muted);">Slug: kinetiq-c2</span>
+          <button class="btn-select" onclick="copySelection('Concept 2 Selected')">Select Concept 2</button>
+        </div>
+      </div>
+
+
+      <!-- ================= CONCEPT 3 ================= -->
+      <div class="concept-card" id="card-c3">
+        <div class="concept-header">
+          <div class="concept-num">Option 03</div>
+          <div class="concept-name">The Autopilot Beacon</div>
+          <div class="concept-tagline">Agent Swarm & Telemetry Spark</div>
+        </div>
+
+        <!-- Live SVG Stage -->
+        <div class="preview-stage">
+          <!-- Horizontal Lockup -->
+          <svg width="280" height="70" viewBox="0 0 280 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="amber-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F59E0B" />
+                <stop offset="100%" stop-color="#D97706" />
+              </linearGradient>
+            </defs>
+            <!-- Beacon Spark Glyph -->
+            <g transform="translate(12, 10)">
+              <!-- Outer Telemetry Halo -->
+              <circle cx="24" cy="25" r="22" stroke="rgba(245, 158, 11, 0.25)" stroke-width="1.5" stroke-dasharray="3 3" />
+              <!-- Radiating Telemetry Rays -->
+              <line x1="8" y1="25" x2="16" y2="25" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round" />
+              <line x1="24" y1="9" x2="24" y2="17" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" />
+              <line x1="32" y1="33" x2="38" y2="39" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round" />
+              <line x1="32" y1="17" x2="38" y2="11" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" />
+              <!-- Central Agent Spark Diamond -->
+              <path d="M 24 18 L 29 25 L 24 32 L 19 25 Z" fill="#F59E0B" />
+              <circle cx="24" cy="25" r="2" fill="#FFFFFF" />
+            </g>
+            <!-- Wordmark: Kinetiq -->
+            <text x="74" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Outfit', 'Space Grotesk', sans-serif" font-weight="700" font-size="28" fill="#F3F4F6" letter-spacing="-0.01em">kinetiq</text>
+            <!-- Subtitle -->
+            <text x="75" y="52" font-family="'Fira Code', monospace" font-weight="500" font-size="9" fill="#9CA3AF" letter-spacing="0.16em">AUTONOMOUS DEV COCKPIT</text>
+          </svg>
+
+          <!-- Mini sub-previews -->
+          <div class="preview-grid">
+            <div class="preview-mini-tile">
+              <svg width="44" height="44" viewBox="0 0 44 44">
+                <rect width="44" height="44" rx="10" fill="#0b0f17" stroke="#1f2937" stroke-width="1.5" />
+                <g transform="translate(6, 4) scale(0.7)">
+                  <circle cx="24" cy="25" r="20" stroke="rgba(245, 158, 11, 0.3)" stroke-width="2" stroke-dasharray="3 3" />
+                  <path d="M 24 16 L 31 25 L 24 34 L 17 25 Z" fill="#F59E0B" />
+                  <circle cx="24" cy="25" r="3" fill="#FFFFFF" />
+                </g>
+              </svg>
+              <span class="mini-label">App Icon</span>
+            </div>
+
+            <div class="preview-mini-tile">
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <rect width="24" height="24" rx="5" fill="#0b0f17" />
+                <path d="M 12 5 L 17 12 L 12 19 L 7 12 Z" fill="#F59E0B" />
+                <circle cx="12" cy="12" r="1.5" fill="#FFFFFF" />
+              </svg>
+              <span class="mini-label">Favicon</span>
+            </div>
+
+            <div class="preview-mini-tile">
+              <span style="font-family: monospace; font-size: 10px; color: #f59e0b; background: #000; padding: 3px 6px; border-radius: 4px; border: 1px solid #1e293b;">* spark</span>
+              <span class="mini-label">CLI Prompt</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title">Color Palette & Fonts</div>
+        <div class="swatches">
+          <div class="swatch"><span class="swatch-dot" style="background: #f59e0b;"></span> #F59E0B</div>
+          <div class="swatch"><span class="swatch-dot" style="background: #10b981;"></span> #10B981</div>
+          <div class="swatch"><span class="swatch-dot" style="background: #0b0f17;"></span> #0B0F17</div>
+        </div>
+        <p class="text-block"><strong>Typography:</strong> Space Grotesk (Bold 700) + Fira Code for telemetry tags.</p>
+
+        <div class="section-title">Brand Cohesion Rationale</div>
+        <p class="text-block">
+          Centers on the <strong>Agentic Amplification</strong> pillar. Shifts focus away from keystroke mechanics to agent supervision, visualizing the developer holding the beacon that guides swarms of coding agents.
+        </p>
+
+        <div class="pro-con-grid">
+          <div class="pro-column">
+            <h5>Pros</h5>
+            <ul>
+              <li>Radically fresh agentic visual story</li>
+              <li>Breaks away from boring bracket tropes</li>
+              <li>Warm, luminous telemetry glow</li>
+            </ul>
+          </div>
+          <div class="con-column">
+            <h5>Cons</h5>
+            <ul>
+              <li>Fine lines need simplification at 16px</li>
+              <li>Steeper conceptual shift</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <span style="font-size: 11px; color: var(--text-muted);">Slug: kinetiq-c3</span>
+          <button class="btn-select" onclick="copySelection('Concept 3 Selected')">Select Concept 3</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================= CONTEXT MOCKUPS ================= -->
+    <div class="mockup-section">
+      <h3>Contextual Mockup: Mobile & Desktop Sync (Concept 1 Preview)</h3>
+      <p class="text-block" style="margin-bottom: 24px;">
+        Visualizing how the Kinetiq identity commands presence across touchscreens and desktop monitors in real time.
+      </p>
+
+      <div class="mockup-grid">
+        <!-- Mobile Phone Mockup -->
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-header">
+            <!-- Mini Kinetiq mark -->
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <svg width="18" height="18" viewBox="0 0 24 24">
+                <rect width="24" height="24" rx="6" fill="#8B5CF6" />
+                <path d="M 6 5 L 10 5 L 10 19 L 6 19 Z M 9 10 L 17 5 L 19 7 L 12 12 Z M 12 12 L 19 17 L 17 19 L 9 14 Z" fill="#FFFFFF" />
+              </svg>
+              <span style="font-weight: 700; font-size: 12px; letter-spacing: -0.02em;">Kinetiq</span>
+            </div>
+            <span style="font-family: monospace; font-size: 9px; color: #10b981; background: rgba(16, 185, 129, 0.2); padding: 2px 6px; border-radius: 4px;">● LIVE SYNC</span>
+          </div>
+
+          <div class="phone-content">
+            <div style="font-size: 10px; font-weight: 600; color: #94a3b8; display: flex; justify-content: space-between;">
+              <span>auth_service.py</span>
+              <span style="color: #60a5fa;">+14 -3</span>
+            </div>
+            <div class="phone-diff-line diff-neutral">def authenticate(req):</div>
+            <div class="phone-diff-line diff-del">- &nbsp;token = req.legacy_header</div>
+            <div class="phone-diff-line diff-add">+ &nbsp;token = req.bearer_token()</div>
+            <div class="phone-diff-line diff-add">+ &nbsp;verify_agent_signature(token)</div>
+            <div class="phone-diff-line diff-neutral">&nbsp; return session</div>
+
+            <div class="agent-pill">
+              <span class="pulse-dot"></span>
+              <span>Agent: Running unit tests (12/12 passed)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop Mockup -->
+        <div class="desktop-frame">
+          <div class="desktop-titlebar">
+            <div class="window-dots">
+              <div class="window-dot dot-red"></div>
+              <div class="window-dot dot-yellow"></div>
+              <div class="window-dot dot-green"></div>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 11px; color: #94a3b8; margin: 0 auto;">kinetiq-desktop — workspace/kinetiq-core (Synced with iPhone 16 Pro)</span>
+          </div>
+          <div class="desktop-content">
+            <div class="sync-banner">
+              <span>⚡ Continuous Mirror Active:</span>
+              <span>Agent #402 handoff from Mobile completed in 12ms. Context state identical.</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 200px 1fr; gap: 16px; background: #080a10; border: 1px solid #1a2030; border-radius: 8px; padding: 14px;">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: #64748b; border-right: 1px solid #1a2030; padding-right: 10px;">
+                <div style="color: #94a3b8; font-weight: 600; margin-bottom: 8px;">EXPLORER</div>
+                <div>📁 src/</div>
+                <div style="color: #38bdf8; padding-left: 10px;">📄 auth_service.py *</div>
+                <div style="padding-left: 10px;">📄 agent_runtime.rs</div>
+                <div style="padding-left: 10px;">📄 sync_protocol.ts</div>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11px; line-height: 1.7;">
+                <span style="color: #818cf8;"># Synced Agent Prompt:</span><br />
+                <span style="color: #34d399;">&gt; Agent refactored JWT validation for mobile biometrics.</span><br />
+                <span style="color: #94a3b8;">Terminal build: 0 errors, 0 warnings. Ready for push to origin/main.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= COMPARISON MATRIX ================= -->
+    <div class="comparison-section">
+      <h3>Side-by-Side Matrix</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Evaluation Criterion</th>
+              <th>Option 1: Kinetic Prism (Recommended)</th>
+              <th>Option 2: Twin Nodes</th>
+              <th>Option 3: Autopilot Beacon</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Primary Metaphor</strong></td>
+              <td>Code chevron (&gt;) + Continuous Sync Loop</td>
+              <td>Mobile & Desktop synchronized dual nodes</td>
+              <td>Agent dispatch beacon & telemetry spark</td>
+            </tr>
+            <tr>
+              <td><strong>Core Brand Trait</strong></td>
+              <td>Nimble & Electric</td>
+              <td>Engineered & Dependable</td>
+              <td>Visionary & Intelligent</td>
+            </tr>
+            <tr>
+              <td><strong>16px Favicon Clarity</strong></td>
+              <td>★★★★★ (Clean dynamic chevron silhouette)</td>
+              <td>★★★★★ (High-contrast dual pill bars)</td>
+              <td>★★★☆☆ (Rays need simplification)</td>
+            </tr>
+            <tr>
+              <td><strong>Mobile Touch Ergonomics</strong></td>
+              <td>★★★★★ (Tactile 45° angles & curves)</td>
+              <td>★★★★☆ (Geometric pill shapes)</td>
+              <td>★★★★☆ (Radial focal touchpoint)</td>
+            </tr>
+            <tr>
+              <td><strong>Desktop IDE Presence</strong></td>
+              <td>★★★★★ (Sleek, modern status header)</td>
+              <td>★★★★★ (Enterprise architectural dock icon)</td>
+              <td>★★★★☆ (Distinctive modern look)</td>
+            </tr>
+            <tr>
+              <td><strong>CLI / Monochrome Rendering</strong></td>
+              <td>★★★★☆ (Clean flat vector fallback)</td>
+              <td>★★★★★ (Flawless 1-bit ASCII & glyph)</td>
+              <td>★★★★☆ (Single-color spark)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      document.getElementById('theme-icon').textContent = next === 'light' ? '🌙' : '☀️';
+      document.getElementById('theme-label').textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+    }
+
+    function copySelection(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Copied to clipboard: "' + text + '"\nPaste this in the chat to confirm your choice!');
+      }).catch(() => {
+        alert('To confirm, reply in chat: "' + text + '"');
+      });
+    }
+  </script>
+</body>
+</html>
+

@@ -8,11 +8,16 @@ This workspace generates **brand design systems** for arbitrary new projects and
 - **Slug Confirmation**: Never invent a new project slug without confirming it with the user; derive it from the project name in kebab-case (e.g. `brand/acme-labs/`).
 - **No "In One Go" Generation (Strict Step-by-Step Gate)**: Never generate brand decisions, foundation, tokens, or subsystems in a single autonomous pass. Every element must proceed through an interactive decision gate.
 - **Mandatory Cohesive Options with Pros & Cons**: For each decision area (foundation angles, color schemes, font pairings, logo lockups, tokens, visual style, UI components, etc.), provide **2–4 distinct, cohesive options**. Each option must include:
-  1. Detailed concept / specifications / preview.
+  1. Detailed concept / specifications / visual preview.
   2. **Brand Cohesion Rationale**: Explicitly explain how this option harmonizes with the brand foundation and previously approved tokens/decisions.
   3. **Pros**: Key strengths, emotional appeal, and strategic advantages.
   4. **Cons**: Trade-offs, risks, or contextual limitations.
-- **Explicit User Selection Required**: Always stop and wait for the user's feedback or explicit choice (e.g. *"this one selected"*). **Only when the user confirms their selection does the agent lock it in and commit it to files, and only then proceed to the next item.** If the user gives feedback, refine the options before moving forward.
+- **Interactive HTML Options Preview**: For every decision gate, compile all options into a self-contained, beautifully styled interactive HTML preview file in `brand/<project-slug>/options/` (e.g., `01-logo-system-v1.html`) featuring live SVG renders, interactive mode toggles (dark/light), contextual mockups (mobile/desktop), and side-by-side comparisons.
+- **Dedicated Immutable Options Archive**:
+  - All proposed options must be saved under `brand/<project-slug>/options/` with clear sequential numbering and descriptive names (e.g. `01-logo-system-v1.html`).
+  - **Strict Immutability**: NEVER update/overwrite or delete existing options files. If options are revised or refined, append a new version (`-v2.html`, `-v3.html`).
+- **Zero Premature System Writes**: Before the user makes an explicit decision, **NEVER** write or modify files in the official brand subsystem directories (`01-logo-system/`, `02-color-system/`, etc.).
+- **Explicit User Selection Required**: Always stop and wait for the user's feedback or explicit choice (e.g. *"Concept 1 selected"*). **Only when the user confirms their selection does the agent lock it in and commit it to official subsystem files, and only then proceed to the next item.** If the user gives feedback, generate the next immutable version in the options folder before moving forward.
 
 ## Source-of-Truth Order (Highest Priority First)
 

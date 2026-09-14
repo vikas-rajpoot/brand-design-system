@@ -12,7 +12,12 @@ This workspace generates **brand design systems** for arbitrary new projects and
   2. **Brand Cohesion Rationale**: How this option fits with the brand foundation and previously approved tokens/decisions.
   3. **Pros**: Advantages, brand impact, strengths.
   4. **Cons**: Trade-offs, risks, or limitations.
-- **Explicit User Selection Required**: The agent must stop and await user feedback or selection (e.g. *"this one selected"*). **Only when the user confirms their selection does the agent lock it in and commit it to files, and only then proceed to the next item.** If the user requests tweaks, iterate on options before committing.
+- **Interactive HTML Options Preview**: Deliver each round of options in a rich, self-contained interactive HTML file in `brand/<project-slug>/options/` (e.g. `01-logo-system-v1.html`) featuring live SVG renders, mobile/desktop mockups, side-by-side comparisons, and theme toggles.
+- **Dedicated Immutable Options Archive**:
+  - Save all options under `brand/<project-slug>/options/` with sequential numbering and descriptive filenames.
+  - **Strict Immutability**: NEVER overwrite or delete existing option files. All history is strictly append-only (use `-v2.html`, `-v3.html` on revisions).
+- **Zero Premature System Writes**: Before explicit user selection, NEVER write or alter files in official subsystem directories (`01-logo-system/`, etc.).
+- **Explicit User Selection Required**: The agent must stop and await user feedback or selection (e.g. *"Concept 1 selected"*). **Only when the user confirms their selection does the agent lock it in and commit it to official subsystem files, and only then proceed to the next item.** If the user requests tweaks, iterate on options by creating the next version in the options folder before committing.
 
 ## Source-of-Truth Hierarchy (Highest to Lowest)
 

@@ -21,6 +21,7 @@ report findings.
    `.github/instructions/brand-docs.instructions.md`.
 4. Check `18-ai-ready-spec/brand-spec.json` exists and its content lines up with the newest files
    (no obviously stale/missing sections).
+5. Verify that `brand/<project-slug>/options/` contains the immutable HTML option files for all executed decision gates, confirming that decisions were backed by user-approved options and that no options files were deleted or overwritten.
 
 ## Output Format
 
