@@ -8,6 +8,7 @@ brand/<project-slug>/
 
 Never write brand output to the repo root — see
 [.github/copilot-instructions.md](../.github/copilot-instructions.md).
+[AGENTS.md](../AGENTS.md) and [AGENTS.md](AGENTS.md) (or legacy [.github/copilot-instructions.md](../.github/copilot-instructions.md)).
 
 ## Starting a new project
 
