@@ -23,6 +23,8 @@ Use this skill to audit an existing generated brand project under `brand/<projec
 3. **Design Token Consistency Check**:
    - Inspect `brand/<slug>/04-design-tokens/tokens.json`.
    - Spot check colors, fonts, spacing scale, and border-radius in other subsystem docs and assets (e.g., `01-logo-system`, `02-color-system`, `06-ui-design-system`) to verify they trace directly back to defined tokens. Flag any hardcoded or foreign hex codes/values.
+   - Verify token invariants: `layers.*` scale, nested radius math, touch targets (44pt), font-scaling, and a strict 4pt/8pt grid.
+   - Verify enforcement rules: Ensure `enforcement.md` or CI checks exist for blocking raw values and contrast testing.
 
 4. **Document Frontmatter Check**:
 4. **Document Frontmatter & Approval Status Check**:

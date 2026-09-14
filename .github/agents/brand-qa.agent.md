@@ -18,10 +18,14 @@ report findings.
 2. Read `04-design-tokens/tokens.json` and spot-check other subsystems for colors, fonts, spacing,
    or radii that don't trace back to a token.
 3. Check each Markdown doc has `status` and `version` frontmatter per
+3. Verify token invariants (`layers.*` scale, touch targets, nested radius) and ensure enforcement mechanisms (linters/CI) exist in `04-design-tokens/enforcement.md`.
+4. Check each Markdown doc has `status` and `version` frontmatter per
    `.github/instructions/brand-docs.instructions.md`.
 4. Check `18-ai-ready-spec/brand-spec.json` exists and its content lines up with the newest files
+5. Check `18-ai-ready-spec/brand-spec.json` exists and its content lines up with the newest files
    (no obviously stale/missing sections).
 5. Verify that `brand/<project-slug>/options/` contains the immutable HTML option files for all executed decision gates, confirming that decisions were backed by user-approved options and that no options files were deleted or overwritten.
+6. Verify that `brand/<project-slug>/options/` contains the immutable HTML option files for all executed decision gates, confirming that decisions were backed by user-approved options and that no options files were deleted or overwritten.
 
 ## Output Format
 

@@ -18,6 +18,7 @@ description: 'Define reusable UI components (buttons, inputs, cards, navigation,
    - For each option:
      - **Interactive Live Components**: Buttons, text fields, cards, tabs, badges, diff viewers, and agent telemetry pills with working hover/active/focus states.
      - **Touch Affordances**: Minimum 44x44pt touch targets for mobile alongside compact desktop density modes.
+     - **Content States**: Define the 7 non-happy-path states (3 empty states: first-run, user-cleared, no-results; 4 error tiers with What/Why/Next formula).
      - **Token Traceability**: Clear mapping to semantic tokens.
      - **Brand Cohesion Rationale**: How the component styling carries forward foundation traits and visual style.
      - **Pros & Cons**: Ergonomics, accessibility, and density trade-offs.
@@ -37,3 +38,4 @@ description: 'Define reusable UI components (buttons, inputs, cards, navigation,
 
 ## Consistency Rules
 - Every component style must reference approved semantic tokens. No unmapped hex values or arbitrary paddings.
+- **Strict Component API Contract**: Enforce unified prop vocabulary (`variant`, `size`, `tone`), zero root margins (margins belong to layouts), and zero raw style overrides (no arbitrary className injections).

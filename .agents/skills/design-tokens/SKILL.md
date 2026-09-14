@@ -31,7 +31,9 @@ See [rules/design-tokens.md](../../rules/design-tokens.md) and [AGENTS.md](../..
      - `primitive`: Raw values derived from selected colors, fonts, and spatial scale.
      - `semantic`: Role-based tokens referencing primitives, with `light` and `dark` variants.
      - `component`: Component tokens referencing semantic tokens.
+   - Enforce system invariants: Ensure z-index layering (`layers.*`), strict 4pt spacing grids, and automated CI contrast checks are defined.
    - Write `brand/<slug>/04-design-tokens/tokens.json` and optional `tokens.css` with `status: approved`.
+   - Write `brand/<slug>/04-design-tokens/enforcement.md` (Linter rules blocking raw hex/px, CI contrast scripts).
 
 ## Output
 - `brand/<slug>/options/04-design-tokens-v<n>.html` (Immutable options archive)
@@ -41,3 +43,4 @@ See [rules/design-tokens.md](../../rules/design-tokens.md) and [AGENTS.md](../..
 ## Consistency Rules
 - Never hardcode a raw value in semantic/component layers — strictly reference.
 - Any change here must stay in sync with `02-color-system` and `03-typography-system`.
+- **Token Invariants**: Must define `layers.*` z-index scale, nested radius math (`inner = outer - padding`), 44pt touch targets for mobile, font-scaling max multipliers, and strict 4pt spatial grid.

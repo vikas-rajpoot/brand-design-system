@@ -25,6 +25,7 @@ description: 'Use when defining desktop/web-app/mobile screen styles, navigation
 2. Present **2–3 distinct, cohesive app shell & navigation options** (e.g. Collapsible Sidebar vs. Dual-Rail Minimal vs. Focused Top Bar):
    - For each option:
      - **Navigation & Workspace Architecture**: Workspace frame, header actions, breadcrumbs, modal layering.
+     - **Shell & Lifecycle Screens**: Define cold start/splash, session expiration/auth gates, permission priming, and background state restoration.
      - **Onboarding & Key States**: Empty states, skeleton loading, error handling.
      - **Brand Cohesion Rationale**: How the application ergonomics match the brand's positioning (e.g. power-user efficiency vs. guided simplicity).
      - **Pros**: Productivity speed, information density, mobile adaptability.
