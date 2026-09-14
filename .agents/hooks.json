@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./scripts/validate-json.sh",
+            "command": "./scripts/validate-json.sh pre",
             "timeout": 10
           }
         ]
@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./scripts/validate-json.sh",
+            "command": "./scripts/validate-json.sh post",
             "timeout": 10
           }
         ]
@@ -26,4 +26,3 @@
     ]
   }
 }
-

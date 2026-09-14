@@ -6,6 +6,13 @@ This workspace generates **brand design systems** for arbitrary new projects and
 
 - **Strict Isolation**: Every generated artifact belongs to exactly one project: `brand/<project-slug>/`. Never write brand outputs to the workspace root or mix files between projects.
 - **Slug Confirmation**: Never invent a new project slug without confirming it with the user; derive it from the project name in lowercase kebab-case.
+- **No "In One Go" Generation**: Never generate brand decisions, foundations, tokens, or subsystems in a single bulk pass. Work must proceed incrementally through an interactive decision gate.
+- **Mandatory Cohesive Options with Pros & Cons**: For each brand decision (positioning angles, personality traits, color palettes, typography pairings, logo lockups, tokens, visual style, UI components, layouts, etc.), provide **2–4 cohesive options**. Each option must explicitly provide:
+  1. Detailed concept / specifications / preview.
+  2. **Brand Cohesion Rationale**: How this option fits with the brand foundation and previously approved tokens/decisions.
+  3. **Pros**: Advantages, brand impact, strengths.
+  4. **Cons**: Trade-offs, risks, or limitations.
+- **Explicit User Selection Required**: The agent must stop and await user feedback or selection (e.g. *"this one selected"*). **Only when the user confirms their selection does the agent lock it in and commit it to files, and only then proceed to the next item.** If the user requests tweaks, iterate on options before committing.
 
 ## Source-of-Truth Hierarchy (Highest to Lowest)
 
@@ -47,6 +54,9 @@ If a later subsystem would contradict an earlier approved one (e.g., introducing
 
 - **New project from scratch**: Use the `brand-director` agent or `/brand-new-project` skill.
 - **Single subsystem**: Use the `/brand-generate-system` skill.
+- **New project from scratch**: Use the `brand-director` agent or `/brand-new-project` skill. Guided through an interactive decision-gate loop (options with pros/cons, user selection gate, step-by-step commitment).
+- **Single subsystem**: Use the `/brand-generate-system` skill. Formulates cohesive options with pros and cons, waits for approval, then writes the subsystem.
 - **Review and audit**: Use the `brand-qa` subagent or `/brand-audit` skill.
 - **Visual asset specs**: Delegate SVG generation and asset briefs to `brand-asset-generator`.
+
 

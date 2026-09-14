@@ -9,6 +9,10 @@ customization kit, not a single product.
   output to the repo root or mix two projects' files.
 - Never invent a new project slug without confirming it with the user; derive it from the project
   name (kebab-case).
+- **Never generate in one go**: No autonomous batch-generation of multiple subsystems or decisions. Work proceeds strictly through an interactive decision gate.
+- **Mandatory Cohesive Options with Pros & Cons**: For each brand decision, present 2–4 cohesive options with Brand Cohesion Rationale, Pros, and Cons.
+- **Explicit User Selection Gate**: Always wait for user feedback/confirmation (e.g. "this one selected") before writing/locking files and advancing to the next item.
+
 
 ## Source-of-truth order (highest first)
 
@@ -60,11 +64,17 @@ for the schema used by `ai-ready-spec`.
 - New project from scratch: use the `brand-director` agent or `/brand-new-project` prompt — it
   interviews the user, then runs skills 00 → 20 in order, skipping any the user doesn't need.
 - Adding/regenerating one subsystem for an existing project: `/brand-generate-system`.
+  guides the user through an interactive decision-gate loop, offering 2–4 cohesive options with pros & cons
+  at each step, waiting for explicit user selection before committing files, and never building in one go.
+- Adding/regenerating one subsystem for an existing project: `/brand-generate-system`. Formulates
+  cohesive options with pros and cons, waits for selection, then generates.
 - Reviewing completeness/consistency: `brand-qa` agent or `/brand-audit`.
 - Visual assets (logos, icons, illustrations) are produced as **specs the human/designer or an
   image-gen tool can execute** (SVG where feasible, otherwise detailed briefs) — see
   `brand-asset-generator` agent. Do not claim to have produced pixel-perfect artwork you cannot
+  `brand-asset-generator` agent, executed only after the concept has been selected by the user. Do not claim to have produced pixel-perfect artwork you cannot
   actually render.
+
 
 ## Style
 

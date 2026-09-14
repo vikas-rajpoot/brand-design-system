@@ -2,11 +2,12 @@
 # Antigravity & Copilot Lifecycle Hook: Validate JSON files under brand/
 set -euo pipefail
 
+mode="${1:-auto}"
 input="$(cat)"
 
-# Process payload using Node.js
 node -e '
 let data = "";
+const mode = process.argv[1];
 process.stdin.on("data", chunk => data += chunk);
 process.stdin.on("end", () => {
   try {
@@ -16,10 +17,29 @@ process.stdin.on("end", () => {
     const targetFile = args.TargetFile || args.filePath || args.path || args.file || "";
     const codeContent = args.CodeContent;
 
-    const isPreToolUse = Boolean(toolCall.name && codeContent !== undefined);
-    const isBrandJson = targetFile.includes("brand/") && targetFile.endsWith(".json");
+    // Detect if this is post-tool-use
+    const isPost = mode === "post" || Boolean(payload.toolResult || payload.toolCallResult || payload.error !== undefined || payload.result);
 
-    if (isPreToolUse && isBrandJson) {
+    if (isPost) {
+      // PostToolUse must always return {}
+      const isBrandJson = targetFile.includes("brand/") && targetFile.endsWith(".json");
+      if (isBrandJson && targetFile) {
+        const fs = require("fs");
+        if (fs.existsSync(targetFile)) {
+          try {
+            JSON.parse(fs.readFileSync(targetFile, "utf8"));
+          } catch (err) {
+            console.error(`[validate-json] Warning: Invalid JSON detected in ${targetFile}: ${err.message}`);
+          }
+        }
+      }
+      process.stdout.write("{}\n");
+      process.exit(0);
+    }
+
+    // PreToolUse logic
+    const isBrandJson = targetFile.includes("brand/") && targetFile.endsWith(".json");
+    if (isBrandJson && codeContent !== undefined) {
       try {
         JSON.parse(codeContent);
         process.stdout.write(JSON.stringify({ decision: "allow" }) + "\n");
@@ -33,28 +53,16 @@ process.stdin.on("end", () => {
       }
     }
 
-    if (isBrandJson && targetFile) {
-      const fs = require("fs");
-      if (fs.existsSync(targetFile)) {
-        try {
-          JSON.parse(fs.readFileSync(targetFile, "utf8"));
-        } catch (err) {
-          console.error(`[validate-json] Warning: Invalid JSON detected in ${targetFile}: ${err.message}`);
-        }
-      }
-    }
-
-    // Default response: allow if PreToolUse, empty object if PostToolUse
-    if (toolCall.name) {
-      process.stdout.write(JSON.stringify({ decision: "allow" }) + "\n");
-    } else {
-      process.stdout.write("{}\n");
-    }
+    // Default PreToolUse response
+    process.stdout.write(JSON.stringify({ decision: "allow" }) + "\n");
   } catch (e) {
-    process.stdout.write("{}\n");
+    if (mode === "post") {
+      process.stdout.write("{}\n");
+    } else {
+      process.stdout.write(JSON.stringify({ decision: "allow" }) + "\n");
+    }
   }
 });
-' <<< "$input"
+' "$mode" <<< "$input"
 
 exit 0
-

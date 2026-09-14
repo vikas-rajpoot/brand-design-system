@@ -6,6 +6,13 @@ This workspace generates **brand design systems** for arbitrary new projects and
 
 - **Single Project Boundary**: Every generated artifact belongs to exactly one project: `brand/<project-slug>/`. Never write brand output to the repository root or mix two projects' files.
 - **Slug Confirmation**: Never invent a new project slug without confirming it with the user; derive it from the project name in kebab-case (e.g. `brand/acme-labs/`).
+- **No "In One Go" Generation (Strict Step-by-Step Gate)**: Never generate brand decisions, foundation, tokens, or subsystems in a single autonomous pass. Every element must proceed through an interactive decision gate.
+- **Mandatory Cohesive Options with Pros & Cons**: For each decision area (foundation angles, color schemes, font pairings, logo lockups, tokens, visual style, UI components, etc.), provide **2–4 distinct, cohesive options**. Each option must include:
+  1. Detailed concept / specifications / preview.
+  2. **Brand Cohesion Rationale**: Explicitly explain how this option harmonizes with the brand foundation and previously approved tokens/decisions.
+  3. **Pros**: Key strengths, emotional appeal, and strategic advantages.
+  4. **Cons**: Trade-offs, risks, or contextual limitations.
+- **Explicit User Selection Required**: Always stop and wait for the user's feedback or explicit choice (e.g. *"this one selected"*). **Only when the user confirms their selection does the agent lock it in and commit it to files, and only then proceed to the next item.** If the user gives feedback, refine the options before moving forward.
 
 ## Source-of-Truth Order (Highest Priority First)
 
@@ -51,6 +58,8 @@ Always check whether `00-brand-foundation` exists before generating any other su
 
 - **End-to-End Orchestration**: Launch the `brand-director` agent or run the `/brand-new-project` slash command. It interviews the user, drafts foundation and design tokens, and runs through the 21 subsystems sequentially.
 - **Single Subsystem Generation / Revision**: Run `/brand-generate-system` to build or update one subsystem for an existing project.
+- **End-to-End Orchestration**: Launch the `brand-director` agent or run the `/brand-new-project` slash command. It guides the project step by step through an interactive decision-gate loop. At every stage (foundation, colors, typography, tokens, logo, visual style, UI, and onward), it presents **2–4 cohesive options with pros and cons**, stops for user feedback, locks in the choice only when explicitly selected, and never generates everything in one go.
+- **Single Subsystem Generation / Revision**: Run `/brand-generate-system` to build or update one subsystem for an existing project. It presents cohesive options with pros and cons adhering to existing foundation and tokens before writing any files.
 - **Auditing & Consistency**: Dispatch the `brand-qa` subagent or run `/brand-audit` to generate a checklist (`✅ | ⚠️ | ❌`) verifying folder completeness, token traceability, and document frontmatter.
 - **Visual Assets**: Dispatch the `brand-asset-generator` subagent to generate SVG code or detailed briefs adhering to `04-design-tokens` and `05-visual-style`.
 

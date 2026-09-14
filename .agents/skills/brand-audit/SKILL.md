@@ -25,7 +25,10 @@ Use this skill to audit an existing generated brand project under `brand/<projec
    - Spot check colors, fonts, spacing scale, and border-radius in other subsystem docs and assets (e.g., `01-logo-system`, `02-color-system`, `06-ui-design-system`) to verify they trace directly back to defined tokens. Flag any hardcoded or foreign hex codes/values.
 
 4. **Document Frontmatter Check**:
+4. **Document Frontmatter & Approval Status Check**:
    - Verify every Markdown document in `brand/<slug>/` contains standard YAML frontmatter per [rules/brand-docs.md](../../rules/brand-docs.md) (`status: draft|approved`, `version`, `owner`).
+   - Flag any subsystem documents still marked `status: draft` that need explicit user selection and approval.
+
 
 5. **AI Spec Check**:
    - Verify `brand/<slug>/18-ai-ready-spec/brand-spec.json` exists, is valid JSON, and reflects the latest state of all generated subsystems.

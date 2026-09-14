@@ -1,6 +1,7 @@
 # brand/
 
 Generated brand design systems live here — one folder per project:
+Generated brand design systems live here — strictly one folder per project:
 
 ```
 brand/<project-slug>/
@@ -9,11 +10,14 @@ brand/<project-slug>/
 Never write brand output to the repo root — see
 [.github/copilot-instructions.md](../.github/copilot-instructions.md).
 [AGENTS.md](../AGENTS.md) and [AGENTS.md](AGENTS.md) (or legacy [.github/copilot-instructions.md](../.github/copilot-instructions.md)).
+Never write brand output to the repository root — see [AGENTS.md](../AGENTS.md) and [AGENTS.md](AGENTS.md).
 
 ## Starting a new project
+## Starting a New Project
 
 Use the `/brand-new-project` prompt or the `brand-director` agent. The 21-folder map (created on
 demand, not pre-scaffolded per project) is:
+Use the `/brand-new-project` slash command or the `brand-director` agent. 
 
 | # | Folder |
 |---|--------|
@@ -38,6 +42,35 @@ demand, not pre-scaffolded per project) is:
 | 18 | ai-ready-spec |
 | 19 | templates |
 | 20 | approved-examples |
+### Interactive Decision Gate (Anti-Batch Rule)
+The system **never creates files in one go**. It presents **2–4 cohesive options** with **Pros & Cons** and a **Brand Cohesion Rationale** for every decision (slug, foundation, colors, typography, tokens, logo, and all subsequent subsystems). 
 
 See [_template/README.md](_template/README.md) for a one-line purpose per folder and the
 `ai-ready-spec` JSON schema.
+Files are only created and marked `status: approved` after explicit user selection (*"this one selected"*), moving step by step through the 21 subsystems:
+
+| # | Folder | Primary Focus |
+|---|--------|---------------|
+| 00 | `00-brand-foundation` | Positioning, audience, personality, values, tone |
+| 01 | `01-logo-system` | Primary logo, lockup variants, clear space, SVGs |
+| 02 | `02-color-system` | Primaries, secondaries, accents, neutrals, semantic, WCAG |
+| 03 | `03-typography-system` | Heading/body font pairings, type scale, hierarchy |
+| 04 | `04-design-tokens` | Primitive → semantic → component tokens.json |
+| 05 | `05-visual-style` | Shapes, borders, shadows, imagery, iconography |
+| 06 | `06-ui-design-system` | Reusable UI components, variants, and states |
+| 07 | `07-website-system` | Key web page layouts, narrative flow, responsive specs |
+| 08 | `08-app-system` | Application shells, navigation patterns, onboarding, states |
+| 09 | `09-social-media-system` | Social templates across platforms, aspect ratios |
+| 10 | `10-presentation-system` | Pitch deck, sales deck, and slide master templates |
+| 11 | `11-document-system` | Business docs, proposals, reports, whitepapers, invoices |
+| 12 | `12-email-system` | Transactional, marketing, and newsletter email layouts |
+| 13 | `13-marketing-assets` | Campaign graphics, display ads, promotional banners |
+| 14 | `14-diagrams-and-charts` | Architecture diagrams, flowcharts, data visual palettes |
+| 15 | `15-brand-voice-and-copy` | Voice traits, headline rules, UI microcopy, glossary |
+| 16 | `16-asset-library` | Indexed catalog of approved logos, templates, and SVGs |
+| 17 | `17-brand-guidelines-site` | Static browsable brand guidelines website |
+| 18 | `18-ai-ready-spec` | Unified machine-readable `brand-spec.json` |
+| 19 | `19-templates` | Starter templates for web, app, deck, and document files |
+| 20 | `20-approved-examples` | Canonical real-world reference implementations |
+
+See [_template/README.md](_template/README.md) for starter templates and schema.

@@ -1,5 +1,6 @@
 ---
 description: "Generate or regenerate a single brand subsystem (logo, color, typography, tokens, UI, website, etc.) for an existing project"
+description: "Generate or regenerate a single brand subsystem with cohesive options and pros & cons"
 agent: "brand-director"
 argument-hint: "project-slug and subsystem name, e.g. acme-labs color-system"
 ---
@@ -12,3 +13,9 @@ Generate/update one brand subsystem: ${input:target:project-slug and subsystem n
 3. Write output only under `brand/<slug>/<NN-subsystem>/`.
 4. If the subsystem already exists, treat this as a revision: show what changed and why.
 5. Update `18-ai-ready-spec/brand-spec.json` if it exists, so it stays in sync.
+Follow the Interactive Decision-Gate Protocol — never generate in one go:
+1. Load `brand/<slug>/00-brand-foundation` and `brand/<slug>/04-design-tokens/tokens.json` as the source of truth.
+2. Present 2–4 cohesive options for this subsystem with Brand Cohesion Rationale, Pros, and Cons.
+3. Stop and wait for my feedback or explicit selection ("this one selected").
+4. Only upon my selection, write output under `brand/<slug>/<NN-subsystem>/` with `status: approved`.
+5. Synchronize `18-ai-ready-spec/brand-spec.json`.

@@ -2,6 +2,11 @@
 
 These rules apply to all files and directories under `brand/`.
 
+## Interactive Decision Gate
+- **No Direct Generation in One Go**: No document, token, or asset may be written to a project directory without first presenting 2–4 cohesive options with pros and cons, receiving user feedback, and getting explicit user selection ("this one selected").
+- **Cohesiveness Enforcement**: All proposed options and resulting files must demonstrably derive from approved foundation choices and existing tokens.
+
+
 ## Design Token Layering & Integrity
 
 When authoring or modifying `brand/**/04-design-tokens/tokens.json`:
