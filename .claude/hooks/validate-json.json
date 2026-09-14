@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "bash ./.github/hooks/scripts/validate-json.sh",
+        "timeout": 5
+      }
+    ]
+  }
+}
