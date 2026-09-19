@@ -9,7 +9,7 @@
 > MobileAgenticIDE is a native iOS remote control for developers that helps them steer local AI coding agents by providing tap-to-approve permissions away from their desk.
 
 **Candidate 2 (Outcome-focused):**
-> MobileAgenticIDE is a private agent client for software engineers that helps them reclaim their time by un-tethering their Claude Code workflows from their laptop.
+> MobileAgenticIDE is a private agent client for software engineers that helps them reclaim their time by un-tethering local agent workflows from their laptop.
 
 **Candidate 3 (Platform-focused):**
 > MobileAgenticIDE is a mobile agent interface for developers that helps them collaborate with local AI subagents by bridging their iOS device directly to their host environment.
@@ -24,7 +24,7 @@
 ## Product Problem
 
 ### Primary Problem
-Developers are physically tethered to their laptops when running iterative, agentic workflows (like Claude Code) because these agents require frequent permission approvals (shell commands, file writes) and monitoring.
+Developers are physically tethered to their laptops when running iterative agent workflows because these agents require frequent permission approvals, such as shell commands and file writes, and monitoring.
 
 ### Secondary Problems
 - Terminal interfaces for AI agents are dense, linear, and hard to parse on the go.
@@ -61,8 +61,8 @@ Developers are physically tethered to their laptops when running iterative, agen
 
 ## Jobs To Be Done
 
-1. **When** I start a complex refactor with Claude Code, **I want to** step away from my laptop, **so that** I can take a break without stalling the agent's progress.
-2. **When** Claude Code wants to run a destructive bash command, **I want to** clearly see what it's trying to do in a structured UI, **so that** I can approve or deny it with confidence.
+1. **When** I start a complex refactor with a local coding agent, **I want to** step away from my laptop, **so that** I can take a break without stalling the agent's progress.
+2. **When** a local coding agent wants to run a destructive shell command, **I want to** clearly see what it's trying to do in a structured UI, **so that** I can approve or deny it with confidence.
 3. **When** I have a sudden idea away from my desk, **I want to** use voice dictation to send a prompt to my local codebase, **so that** the work is done by the time I sit back down.
 4. **When** my agent is working on a long task, **I want to** observe its subagents working in parallel, **so that** I know it's on the right track.
 
