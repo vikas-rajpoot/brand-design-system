@@ -32,11 +32,11 @@
 ## Positioning Statement
 
 > **[REQUIRES FOUNDER APPROVAL]**
-> **Candidate 1**: For software engineers who need to monitor long-running tasks, Checkpoint is the AI agent client that provides un-tethered control, unlike standard SSH apps, because it renders local terminal events into structured, native iOS permission cards.
+> **Candidate 1**: For software engineers who need to monitor long-running tasks, MobileAgenticIDE is the AI agent client that provides un-tethered control, unlike standard SSH apps, because it renders local terminal events into structured, native iOS permission cards.
 > 
-> **Candidate 2**: For security-conscious developers who use Claude Code, Checkpoint is the mobile remote that guarantees absolute privacy, unlike cloud-proxied AI wrappers, because it connects directly to your own Mac over your local network.
+> **Candidate 2**: For security-conscious developers who use Claude Code, MobileAgenticIDE is the mobile remote that provides direct, private control, unlike cloud-proxied AI wrappers, because it connects directly to your own Mac over your local network.
 >
-> **Candidate 3**: For fast-moving developers who hate breaking flow, Checkpoint is the companion app that lets you step away from the desk, unlike local CLI tools, because you can steer and approve agent work from your phone.
+> **Candidate 3**: For fast-moving developers who hate breaking flow, MobileAgenticIDE is the companion app that lets you step away from the desk, unlike local CLI tools, because you can steer and approve agent work from your phone.
 
 ## Mission
 
@@ -46,8 +46,8 @@
 
 ## Vision (PROPOSED)
 
-* **3-Year Vision**: Checkpoint becomes the default companion app for any local CLI-based AI agent framework (Claude Code, Aider, OpenHands), offering a unified mobile orchestration layer.
-* **5-Year Vision**: Checkpoint evolves into a persistent mobile control plane for a developer's entire autonomous infrastructure, managing cloud instances, CI/CD agents, and local development seamlessly.
+* **3-Year Vision**: MobileAgenticIDE becomes the default companion app for any local CLI-based AI agent framework (Claude Code, Aider, OpenHands), offering a unified mobile orchestration layer.
+* **5-Year Vision**: MobileAgenticIDE evolves into a persistent mobile control plane for a developer's entire autonomous infrastructure, managing cloud instances, CI/CD agents, and local development seamlessly.
 * **Long-Term Vision**: To build the ultimate interface for human-agent collaboration in software engineering, making geography and hardware irrelevant to creative output.
 
 ## Product Principles

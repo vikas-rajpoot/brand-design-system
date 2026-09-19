@@ -1,19 +1,18 @@
 # Product Strategy Foundation
 
 ## Product Name
-**Proposed Canonical Name**: Checkpoint (or Checkpoint LLM)
-*Old/Internal names found in repo*: Claude Mobile, Claude Mobile Controller (CMC).
+**Canonical Name**: MobileAgenticIDE
 
 ## One-Sentence Product Definition
 
 **Candidate 1 (Action-focused):**
-> Checkpoint is a native iOS remote control for developers that helps them steer local AI coding agents by providing tap-to-approve permissions away from their desk.
+> MobileAgenticIDE is a native iOS remote control for developers that helps them steer local AI coding agents by providing tap-to-approve permissions away from their desk.
 
 **Candidate 2 (Outcome-focused):**
-> Checkpoint is a private agent client for software engineers that helps them reclaim their time by un-tethering their Claude Code workflows from their laptop.
+> MobileAgenticIDE is a private agent client for software engineers that helps them reclaim their time by un-tethering their Claude Code workflows from their laptop.
 
 **Candidate 3 (Platform-focused):**
-> Checkpoint is a mobile agent interface for developers that helps them collaborate with local AI subagents by bridging their iOS device directly to their host environment.
+> MobileAgenticIDE is a mobile agent interface for developers that helps them collaborate with local AI subagents by bridging their iOS device directly to their host environment.
 
 *Recommendation*: Candidate 1 is the most accurate to the current state, but Candidate 2 establishes a stronger emotional hook.
 

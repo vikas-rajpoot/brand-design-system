@@ -1,6 +1,6 @@
 # Brand Brief
 
-**Product**: Checkpoint (Pending Approval)
+**Product**: MobileAgenticIDE
 **Category**: AI Agent Client / Developer Tool
 **One-line definition**: A native iOS remote control that un-tethers developers from their desk by providing secure, tap-to-approve control over local AI coding agents.
 
@@ -57,6 +57,5 @@
 - Fully autonomous, Our servers, Set-and-forget, ChatGPT alternative.
 
 **Current unresolved decisions**:
-- Final canonical name approval (Checkpoint vs Claude Mobile).
 - Future monetization strategy.
 

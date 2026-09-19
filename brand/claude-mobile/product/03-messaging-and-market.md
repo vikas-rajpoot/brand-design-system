@@ -6,7 +6,7 @@
 Steer your local AI coding agent from anywhere.
 
 ### Level 2 — Primary Value Proposition
-Checkpoint gives you a native mobile interface to securely monitor, control, and approve Claude Code tasks running on your own Mac, without breaking your flow.
+MobileAgenticIDE gives you a native mobile interface to securely monitor, control, and approve Claude Code tasks running on your own Mac, without breaking your flow.
 
 ### Level 3 — Major Benefits
 - **Un-tethered Freedom**: Leave your desk while the agent refactors.
@@ -72,19 +72,20 @@ Users must trust this product with:
 
 ## PRODUCT / BRAND CONTRADICTIONS
 
-1. **Name Collision**: App Store says "Checkpoint LLM", repo says "claude-mobile-controller", in-app UI says "Claude Mobile". This fractures brand identity and trust.
+1. **Historical Name Collision**: Earlier materials refer to "Checkpoint LLM", "claude-mobile-controller", and "Claude Mobile". The canonical product name is now **MobileAgenticIDE**; remaining product-facing references should migrate to it.
 2. **Audience Vibe vs Setup Reality**: The marketing copy ("Drive Claude Code... tap to approve") feels very consumer-friendly and easy. But the actual setup requires minting a token via a Node CLI, setting up Tailscale, and potentially configuring an SSH bootstrap. The brand needs to acknowledge this technical barrier rather than hiding it.
 3. **Design System Disconnect**: `design-system/README.md` outlines a beautiful, mathematically proven design system with OkLCH color ramps, but explicitly notes: "The app: consuming none of it. 910 raw values across 137 files." The brand foundation exists in a silo from the product implementation.
 
-## Naming Audit
+## Naming Resolution
 
-- **App Name (App Store)**: Checkpoint LLM
-- **In-App Name**: Claude Mobile
-- **Repo Name**: claude-mobile-controller
+- **Canonical Product Name**: MobileAgenticIDE
+- **Historical App Name**: Checkpoint LLM
+- **Historical In-App Name**: Claude Mobile
+- **Historical Repo Name**: claude-mobile-controller
 - **Daemon Name**: agent-host
 - **Protocol version**: protocol-v1
 
-*Recommendation: Unify entirely under "Checkpoint". Rename repo to `checkpoint-mobile`, update in-app text.*
+*Recommendation: Unify product-facing naming under "MobileAgenticIDE". The daemon and protocol names may remain technical identifiers unless separately renamed.*
 
 ## Existing Visual Brand Audit
 
