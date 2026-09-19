@@ -3,16 +3,17 @@
 ## Messaging Hierarchy
 
 ### Level 1 — Brand Idea
-Build from anywhere, with any agent, in one mobile IDE.
+Do serious work from anywhere, with any agent, in one mobile workspace.
 
 ### Level 2 — Primary Value Proposition
-MobileAgenticIDE gives developers one native mobile workspace to prompt, edit, run, review, and ship code across a laptop, VPS, or managed Vercel Sandbox, using its own agent harness or compatible runtimes such as Claude CLI, Codex, and GitHub Copilot.
+MobileAgenticIDE gives people one native mobile workspace to prompt, create, edit, review, and approve work across a laptop, VPS, or managed Vercel Sandbox, using its own agent harness or compatible runtimes such as Claude CLI, Codex, GitHub Copilot, and future integrations.
 
 ### Level 3 — Major Benefits
 - **Un-tethered Freedom**: Leave your desk while the agent refactors.
 - **Absolute Privacy**: Your data travels directly between your phone and your Mac.
 - **Clear Control**: Tap-to-approve permission cards replace messy terminal prompts.
 - **Runtime Choice**: Keep the same mobile workflow while choosing the agent harness or CLI that fits the task.
+- **Beyond Code**: Apply the same agent direction and review model to research, writing, planning, analysis, and operations.
 
 ### Level 4 — Proof
 - Communicates purely over your private Tailscale network or SSH.
@@ -30,6 +31,7 @@ MobileAgenticIDE gives developers one native mobile workspace to prompt, edit, r
 - First-party MobileAgenticIDE agent harness.
 - Adapters for Claude CLI, Codex, GitHub Copilot, and future runtimes.
 - Workspace switcher for laptop, VPS, and managed Vercel Sandbox.
+- Workspaces for coding, research, writing, planning, analysis, and operations.
 
 ## Messaging Pillars
 
@@ -61,6 +63,13 @@ MobileAgenticIDE gives developers one native mobile workspace to prompt, edit, r
 * **Language we can use**: "Use the agent you choose", "One mobile workspace", "Laptop, VPS, or sandbox", "Bring your runtime".
 * **Language we should avoid**: "Every agent works exactly the same", "Universal compatibility".
 
+### Pillar 5: More Than Code
+* **Core idea**: Coding is a flagship workflow, not the limit of what the workspace can support.
+* **User benefit**: Use the same clear agent controls for research, writing, planning, analysis, and operations.
+* **Supporting capabilities**: Workspace templates, artifact review, structured approvals, source/context management, and runtime adapters.
+* **Language we can use**: "Direct serious work from your phone", "Code and beyond", "Research, write, plan, operate", "One agent workspace".
+* **Language we should avoid**: "General chatbot", "Anything automatically", "Works for everyone".
+
 ## Trust Strategy
 
 Users must trust this product with:
@@ -79,7 +88,7 @@ Users must trust this product with:
 
 ## Competitive Context
 
-* **Direct Competitors**: Currently none. Most mobile AI apps are generic wrappers (e.g., official Claude app, ChatGPT app) or single-runtime clients.
+* **Direct Competitors**: Currently none. Most mobile AI apps are generic wrappers (e.g., official Claude app, ChatGPT app) or single-runtime clients, while coding tools focus narrowly on developer workflows.
 * **Indirect Competitors**: Mobile SSH clients (Termius, Prompt 3) used to manually view the agent running in `tmux`.
 * **Substitutes**: Sitting at the desk; using cloud-hosted agent platforms (like GitHub Copilot Workspaces, which don't run locally).
 * **Competitive dimensions**: UX clarity (vs SSH), Privacy (vs Cloud agents), Setup complexity (we are harder to set up but vastly superior once running).
@@ -97,6 +106,7 @@ Users must trust this product with:
 - **Protocol version**: protocol-v1
 - **Runtime model**: first-party harness plus adapter-based integrations
 - **Workspace targets**: laptop, VPS, managed Vercel Sandbox
+- **Work types**: coding, research, writing, planning, analysis, operations
 
 *Use MobileAgenticIDE consistently in all product-facing naming. The daemon and protocol names may remain technical identifiers unless separately renamed.*
 
@@ -124,6 +134,7 @@ The eventual design system (which is already partly built in `design-system/`) r
 - Color system (Support for dark/light mode, semantic alerts for permissions).
 - UI Component Tokens (Cards, Buttons, Terminal blocks).
 - Runtime and workspace switching states, including capability differences between adapters.
+- Workspace templates and artifact states for coding and non-technical work.
 - App Store / Marketing screenshots.
 *(We do not need presentation templates, social media assets, or billboard guidelines right now).*
 

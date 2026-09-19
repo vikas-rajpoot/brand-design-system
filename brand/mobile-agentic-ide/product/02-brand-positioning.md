@@ -39,10 +39,20 @@
 * **Advantages**: Creates the strongest long-term category and product moat.
 * **Trade-offs**: Requires a credible integration strategy and must avoid implying every runtime has identical capabilities.
 
+### Territory 5: General Agent Workspace (The Work Surface)
+* **Target audience**: People who want to direct serious work from a phone, whether the work is code, research, writing, planning, analysis, or operations.
+* **Primary problem**: Agent-assisted work is scattered across specialized apps, machines, and disconnected approval loops.
+* **Market category**: Mobile Agent Workspace / Agent Control Plane.
+* **Core promise**: One calm mobile surface for any agent, task, and workspace.
+* **Reason to believe**: A first-party harness, runtime adapters, shared artifacts and approvals, and connections to laptops, VPS instances, and managed sandboxes.
+* **Brand personality**: Calm, capable, open-ended, precise.
+* **Advantages**: Expands the addressable product without discarding the strong coding wedge.
+* **Trade-offs**: Must avoid becoming a vague general-purpose assistant; concrete work surfaces and permission boundaries remain essential.
+
 ## Positioning Statement
 
 > **[REQUIRES FOUNDER APPROVAL]**
-> **Candidate 1**: For engineers who want to build from anywhere, MobileAgenticIDE is the mobile IDE that connects to a laptop, VPS, or managed sandbox and lets them use the agent runtime they choose, unlike single-runtime mobile wrappers, because its native workspace is built around an extensible agent adapter layer.
+> **Candidate 1**: For people who want to direct serious work from anywhere, MobileAgenticIDE is the mobile agent workspace that connects to a laptop, VPS, or managed sandbox and lets them use the runtime they choose, unlike single-purpose AI apps, because its native surface is built around extensible agents, artifacts, and approvals.
 > 
 > **Candidate 1**: For software engineers who need to monitor long-running tasks, MobileAgenticIDE is the AI agent client that provides un-tethered control, unlike standard SSH apps, because it renders local terminal events into structured, native iOS permission cards.
 > 
@@ -58,8 +68,8 @@
 
 ## Vision (PROPOSED)
 
-* **3-Year Vision**: MobileAgenticIDE becomes the default mobile IDE for local and remote agent workflows, with a first-party harness and adapters for leading coding-agent runtimes.
-* **5-Year Vision**: MobileAgenticIDE becomes a persistent mobile control plane across laptops, VPS instances, managed sandboxes, CI/CD agents, and other development environments.
+* **3-Year Vision**: MobileAgenticIDE becomes the default mobile workspace for local and remote agent workflows, with coding as a flagship use case and adapters for leading agent runtimes.
+* **5-Year Vision**: MobileAgenticIDE becomes a persistent mobile control plane across laptops, VPS instances, managed sandboxes, CI/CD agents, research environments, and other workspaces.
 * **Long-Term Vision**: To build the ultimate interface for human-agent collaboration in software engineering, making geography and hardware irrelevant to creative output.
 
 ## Product Principles
@@ -98,7 +108,7 @@
 * **Tone**: Helpful but restrained. We don't use emojis or exclamation points excessively.
 * **Vocabulary**: Precise technical terms (e.g., "Daemon", "SSH", "Local Network", "Subagent").
 * **Error message style**: Actionable and exact. (e.g., "Host unreachable on port 8787" instead of "Oops! Something went wrong").
-* **Marketing style**: Feature-led and privacy-led. Show the UI, explain the architecture.
+* **Marketing style**: Feature-led and privacy-led. Show the work surface, explain the architecture, and demonstrate concrete coding and non-coding workflows.
 
 ### We sound like:
 * A senior engineer explaining how a reliable system works.
