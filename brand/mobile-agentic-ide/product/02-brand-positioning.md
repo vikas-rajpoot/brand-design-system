@@ -29,9 +29,21 @@
 * **Brand personality**: Analytical, structured, confident.
 * **Advantages**: Directly maps to the unique UI of the product.
 
+### Territory 4: Platform-first (The Mobile IDE)
+* **Target audience**: Engineers who use multiple agent runtimes and move work between local and remote environments.
+* **Primary problem**: Agent tools and execution environments fragment the development workflow across separate interfaces.
+* **Market category**: Mobile IDE / Agent Control Plane.
+* **Core promise**: One mobile workspace for any agent and any place your code runs.
+* **Reason to believe**: A first-party agent harness, runtime adapters, and consistent workspace primitives for laptop, VPS, and managed sandbox connections.
+* **Brand personality**: Composed, capable, extensible.
+* **Advantages**: Creates the strongest long-term category and product moat.
+* **Trade-offs**: Requires a credible integration strategy and must avoid implying every runtime has identical capabilities.
+
 ## Positioning Statement
 
 > **[REQUIRES FOUNDER APPROVAL]**
+> **Candidate 1**: For engineers who want to build from anywhere, MobileAgenticIDE is the mobile IDE that connects to a laptop, VPS, or managed sandbox and lets them use the agent runtime they choose, unlike single-runtime mobile wrappers, because its native workspace is built around an extensible agent adapter layer.
+> 
 > **Candidate 1**: For software engineers who need to monitor long-running tasks, MobileAgenticIDE is the AI agent client that provides un-tethered control, unlike standard SSH apps, because it renders local terminal events into structured, native iOS permission cards.
 > 
 > **Candidate 2**: For security-conscious developers running local coding agents, MobileAgenticIDE is the mobile remote that provides direct, private control, unlike cloud-proxied AI wrappers, because it connects directly to your own Mac over your local network.
@@ -46,8 +58,8 @@
 
 ## Vision (PROPOSED)
 
-* **3-Year Vision**: MobileAgenticIDE becomes the default companion app for local CLI-based AI agent frameworks, offering a unified mobile orchestration layer.
-* **5-Year Vision**: MobileAgenticIDE evolves into a persistent mobile control plane for a developer's entire autonomous infrastructure, managing cloud instances, CI/CD agents, and local development seamlessly.
+* **3-Year Vision**: MobileAgenticIDE becomes the default mobile IDE for local and remote agent workflows, with a first-party harness and adapters for leading coding-agent runtimes.
+* **5-Year Vision**: MobileAgenticIDE becomes a persistent mobile control plane across laptops, VPS instances, managed sandboxes, CI/CD agents, and other development environments.
 * **Long-Term Vision**: To build the ultimate interface for human-agent collaboration in software engineering, making geography and hardware irrelevant to creative output.
 
 ## Product Principles
@@ -57,11 +69,12 @@
 3. **Structured over Streamed**: We don't just dump raw stdout to the user. We parse agent intent (tools, files, errors) into explicit, actionable UI cards.
 4. **Resilient to Disconnects**: Mobile networks drop. The protocol must always gracefully replay missed events and deduplicate without flickering. (Derived from the `lastSeq` replay mechanism).
 5. **Capabilities are Earned**: Destructive access (like the terminal) requires explicit enablement by the user on the host. Security is opt-in.
+6. **Runtime Choice is Yours**: The product should make the workspace consistent while leaving the developer free to choose the agent runtime.
 
 ## Brand Promise
 
-* **Primary Promise**: You will always know exactly what your agent is doing, and you control its next step.
-* **Supporting Promises**: Your code never touches our servers. Your battery won't be drained by background polling.
+* **Primary Promise**: You can build from anywhere, with the agent and workspace that fit the job, while staying in control of every consequential step.
+* **Supporting Promises**: Direct laptop and VPS connections do not require our servers. Managed sandbox use is explicit and isolated. Your battery won't be drained by background polling.
 * **Promises we should NOT make yet**: "Guaranteed bug-free code", "Universal support for all AI models" (until broad agent-framework support exists).
 
 ## Brand Personality

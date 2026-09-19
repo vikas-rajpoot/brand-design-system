@@ -5,21 +5,22 @@
 
 ## One-Sentence Product Definition
 
-**Candidate 1 (Action-focused):**
-> MobileAgenticIDE is a native iOS remote control for developers that helps them steer local AI coding agents by providing tap-to-approve permissions away from their desk.
+**Candidate 1 (Platform-focused):**
+> MobileAgenticIDE is a mobile IDE that lets developers build from anywhere by connecting one native workspace to their laptop, VPS, or managed sandbox and running the agent harness or compatible coding agents they choose.
 
-**Candidate 2 (Outcome-focused):**
-> MobileAgenticIDE is a private agent client for software engineers that helps them reclaim their time by un-tethering local agent workflows from their laptop.
+**Candidate 2 (Control-focused):**
+> MobileAgenticIDE is a mobile development control plane that lets software engineers prompt, edit, run, review, and approve agentic work across their environments without returning to a desk.
 
-**Candidate 3 (Platform-focused):**
-> MobileAgenticIDE is a mobile agent interface for developers that helps them collaborate with local AI subagents by bridging their iOS device directly to their host environment.
+**Candidate 3 (Freedom-focused):**
+> MobileAgenticIDE is the IDE that travels with the work, giving developers a clear mobile interface for local agents, remote servers, and on-demand sandboxes.
 
-*Recommendation*: Candidate 1 is the most accurate to the current state, but Candidate 2 establishes a stronger emotional hook.
+*Recommendation*: Candidate 1 establishes the strongest long-term category and product architecture; Candidate 3 supplies the clearest emotional hook.
 
 ## Product Category
-* **Primary**: Developer Tool / AI Agent Client
-* **Alternative**: Workflow automation platform, Remote management utility.
-*(Recommendation: "AI Agent Client" aligns with the future of the market).*
+* **Primary**: Mobile IDE / Agent Control Plane
+* **Secondary**: Developer Tool / AI Agent Client
+* **Alternative**: Remote development workspace.
+*(Recommendation: "Mobile IDE" is the user-facing category; "Agent Control Plane" describes the extensible architecture.)*
 
 ## Product Problem
 
@@ -28,13 +29,15 @@ Developers are physically tethered to their laptops when running iterative agent
 
 ### Secondary Problems
 - Terminal interfaces for AI agents are dense, linear, and hard to parse on the go.
-- Traditional mobile AI apps (like ChatGPT/Claude) do not have access to a user's local filesystem, terminal, or git repository.
+- Traditional mobile AI apps (like ChatGPT/Claude) do not provide a unified IDE surface across a user's filesystem, terminal, git repository, and remote workspaces.
+- Agent runtimes are fragmented: developers must learn separate workflows for their own harness, Claude CLI, Codex, GitHub Copilot, and future tools.
 - Relying on a third-party server to proxy terminal commands introduces massive security vulnerabilities.
 
 ### Current Alternatives
 - Manually sitting at the desk watching the terminal.
 - Using generic SSH clients on mobile (horrible UX, tiny text).
 - Not using agents for long-running tasks.
+- Switching between separate mobile apps or desktop clients for each agent runtime and workspace.
 
 ### Pain Points
 - Context switching (breaking flow to check on the agent).
@@ -65,6 +68,7 @@ Developers are physically tethered to their laptops when running iterative agent
 2. **When** a local coding agent wants to run a destructive shell command, **I want to** clearly see what it's trying to do in a structured UI, **so that** I can approve or deny it with confidence.
 3. **When** I have a sudden idea away from my desk, **I want to** use voice dictation to send a prompt to my local codebase, **so that** the work is done by the time I sit back down.
 4. **When** my agent is working on a long task, **I want to** observe its subagents working in parallel, **so that** I know it's on the right track.
+5. **When** I choose a different agent runtime or execution environment, **I want to** keep the same mobile workspace and controls, **so that** my tools do not dictate how I work.
 
 ## Core Product Capabilities
 
@@ -89,10 +93,16 @@ Developers are physically tethered to their laptops when running iterative agent
 - Git operations interface.
 - Bound to specific `allowedDirs` for security.
 
+### 5. Runtime & Workspace Layer (Strategic Direction)
+- First-party MobileAgenticIDE agent harness for a coherent default experience.
+- Adapter boundary for Claude CLI, Codex, GitHub Copilot, and future agent runtimes.
+- Workspace connections for a developer laptop, VPS, and managed Vercel Sandbox.
+- Shared mobile primitives for prompts, files, diffs, terminals, approvals, tests, and deployment state.
+
 ## Product Value Proposition
 
 ### Functional Value
-Enables developers to monitor, steer, and interact with their local AI coding agents from anywhere, transforming a tethered CLI experience into a mobile-native one.
+Enables developers to use one mobile IDE to monitor, steer, edit, test, and ship agentic work across their laptop, VPS, or managed sandbox, without changing interfaces when they change runtimes.
 
 ### Emotional Value
 - **Calm**: No more anxious polling of the terminal.
@@ -101,20 +111,26 @@ Enables developers to monitor, steer, and interact with their local AI coding ag
 
 ### Economic Value
 - **Time**: Converts idle/waiting time into productive agent time.
+- **Choice**: Keeps the developer's workflow portable across agent runtimes and execution environments.
 
 ## Product Differentiation
 
 ### Strong Differentiators
-- **Absolute Privacy (BYO-Mac):** The app talks *only* to your own Mac. No intermediary cloud service sees your code or terminal output.
+- **Runtime-neutral mobile IDE:** The product can use its own harness or connect to compatible agent CLIs through a consistent mobile interface.
+- **Portable execution:** The same workspace model spans a personal laptop, VPS, and managed Vercel Sandbox.
+- **Direct privacy path:** In laptop and VPS modes, the app talks directly to the developer's environment with no intermediary cloud service.
 - **Native UX for Abstract Permissions:** Turning CLI prompts into rich, tappable UI cards is vastly superior to SSH apps.
 
 ### Supporting Differentiators
 - **SSH Bootstrapping:** Capable of connecting to headless VPS environments natively.
 - **Pure Local Reducer:** The timeline pure reducer ensures instantaneous local echo and bulletproof reconnection without UI flickering.
+- **Adapter boundary:** Agent-specific protocol details stay behind runtime adapters instead of shaping the whole mobile product.
 
 ### Weak Differentiators
 - **Markdown / Chat UI:** Standard across all LLM apps.
 
 ### Claims Requiring Validation
 - **Battery / Network efficiency:** We assume NDJSON over WebSocket is efficient, but mobile network drops could affect reliability if not tested extensively.
+- **Runtime parity:** Claude CLI, Codex, GitHub Copilot, and future adapters may expose different permission, streaming, filesystem, and session semantics.
+- **Sandbox parity:** The managed Vercel Sandbox must provide clear isolation, lifecycle, persistence, and cost behavior before it is marketed as equivalent to a personal host.
 
