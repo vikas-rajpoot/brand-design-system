@@ -5,6 +5,8 @@ This workspace generates **brand design systems** for arbitrary new projects and
 ## Hard Rules
 
 - **Single Project Boundary**: Every generated artifact belongs to exactly one project: `brand/<project-slug>/`. Never write brand output to the repository root or mix two projects' files.
+- **Mandatory Product Intake Gate**: Do not begin brand-system work, including an `options/` preview, a foundation draft, or any subsystem, until the user has supplied and confirmed the complete product packet at `brand/<project-slug>/product/`. Required user-authored files: `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, and `04-decisions-and-questions.md`.
+- **Project Discovery & Incomplete Intake**: At intake, inspect `brand/*/product/`. If exactly one project contains all five required files, use its enclosing slug. If multiple complete packets exist, ask the user to select the slug. If none are complete, stop at intake, state what is missing for the intended slug, and suggest the decisions that each missing file should cover; never invent contents or generate brand artifacts. Read the selected complete packet before offering foundation options.
 - **Slug Confirmation**: Never invent a new project slug without confirming it with the user; derive it from the project name in kebab-case (e.g. `brand/acme-labs/`).
 - **No "In One Go" Generation (Strict Step-by-Step Gate)**: Never generate brand decisions, foundation, tokens, or subsystems in a single autonomous pass. Every element must proceed through an interactive decision gate.
 - **Mandatory Cohesive Options with Pros & Cons**: For each decision area (foundation angles, color schemes, font pairings, logo lockups, tokens, visual style, UI components, etc.), provide **2–4 distinct, cohesive options**. Each option must include:
@@ -21,11 +23,12 @@ This workspace generates **brand design systems** for arbitrary new projects and
 
 ## Source-of-Truth Order (Highest Priority First)
 
-1. `brand/<project-slug>/00-brand-foundation/brand-foundation.md` (name, audience, positioning, personality, voice)
-2. `brand/<project-slug>/04-design-tokens/tokens.json` (primitive → semantic → component tokens)
-3. Any other already-generated subsystem file in that project
-4. Skill defaults and workspace rules
-5. Agent judgment — only when nothing above applies, and explicitly stated as an assumption
+1. User-confirmed `brand/<project-slug>/product/` packet (strategy, positioning, messaging, unresolved decisions)
+2. `brand/<project-slug>/00-brand-foundation/brand-foundation.md` (name, audience, positioning, personality, voice)
+3. `brand/<project-slug>/04-design-tokens/tokens.json` (primitive → semantic → component tokens)
+4. Any other already-generated subsystem file in that project
+5. Skill defaults and workspace rules
+6. Agent judgment — only when nothing above applies, and explicitly stated as an assumption
 
 If a later subsystem contradicts an earlier approved decision (e.g. a UI element introduces a hex code not in `tokens.json`), stop and flag the conflict rather than silently introducing a new value.
 

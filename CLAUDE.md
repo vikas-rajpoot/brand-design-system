@@ -7,6 +7,8 @@ customization kit, not a single product.
 
 - Every generated artifact belongs to exactly one project: `brand/<project-slug>/`. Never write brand
   output to the repo root or mix two projects' files.
+- **Mandatory Product Intake Gate**: Do not begin any brand-system work, including an `options/` preview, a foundation draft, or any subsystem, until the user has supplied and confirmed the complete product packet at `brand/<project-slug>/product/`. The required user-authored files are `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, and `04-decisions-and-questions.md`.
+- **Project Discovery**: At intake, inspect `brand/*/product/`. If exactly one project has the complete five-file packet, use that enclosing slug. If multiple complete packets exist, ask the user to select a slug. If none are complete, stop at intake, identify the missing files for the intended slug, and suggest what each should decide; do not invent their contents or generate brand artifacts. Read the selected complete packet before proposing foundation options.
 - Never invent a new project slug without confirming it with the user; derive it from the project
   name (kebab-case).
 - **Never generate in one go**: No autonomous batch-generation of multiple subsystems or decisions. Work proceeds strictly through an interactive decision gate.
@@ -22,12 +24,13 @@ customization kit, not a single product.
 
 ## Source-of-truth order (highest first)
 
-1. `brand/<project-slug>/00-brand-foundation/brand-foundation.md` (name, audience, positioning,
+1. User-confirmed `brand/<project-slug>/product/` packet (strategy, positioning, messaging, and unresolved decisions)
+2. `brand/<project-slug>/00-brand-foundation/brand-foundation.md` (name, audience, positioning,
    personality, voice)
-2. `brand/<project-slug>/04-design-tokens/tokens.json` (primitive → semantic → component tokens)
-3. Any other already-generated subsystem file in that project
-4. Skill defaults / this instructions file
-5. Agent judgment — only when nothing above applies, and call it out as an assumption
+3. `brand/<project-slug>/04-design-tokens/tokens.json` (primitive → semantic → component tokens)
+4. Any other already-generated subsystem file in that project
+5. Skill defaults / this instructions file
+6. Agent judgment — only when nothing above applies, and call it out as an assumption
 
 If a later system would contradict an earlier approved one (e.g. a new page uses a color not in
 tokens), stop and flag the conflict instead of silently introducing a new value.

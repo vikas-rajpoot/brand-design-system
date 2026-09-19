@@ -2,6 +2,10 @@
 
 These rules apply to all files and directories under `brand/`.
 
+## Product Intake
+- Each project must keep its user-authored product packet in `brand/<project-slug>/product/`: `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, and `04-decisions-and-questions.md`.
+- Do not create a preview, foundation, token, or subsystem for a project without its complete, user-confirmed packet. If more than one project has a complete packet, ask the user which slug to work on.
+
 ## Interactive Decision Gate
 - **No Direct Generation in One Go**: No document, token, or asset may be written to a project directory without first presenting 2–4 cohesive options with pros and cons, receiving user feedback, and getting explicit user selection ("this one selected").
 - **Cohesiveness Enforcement**: All proposed options and resulting files must demonstrably derive from approved foundation choices and existing tokens.

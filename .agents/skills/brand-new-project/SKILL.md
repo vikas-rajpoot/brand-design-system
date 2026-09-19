@@ -17,14 +17,17 @@ Use this skill when initiating a brand design system for a new project or idea f
 > - **Explicit User Selection Required**: Stop and wait for the user to evaluate and explicitly confirm (*"Concept 1 selected"*). Only upon explicit confirmation, commit the selected choice to the official subsystem directory, and only then proceed to the next item.
 
 ## Inputs Required
-- **Project Name**: The display name of the project or product.
-- **Short Description**: A brief summary of what the project does and its core premise.
+- **Product Packet**: User-authored `brand/<project-slug>/product/` containing `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, and `04-decisions-and-questions.md`.
+
+## Intake & Project Discovery
+
+Before any brand work, inspect `brand/*/product/` for complete five-file packets. When exactly one is present, use its enclosing slug; when more than one is present, ask the user which slug to work on. When none are complete, stop and identify the missing files for the intended project. Do not create product files or brand artifacts on the user's behalf.
 
 ## Step-by-Step Procedure
 
-1. **Step 1: Confirm Project Slug & Scope**
-   - Provide 2–3 slug options (e.g. `acme-labs`, `acme-hq`) with pros/cons.
-   - Wait for user selection before creating `brand/<slug>/`.
+1. **Step 1: Confirm Intake Scope**
+   - Use the slug containing the selected complete product packet.
+   - Read the full packet before creating an options preview or proposing foundation directions.
 
 2. **Step 2: Brand Foundation (Options & Archive)**
    - Gather essential context (premise, target audience, core problem solved).
