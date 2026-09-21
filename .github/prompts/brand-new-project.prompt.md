@@ -2,7 +2,6 @@
 description: "Start a full brand design system for a new project/idea from scratch"
 description: "Start a full brand design system step-by-step with cohesive options and pros & cons"
 description: "Start a full brand design system step-by-step with interactive HTML options and an immutable archive"
-agent: "brand-director"
 argument-hint: "Project name and a short description of the idea"
 ---
 Build a complete brand design system for this new project/idea: ${input:project:Project name and short description}

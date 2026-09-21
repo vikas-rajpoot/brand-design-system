@@ -65,4 +65,4 @@ Before any brand work, inspect `brand/*/product/` for complete five-file packets
      5. Prompt user before moving to the next subsystem.
 
 8. **Step 8: Quality Review & Audit**
-   - Dispatch `brand-qa` subagent or run `brand-audit` to verify token completeness, options immutability, and document frontmatter consistency.
+   - Use `brand-audit` to verify token completeness, options immutability, and document frontmatter consistency.

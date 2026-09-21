@@ -20,7 +20,7 @@ description: 'Use when creating ads, banners, posters, product-launch graphics, 
    treatment, icon/illustration style).
 3. Keep headline/CTA copy consistent with `15-brand-voice-and-copy`.
 4. Produce as SVG when feasible; otherwise write a structured creative brief (see
-   `brand-asset-generator` agent) for a designer or image-gen tool.
+   `brand-asset-generator` skill) for a designer or image-gen tool.
 ## Interactive Decision-Gate Procedure
 1. Never produce campaign assets in one go.
 2. Present **2–3 distinct, cohesive campaign visual concepts**:

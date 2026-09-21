@@ -26,9 +26,8 @@ Use this skill to audit an existing generated brand project under `brand/<projec
    - Verify token invariants: `layers.*` scale, nested radius math, touch targets (44pt), font-scaling, and a strict 4pt/8pt grid.
    - Verify enforcement rules: Ensure `enforcement.md` or CI checks exist for blocking raw values and contrast testing.
 
-4. **Document Frontmatter Check**:
 4. **Document Frontmatter & Approval Status Check**:
-   - Verify every Markdown document in `brand/<slug>/` contains standard YAML frontmatter per [rules/brand-docs.md](../../rules/brand-docs.md) (`status: draft|approved`, `version`, `owner`).
+   - Verify every Markdown document in `brand/<slug>/` contains standard YAML frontmatter with `status: draft|approved`, `version`, and `owner`.
    - Flag any subsystem documents still marked `status: draft` that need explicit user selection and approval.
 
 
@@ -39,4 +38,3 @@ Use this skill to audit an existing generated brand project under `brand/<projec
    - Present findings as a clean checklist grouped by folder number:
      `✅ | ⚠️ | ❌  <folder>  <reason>`
    - Conclude with the top 3 recommended priority actions for the human reviewer.
-

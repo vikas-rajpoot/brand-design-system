@@ -1,6 +1,5 @@
 ---
 description: "Audit an existing generated brand system for completeness and internal consistency"
-agent: "brand-qa"
 argument-hint: "project-slug to audit"
 ---
 Audit the brand system for: ${input:slug:project-slug}

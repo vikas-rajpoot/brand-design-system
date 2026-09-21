@@ -2,7 +2,6 @@
 description: "Generate or regenerate a single brand subsystem (logo, color, typography, tokens, UI, website, etc.) for an existing project"
 description: "Generate or regenerate a single brand subsystem with cohesive options and pros & cons"
 description: "Generate or regenerate a single brand subsystem with interactive HTML options and an immutable archive"
-agent: "brand-director"
 argument-hint: "project-slug and subsystem name, e.g. acme-labs color-system"
 ---
 Generate/update one brand subsystem: ${input:target:project-slug and subsystem name}

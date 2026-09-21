@@ -1,6 +1,6 @@
 # Brand OS Kit — Antigravity Agent Guidelines
 
-This workspace generates **brand design systems** for arbitrary new projects and ideas. It is an agentic customization kit providing custom agents, skills, hooks, and rules.
+This workspace generates **brand design systems** for arbitrary new projects and ideas. It is a skills-based customization kit with shared instructions and hooks.
 
 ## Hard Rules
 
@@ -62,14 +62,12 @@ Each brand subsystem has a dedicated Antigravity skill in `.agents/skills/<name>
 
 Always check whether `00-brand-foundation` exists before generating any other subsystem. If it does not, invoke the `brand-foundation` skill first.
 
-## Custom Agents & Workflows
+## Skills & Workflows
 
-- **End-to-End Orchestration**: Launch the `brand-director` agent or run the `/brand-new-project` slash command. It interviews the user, drafts foundation and design tokens, and runs through the 21 subsystems sequentially.
-- **Single Subsystem Generation / Revision**: Run `/brand-generate-system` to build or update one subsystem for an existing project.
-- **End-to-End Orchestration**: Launch the `brand-director` agent or run the `/brand-new-project` slash command. It guides the project step by step through an interactive decision-gate loop. At every stage (foundation, colors, typography, tokens, logo, visual style, UI, and onward), it presents **2–4 cohesive options with pros and cons**, stops for user feedback, locks in the choice only when explicitly selected, and never generates everything in one go.
+- **End-to-End Orchestration**: Use `/brand-new-project`. It guides the project step by step through an interactive decision-gate loop. At every stage, it presents **2–4 cohesive options with pros and cons**, stops for user feedback, and locks in the choice only when explicitly selected.
 - **Single Subsystem Generation / Revision**: Run `/brand-generate-system` to build or update one subsystem for an existing project. It presents cohesive options with pros and cons adhering to existing foundation and tokens before writing any files.
-- **Auditing & Consistency**: Dispatch the `brand-qa` subagent or run `/brand-audit` to generate a checklist (`✅ | ⚠️ | ❌`) verifying folder completeness, token traceability, and document frontmatter.
-- **Visual Assets**: Dispatch the `brand-asset-generator` subagent to generate SVG code or detailed briefs adhering to `04-design-tokens` and `05-visual-style`.
+- **Auditing & Consistency**: Use `/brand-audit` to generate a checklist (`✅ | ⚠️ | ❌`) verifying folder completeness, token traceability, and document frontmatter.
+- **Visual Assets**: Use `brand-asset-generator` to generate SVG code or detailed briefs adhering to `04-design-tokens` and `05-visual-style`.
 
 ## Design Token Rules
 
@@ -85,3 +83,14 @@ Tokens in `brand/<project-slug>/04-design-tokens/tokens.json` must be strictly l
 - Use relative links to reference other systems instead of duplicating content.
 - Use tables for enumerable values and finish with clear do/don't examples.
 
+## Agent config — one source of truth, synced automatically
+
+**Skills only. This repo has no subagents.** Do not create `.agents/rules/`, `.agents/agents/`, `.claude/agents/`, `.codex/agents/` or `.github/agents/`. Package reusable behavior as a skill instead.
+
+`.agents/skills/` holds the canonical skills. `.claude/skills/`, `.codex/skills/` and `.github/skills/` are generated mirrors of relative symlinks.
+
+`.agents/sync.sh` is the only sync mechanism. Never add a second one.
+
+A watcher runs `.agents/sync.sh` within seconds of changes, and git hooks run it on commit, checkout, merge, and rebase. Create a skill in any mirrored tool folder and the sync adopts it into `.agents/skills/`, then mirrors it everywhere. Editing a mirrored file edits the source because it is a symlink.
+
+Delete skills only from `.agents/skills/`. Deleting only a mirror is drift, so the mirror will be recreated.
