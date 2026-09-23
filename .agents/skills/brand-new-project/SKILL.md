@@ -21,7 +21,7 @@ Use this skill when initiating a brand design system for a new project or idea f
 
 ## Intake & Project Discovery
 
-Before any brand work, inspect `brand/*/product/` for complete five-file packets. When exactly one is present, use its enclosing slug; when more than one is present, ask the user which slug to work on. When none are complete, stop and identify the missing files for the intended project. Do not create product files or brand artifacts on the user's behalf.
+Before any brand work, inspect `brand/*/product/` for complete five-file packets. When exactly one is present, use its enclosing slug; when more than one is present, ask the user which slug to work on. When none are complete, stop brand work and identify the missing files for the intended project. If the user supplied only a basic product description or asks for help completing intake, use `product-intake` to interview them. Resume this workflow only after the user confirms the complete packet. Never invent packet contents or create brand artifacts during intake.
 
 ## Step-by-Step Procedure
 
@@ -57,7 +57,7 @@ Before any brand work, inspect `brand/*/product/` for complete five-file packets
    - Save preview in `brand/<slug>/options/04-design-tokens-v1.html` for user verification.
 
 7. **Step 7+: Subsystem Generation (One Subsystem at a Time)**
-   - For each subsequent subsystem in the 21-folder map (`05-visual-style`, `06-ui-design-system`, `07-website-system`, etc.):
+   - For each subsequent subsystem in the 22-folder map (`05-visual-style`, `06-ui-design-system`, `07-website-system`, etc.):
      1. Present 2–4 cohesive options in `brand/<slug>/options/<NN-subsystem>-v1.html` with **Brand Cohesion Rationale**, **Pros**, and **Cons**.
      2. **WAIT for user selection** (*"Concept 1 selected"*).
      3. Commit approved files (`status: approved`) only after user selection.

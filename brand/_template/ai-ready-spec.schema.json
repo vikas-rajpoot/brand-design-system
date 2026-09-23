@@ -52,6 +52,30 @@
         }
       }
     },
+    "printColors": {
+      "type": "array",
+      "description": "Physical reproduction equivalents declared in 21-corporate-visual-identity/production-specs.md. Each entry must map to a hex already present in 02-color-system; it never introduces a new brand color.",
+      "items": {
+        "type": "object",
+        "required": ["tokenId", "hex"],
+        "properties": {
+          "tokenId": { "type": "string", "description": "Primitive color token this physical value reproduces" },
+          "hex": { "type": "string", "pattern": "^#([0-9a-fA-F]{6})$" },
+          "pantoneCoated": { "type": "string" },
+          "pantoneUncoated": { "type": "string" },
+          "cmyk": {
+            "type": "array",
+            "description": "C, M, Y, K as percentages",
+            "items": { "type": "number", "minimum": 0, "maximum": 100 },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "ral": { "type": "string" },
+          "vinyl": { "type": "string" },
+          "thread": { "type": "string", "description": "Embroidery thread reference, e.g. Madeira/Isacord code" }
+        }
+      }
+    },
     "subsystems": {
       "type": "object",
       "description": "Map of folder name -> relative doc path, for every generated subsystem beyond foundation/tokens",

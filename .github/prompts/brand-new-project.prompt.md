@@ -9,7 +9,7 @@ Build a complete brand design system for this new project/idea: ${input:project:
 1. Determine the project slug (kebab-case) and confirm it with me if ambiguous.
 2. If `brand/<slug>/00-brand-foundation` doesn't exist, interview me for what's needed
    (name usage, positioning, audience, personality, tone, values) and write the foundation doc.
-3. Run through the subsystems in `.github/copilot-instructions.md`'s folder map in order (01-20),
+3. Run through the subsystems in `.github/copilot-instructions.md`'s folder map in order (01-21),
    generating each with its matching skill. Ask before generating subsystems I clearly don't need
    yet (e.g. skip app-system for a marketing-only site).
 4. Finish by generating `18-ai-ready-spec/brand-spec.json` aggregating everything produced.

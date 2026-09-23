@@ -26,6 +26,7 @@ in each. Folders are created on demand by the matching skill — don't pre-creat
 | `18-ai-ready-spec` | Machine-readable aggregate of the whole system | `brand-spec.json` |
 | `19-templates` | Pre-approved starting templates per medium | `<medium>/*`, `templates.md` |
 | `20-approved-examples` | Final, approved cross-medium examples | `<example>/`, index |
+| `21-corporate-visual-identity` | Stationery, signage, merch, livery, co-branding, trademark usage | `corporate-visual-identity.md`, `production-specs.md`, `assets/*.svg` |
 
 See [ai-ready-spec.schema.json](ai-ready-spec.schema.json) for the schema `18-ai-ready-spec` must
 validate against.

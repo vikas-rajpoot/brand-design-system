@@ -17,9 +17,11 @@ description: 'Use when producing the structured, machine-readable brand-spec.jso
 1. Aggregate: foundation summary, full token set (from `04-design-tokens/tokens.json`), color/type
    references, voice rules summary, component list with token bindings, and links back to the
    human-readable doc for each section.
-2. Validate against the schema in `brand/_template/ai-ready-spec.schema.json` — every referenced
+2. If `21-corporate-visual-identity/production-specs.md` exists, project its colour-mapping table
+   into the `printColors` array, with each entry pointing at the primitive token it reproduces.
+3. Validate against the schema in `brand/_template/ai-ready-spec.schema.json` — every referenced
    token name must exist in `tokens.json`.
-3. Version the spec (`specVersion` field) and bump it on every regeneration; note what changed since
+4. Version the spec (`specVersion` field) and bump it on every regeneration; note what changed since
    the previous version in a short changelog array.
 
 ## Output

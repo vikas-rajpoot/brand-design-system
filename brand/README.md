@@ -15,7 +15,7 @@ Never write brand output to the repository root — see [AGENTS.md](../AGENTS.md
 ## Starting a new project
 ## Starting a New Project
 
-Use the `/brand-new-project` prompt or the `brand-director` agent. The 21-folder map (created on
+Use the `/brand-new-project` prompt or the `brand-director` agent. The 22-folder map (created on
 demand, not pre-scaffolded per project) is:
 Use the `/brand-new-project` slash command or the `brand-director` agent. 
 
@@ -42,12 +42,13 @@ Use the `/brand-new-project` slash command or the `brand-director` agent.
 | 18 | ai-ready-spec |
 | 19 | templates |
 | 20 | approved-examples |
+| 21 | corporate-visual-identity |
 ### Interactive Decision Gate (Anti-Batch Rule)
 The system **never creates files in one go**. It presents **2–4 cohesive options** with **Pros & Cons** and a **Brand Cohesion Rationale** for every decision (slug, foundation, colors, typography, tokens, logo, and all subsequent subsystems). 
 
 See [_template/README.md](_template/README.md) for a one-line purpose per folder and the
 `ai-ready-spec` JSON schema.
-Files are only created and marked `status: approved` after explicit user selection (*"this one selected"*), moving step by step through the 21 subsystems:
+Files are only created and marked `status: approved` after explicit user selection (*"this one selected"*), moving step by step through the 22 subsystems:
 
 | # | Folder | Primary Focus |
 |---|--------|---------------|
@@ -72,5 +73,6 @@ Files are only created and marked `status: approved` after explicit user selecti
 | 18 | `18-ai-ready-spec` | Unified machine-readable `brand-spec.json` |
 | 19 | `19-templates` | Starter templates for web, app, deck, and document files |
 | 20 | `20-approved-examples` | Canonical real-world reference implementations |
+| 21 | `21-corporate-visual-identity` | Stationery, signage, apparel, merch, livery, co-branding, trademark |
 
 See [_template/README.md](_template/README.md) for starter templates and schema.

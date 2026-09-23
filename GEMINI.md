@@ -1,6 +1,6 @@
 # Antigravity Workspace Configuration: Brand OS Kit
 
-See [AGENTS.md](./AGENTS.md) for full workspace rules, source-of-truth hierarchy, 21-folder mapping, and custom agent orchestration instructions.
+See [AGENTS.md](./AGENTS.md) for full workspace rules, source-of-truth hierarchy, 22-folder mapping, and custom agent orchestration instructions.
 
 ## Key Rules
 
@@ -16,5 +16,6 @@ See [AGENTS.md](./AGENTS.md) for full workspace rules, source-of-truth hierarchy
 - **Explicit User Selection Gate**: Always wait for user feedback/selection (e.g. "Concept 1 selected") before committing to official subsystem files and proceeding to the next item.
 - All tokens must follow `primitive -> semantic -> component` layering.
 - Never invent colors or typography not defined in `tokens.json`.
+- Physical/print colors (Pantone, CMYK, RAL, thread) belong in `21-corporate-visual-identity/production-specs.md` as mapped equivalents of an existing palette hex — never as new brand colors.
 
 

@@ -5,8 +5,8 @@ This workspace generates **brand design systems** for arbitrary new projects and
 ## Hard Rules
 
 - **Single Project Boundary**: Every generated artifact belongs to exactly one project: `brand/<project-slug>/`. Never write brand output to the repository root or mix two projects' files.
-- **Mandatory Product Intake Gate**: Do not begin brand-system work, including an `options/` preview, a foundation draft, or any subsystem, until the user has supplied and confirmed the complete product packet at `brand/<project-slug>/product/`. Required user-authored files: `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, and `04-decisions-and-questions.md`.
-- **Project Discovery & Incomplete Intake**: At intake, inspect `brand/*/product/`. If exactly one project contains all five required files, use its enclosing slug. If multiple complete packets exist, ask the user to select the slug. If none are complete, stop at intake, state what is missing for the intended slug, and suggest the decisions that each missing file should cover; never invent contents or generate brand artifacts. Read the selected complete packet before offering foundation options.
+- **Mandatory Product Intake Gate**: Do not begin brand-system work, including an `options/` preview, a foundation draft, or any subsystem, until the user has supplied and confirmed the complete product packet at `brand/<project-slug>/product/`. Required user-authored files: `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, and `04-decisions-and-questions.md`. When the user starts with only a basic description, use `product-intake` to interview them and write their confirmed answers into these files.
+- **Project Discovery & Incomplete Intake**: At intake, inspect `brand/*/product/`. If exactly one project contains all five required files, use its enclosing slug. If multiple complete packets exist, ask the user to select the slug. If none are complete, stop brand work, state what is missing for the intended slug, and invoke `product-intake` when the user wants help completing it. Never invent contents or generate brand artifacts during intake. Read the selected complete packet before offering foundation options.
 - **Slug Confirmation**: Never invent a new project slug without confirming it with the user; derive it from the project name in kebab-case (e.g. `brand/acme-labs/`).
 - **No "In One Go" Generation (Strict Step-by-Step Gate)**: Never generate brand decisions, foundation, tokens, or subsystems in a single autonomous pass. Every element must proceed through an interactive decision gate.
 - **Mandatory Cohesive Options with Pros & Cons**: For each decision area (foundation angles, color schemes, font pairings, logo lockups, tokens, visual style, UI components, etc.), provide **2–4 distinct, cohesive options**. Each option must include:
@@ -32,7 +32,7 @@ This workspace generates **brand design systems** for arbitrary new projects and
 
 If a later subsystem contradicts an earlier approved decision (e.g. a UI element introduces a hex code not in `tokens.json`), stop and flag the conflict rather than silently introducing a new value.
 
-## The 21-Folder Map & Antigravity Skills
+## The 22-Folder Map & Antigravity Skills
 
 Each brand subsystem has a dedicated Antigravity skill in `.agents/skills/<name>/SKILL.md` and a numbered output directory:
 
@@ -59,17 +59,23 @@ Each brand subsystem has a dedicated Antigravity skill in `.agents/skills/<name>
 | 18 | `18-ai-ready-spec` | `ai-ready-spec` | `/ai-ready-spec` |
 | 19 | `19-templates` | `templates-library` | `/templates-library` |
 | 20 | `20-approved-examples` | `approved-examples` | `/approved-examples` |
+| 21 | `21-corporate-visual-identity` | `corporate-visual-identity` | `/corporate-visual-identity` |
 
 Always check whether `00-brand-foundation` exists before generating any other subsystem. If it does not, invoke the `brand-foundation` skill first.
 
+`21-corporate-visual-identity` is a content subsystem, not an aggregation one. Generate it after `05-visual-style` and before the `16`–`20` aggregation folders, then refresh those folders once it is approved. Its number is 21 only because 00–20 were already assigned; never renumber existing folders.
+
 ## Skills & Workflows
 
+- **Product Intake Interview**: Use `/product-intake` when the user provides only a basic product description or when the five-file product packet is missing, incomplete, or outdated. It interviews in small rounds and writes the packet only after explicit user confirmation.
 - **End-to-End Orchestration**: Use `/brand-new-project`. It guides the project step by step through an interactive decision-gate loop. At every stage, it presents **2–4 cohesive options with pros and cons**, stops for user feedback, and locks in the choice only when explicitly selected.
 - **Single Subsystem Generation / Revision**: Run `/brand-generate-system` to build or update one subsystem for an existing project. It presents cohesive options with pros and cons adhering to existing foundation and tokens before writing any files.
 - **Auditing & Consistency**: Use `/brand-audit` to generate a checklist (`✅ | ⚠️ | ❌`) verifying folder completeness, token traceability, and document frontmatter.
 - **Visual Assets**: Use `brand-asset-generator` to generate SVG code or detailed briefs adhering to `04-design-tokens` and `05-visual-style`.
 
 ## Design Token Rules
+
+Physical colour values (Pantone, CMYK, RAL, vinyl, thread) are **not** tokens. They live in `21-corporate-visual-identity/production-specs.md` as declared physical equivalents of an existing `02-color-system` hex, and must never introduce a colour that is not already in the palette.
 
 Tokens in `brand/<project-slug>/04-design-tokens/tokens.json` must be strictly layered:
 1. `primitive`: Raw values only (`color.blue.500 = #2563eb`, `space.4 = 16px`).

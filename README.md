@@ -74,7 +74,7 @@ brand/
   _template/                # documented folder map + schema + starter templates
   <project-slug>/           # generated output per real project (created on demand)
   AGENTS.md                 # Antigravity scoped rules for brand output & token layers
-  README.md                 # Per-project output conventions & 21-folder directory map
+  README.md                 # Per-project output conventions & 22-folder directory map
   _template/                # Documented folder map + schema + starter templates
   <project-slug>/           # Generated output per project (created on demand)
 ```
@@ -84,7 +84,7 @@ brand/
 ### Custom Agents (`.agents/agents/`)
 - **`brand-director`**: Main coordinator agent that drives end-to-end brand generation, foundation interviewing, and subsystem orchestration.
 - **`brand-director`**: Main coordinator agent that drives end-to-end brand generation through the interactive decision-gate loop.
-- **`brand-qa`**: Auditing subagent that reviews project directories against the 21-folder map, checks token conformance, and outputs a status checklist (`✅ | ⚠️ | ❌`).
+- **`brand-qa`**: Auditing subagent that reviews project directories against the 22-folder map, checks token conformance, and outputs a status checklist (`✅ | ⚠️ | ❌`).
 - **`brand-asset-generator`**: Asset subagent that produces clean SVG assets or structured generative prompt briefs for designers/image generation models.
 - **`brand-asset-generator`**: Asset subagent that produces clean SVG assets or structured generative prompt briefs for approved concepts.
 
@@ -116,4 +116,4 @@ Antigravity automatically exposes skills as slash commands in the chat interface
 - **AI-ready spec**: `18-ai-ready-spec/brand-spec.json` aggregates the whole system conforming to `brand/_template/ai-ready-spec.schema.json` so any external agent can consume it consistently.
 - **AI-ready spec**: `18-ai-ready-spec/brand-spec.json` aggregates the whole system conforming to `brand/_template/ai-ready-spec.schema.json` so external agents can consume it consistently.
 
-See [brand/README.md](brand/README.md) for the full 21-folder map.
+See [brand/README.md](brand/README.md) for the full 22-folder map.

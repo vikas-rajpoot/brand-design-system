@@ -4,9 +4,10 @@ argument-hint: "project-slug to audit"
 ---
 Audit the brand system for: ${input:slug:project-slug}
 
-Check `brand/${input:slug}` against the 21-folder map in `AGENTS.md`:
+Check `brand/${input:slug}` against the 22-folder map in `AGENTS.md`:
 - Which folders/files are missing or empty
 - Any subsystem that uses colors/fonts/spacing not present in `04-design-tokens/tokens.json`
+- Any Pantone/CMYK/RAL/thread value in `21-corporate-visual-identity` that is not mapped to an existing `02-color-system` hex
 - Any doc missing frontmatter (`status`, `version`, `owner`) per `AGENTS.md`
 - Whether `18-ai-ready-spec/brand-spec.json` is present and reflects the latest files
 

@@ -17,7 +17,7 @@ Use this skill to audit an existing generated brand project under `brand/<projec
    - Do NOT edit or approve files during an audit pass.
 
 2. **Folder Completeness Check**:
-   - Compare `brand/<slug>/` against the 21-folder map defined in [AGENTS.md](../../../AGENTS.md).
+   - Compare `brand/<slug>/` against the 22-folder map defined in [AGENTS.md](../../../AGENTS.md).
    - Identify missing, empty, or unstarted folders.
 
 3. **Design Token Consistency Check**:
@@ -25,6 +25,7 @@ Use this skill to audit an existing generated brand project under `brand/<projec
    - Spot check colors, fonts, spacing scale, and border-radius in other subsystem docs and assets (e.g., `01-logo-system`, `02-color-system`, `06-ui-design-system`) to verify they trace directly back to defined tokens. Flag any hardcoded or foreign hex codes/values.
    - Verify token invariants: `layers.*` scale, nested radius math, touch targets (44pt), font-scaling, and a strict 4pt/8pt grid.
    - Verify enforcement rules: Ensure `enforcement.md` or CI checks exist for blocking raw values and contrast testing.
+   - If `21-corporate-visual-identity/` exists, verify every Pantone, CMYK, RAL, vinyl, and thread value in `production-specs.md` is declared as the equivalent of a hex that already exists in `02-color-system`. Flag any physical colour with no palette source.
 
 4. **Document Frontmatter & Approval Status Check**:
    - Verify every Markdown document in `brand/<slug>/` contains standard YAML frontmatter with `status: draft|approved`, `version`, and `owner`.
