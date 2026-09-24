@@ -1,3 +1,9 @@
+---
+status: approved
+version: 1
+owner: product
+---
+
 # Brand and Positioning
 
 **Status:** Approved direction  
@@ -5,6 +11,8 @@
 **Owner:** Product and Brand
 
 ## Positioning Statement
+
+**Product stage:** Concept / pre-development; all capabilities described below are product direction until implementation evidence exists.
 
 For technically capable people who want to direct serious work away from their desk, MobileAgenticIDE is a mobile agent workspace that connects to supported laptops, VPS instances, and managed sandboxes. It provides a consistent surface for supported agent runtimes, artifacts, and approvals while making capability and trust boundaries visible.
 

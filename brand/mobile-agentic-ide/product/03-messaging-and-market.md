@@ -1,3 +1,9 @@
+---
+status: approved
+version: 1
+owner: product
+---
+
 # Messaging and Market Context
 
 **Status:** Approved messaging framework; market facts dated 2026-09-24  
@@ -5,6 +11,8 @@
 **Owner:** Product Marketing
 
 ## Messaging Hierarchy
+
+**Product stage:** Concept / pre-development. Nothing is currently available or verified.
 
 ### Brand Idea
 

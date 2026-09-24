@@ -1,3 +1,9 @@
+---
+status: approved
+version: 1
+owner: product
+---
+
 # Product Strategy Foundation
 
 **Status:** Approved direction  
@@ -7,6 +13,7 @@
 ## Product Definition
 
 **Product:** MobileAgenticIDE  
+**Product stage:** Concept / pre-development; nothing is built or testable yet.  
 **Category:** Mobile Agent Workspace / Agent Control Plane / Mobile IDE  
 **One-line definition:** A mobile agent workspace that lets people connect to a laptop, VPS, or managed Vercel Sandbox and complete technical or non-technical work with MobileAgenticIDE's own harness or compatible agents.
 

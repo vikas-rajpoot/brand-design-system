@@ -1,3 +1,9 @@
+---
+status: approved
+version: 1
+owner: product
+---
+
 # Decisions and Open Questions
 
 **Status:** Active decision register  
@@ -29,6 +35,7 @@
 | D-012 | Permission recovery | Do not promise general Undo. Recovery depends on version control, snapshots, backups, or runtime-specific compensation. | DECIDED | Product + Engineering | Review if a rollback system is designed. |
 | D-013 | Capability evidence | Only **VERIFIED** capabilities may be written as current external features. | DECIDED | Product + Engineering | Every release. |
 | D-014 | Non-code sequence | Validate research and writing first, then planning and analysis. Gate operational actions on stronger permissions and auditability. | DECIDED | Product | Review after coding launch evidence. |
+| D-015 | Product stage | The product is in concept / pre-development; nothing is built or testable yet. | DECIDED | Product | Review when the first testable build exists. |
 
 ## Open Decision Gates
 
