@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-# Keep the per-tool agent config mirrors in step with .agents/.
-# Installed via: git config core.hooksPath .agents/githooks
-exec "$(git rev-parse --show-toplevel)/.agents/sync.sh"
+# Report mirror drift after checkout. Hooks never rewrite agent configuration.
+exec "$(git rev-parse --show-toplevel)/.agents/sync.sh" --check

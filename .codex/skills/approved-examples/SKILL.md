@@ -1,1 +1,0 @@
-../../../.agents/skills/approved-examples/SKILL.md

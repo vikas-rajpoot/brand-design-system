@@ -1,3 +1,43 @@
+# Brand Output
+
+Generated brand systems live under `brand/<project-slug>/`. Keep product input, options, approved systems, and assets inside that project boundary.
+
+## Start Here
+
+Before any brand work, confirm these files with `status: approved` frontmatter:
+
+`product/BRAND-BRIEF.md`, `product/01-strategy-foundation.md`, `product/02-brand-positioning.md`, `product/03-messaging-and-market.md`, and `product/04-decisions-and-questions.md`.
+
+If the packet is incomplete, use `/product-intake`. Do not create an options preview or subsystem draft first.
+
+## Output Map
+
+| ID | Folder | Focus |
+|---|---|---|
+| 00 | `00-brand-foundation` | Positioning, audience, personality, values, and tone |
+| 01 | `01-logo-system` | Logo variants, clear space, and misuse |
+| 02 | `02-color-system` | Palettes, themes, and contrast |
+| 03 | `03-typography-system` | Fonts, scale, and hierarchy |
+| 04 | `04-design-tokens` | Primitive, semantic, and component tokens |
+| 05 | `05-visual-style` | Shape, imagery, iconography, and motion |
+| 06 | `06-ui-design-system` | Components, variants, and states |
+| 07 | `07-website-system` | Web page structures and responsive behavior |
+| 08 | `08-app-system` | App shell, navigation, onboarding, and states |
+| 09 | `09-social-media-system` | Social templates and profiles |
+| 10 | `10-presentation-system` | Slide masters and deck outlines |
+| 11 | `11-document-system` | Reports, proposals, invoices, and letters |
+| 12 | `12-email-system` | Marketing and transactional email |
+| 13 | `13-marketing-assets` | Campaign graphics and ads |
+| 14 | `14-diagrams-and-charts` | Diagrams, charts, and tables |
+| 15 | `15-brand-voice-and-copy` | Copy, terminology, and UI text |
+| 16 | `16-asset-library` | Approved asset index and downloads |
+| 17 | `17-brand-guidelines-site` | Browsable brand guidelines |
+| 18 | `18-ai-ready-spec` | Machine-readable `brand-spec.json` |
+| 19 | `19-templates` | Approved starting templates |
+| 20 | `20-approved-examples` | Final reference examples |
+| 21 | `21-corporate-visual-identity` | Physical and corporate applications |
+
+Folder IDs are fixed. The execution order and prerequisites are in [../AGENTS.md](../AGENTS.md). Schemas and starter files are in [_template/README.md](_template/README.md).
 # brand/
 
 Generated brand design systems live here — one folder per project:

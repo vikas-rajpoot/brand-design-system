@@ -1,1 +1,0 @@
-../../../.agents/skills/presentation-system/SKILL.md

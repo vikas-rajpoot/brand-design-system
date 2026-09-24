@@ -9,7 +9,6 @@
 #
 #   .agents/skills/<name>/**   <->  .claude/skills/<name>/**
 #                              <->  .github/skills/<name>/**
-#                              <->  .codex/skills/<name>/**
 #
 # VS Code Copilot reads .agents/skills natively, so it needs no mirror;
 # .github/skills exists for the GitHub Copilot CLI and coding agent.
@@ -18,11 +17,12 @@
 # restoring .agents/rules and the rule handling removed in this script.
 #
 # Usage:
-#   .agents/sync.sh            apply
+#   .agents/sync.sh            apply (default)
 #   .agents/sync.sh --check    report drift only, exit 1 if out of sync
+#   .agents/sync.sh --watch    install the optional macOS watcher
 #
-# Normally you never run this by hand — .agents/watch.sh runs it on every
-# change, and the git hooks in .agents/githooks run it on commit/checkout.
+# Synchronization is explicit. The optional macOS watcher can run it on every
+# change, while git hooks only report drift and never rewrite files.
 
 set -uo pipefail
 
@@ -30,11 +30,14 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 cd "$ROOT"
 
 SRC_SKILLS=".agents/skills"
-MIRRORS=(".claude/skills" ".github/skills" ".codex/skills")
+MIRRORS=(".claude/skills" ".github/skills")
 RETIRED=(".agents/agents" ".agents/rules" ".claude/agents" ".codex/agents" ".github/agents")
 
 CHECK_ONLY=0
-if [[ "${1:-}" == "--check" ]]; then CHECK_ONLY=1; fi
+case "${1:-}" in
+  --check) CHECK_ONLY=1 ;;
+  --watch) exec "$ROOT/.agents/watch.sh" --install ;;
+esac
 
 drift=0
 declare -a WANTED
@@ -117,7 +120,6 @@ source_for_mirror() {
   case "$path" in
     .claude/skills/*) printf '%s/%s' "$SRC_SKILLS" "${path#.claude/skills/}" ;;
     .github/skills/*) printf '%s/%s' "$SRC_SKILLS" "${path#.github/skills/}" ;;
-    .codex/skills/*)  printf '%s/%s' "$SRC_SKILLS" "${path#.codex/skills/}" ;;
     *) return 1 ;;
   esac
 }
@@ -222,17 +224,6 @@ for target in "${RETIRED[@]}"; do
   change "retire $target (agent/rule folders are not used in this workspace)"
   if (( CHECK_ONLY == 0 )); then rm -rf "$target"; fi
 done
-
-# --- the watcher is part of the contract, so put it back if it went missing
-WATCHER_PLIST="$HOME/Library/LaunchAgents/com.vikas.brand-design-system.agent-sync.plist"
-if [[ ! -f "$WATCHER_PLIST" ]] && command -v launchctl >/dev/null 2>&1; then
-  if (( CHECK_ONLY )); then
-    note "  NOTE   watcher not installed (optional): .agents/watch.sh --install"
-  else
-    change "watcher missing — reinstalling"
-    "$ROOT/.agents/watch.sh" --install >/dev/null 2>&1 || note "  WARN   could not reinstall the watcher"
-  fi
-fi
 
 if (( drift == 0 )); then
   note "agent config in sync"

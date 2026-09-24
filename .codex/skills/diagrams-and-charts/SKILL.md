@@ -1,1 +1,0 @@
-../../../.agents/skills/diagrams-and-charts/SKILL.md

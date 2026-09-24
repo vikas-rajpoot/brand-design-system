@@ -1,3 +1,8 @@
+# Brand OS Kit
+
+Use [AGENTS.md](AGENTS.md) as the single source of truth for this workspace. It defines the product intake gate, source-of-truth order, run order, token rules, and checks.
+
+Canonical skills live in `.agents/skills/`. Run `.agents/setup.sh` after cloning, then use `.agents/sync.sh` when the generated mirrors need updating. The macOS watcher is optional: `.agents/sync.sh --watch`.
 # Antigravity Workspace Configuration: Brand OS Kit
 
 See [AGENTS.md](./AGENTS.md) for full workspace rules, source-of-truth hierarchy, 22-folder mapping, and the run order with prerequisites.

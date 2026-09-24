@@ -1,1 +1,0 @@
-../../../.agents/skills/brand-guidelines-site/SKILL.md

@@ -1,1 +1,0 @@
-../../../../.agents/skills/product-intake/references/product-packet-schema.md

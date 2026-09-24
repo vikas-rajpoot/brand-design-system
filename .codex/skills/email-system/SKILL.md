@@ -1,1 +1,0 @@
-../../../.agents/skills/email-system/SKILL.md

@@ -1,1 +1,0 @@
-../../../.agents/skills/asset-library/SKILL.md

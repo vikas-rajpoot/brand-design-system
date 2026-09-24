@@ -1,1 +1,0 @@
-../../../.agents/skills/brand-voice-and-copy/SKILL.md

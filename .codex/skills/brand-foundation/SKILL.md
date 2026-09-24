@@ -1,1 +1,0 @@
-../../../.agents/skills/brand-foundation/SKILL.md

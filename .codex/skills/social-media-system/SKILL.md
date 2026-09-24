@@ -1,1 +1,0 @@
-../../../.agents/skills/social-media-system/SKILL.md

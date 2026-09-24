@@ -1,1 +1,0 @@
-../../../.agents/skills/corporate-visual-identity/SKILL.md

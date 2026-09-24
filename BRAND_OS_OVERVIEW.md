@@ -1,3 +1,30 @@
+# Brand OS Kit Overview
+
+Brand OS Kit helps an AI assistant build a complete brand system in small, reviewable decisions. It is a workspace protocol, not a one-shot generator.
+
+## Operating Rules
+
+- Every project lives in `brand/<project-slug>/`.
+- Work starts only after all five product packet files are approved.
+- Decision steps present 2-4 cohesive options with rationale, pros, and cons.
+- Compile steps present one preview and add no new decisions.
+- Options are immutable. Revisions use a new `-vN` file.
+- Official subsystem files are written only after explicit user approval.
+- Tokens flow from primitive to semantic to component layers.
+
+## Where Things Live
+
+- `.agents/skills/`: canonical skills and slash commands.
+- `.github/skills/` and `.claude/skills/`: generated mirrors.
+- `.agents/scripts/`: checks, hooks, and token export.
+- `brand/_template/`: schemas and project templates.
+- `brand/<project-slug>/`: generated brand work.
+
+There are no custom subagents in this kit. The workflow is packaged as skills, including `/brand-new-project`, `/brand-generate-system`, `/brand-audit`, and `/product-intake`.
+
+## Lifecycle
+
+Use [README.md](README.md) for setup and commands. Use [AGENTS.md](AGENTS.md) for the source-of-truth hierarchy, prerequisites, and full run order. Use [brand/README.md](brand/README.md) for the 22-folder output map.
 # Brand OS Kit: Overview
 
 ## What is it?

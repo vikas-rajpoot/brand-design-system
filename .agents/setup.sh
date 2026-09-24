@@ -28,5 +28,7 @@ cat <<'EOF'
 
 Next:
   - Codex: run /hooks once in Codex to trust this repo's hooks (.codex/hooks.json).
-  - macOS, optional: .agents/watch.sh --install keeps the skill mirrors in sync while you edit.
+  - Sync mirrors after skill changes: .agents/sync.sh
+  - macOS, optional watcher: .agents/sync.sh --watch
+  - Windows: use a Git client with symlink support, or keep the canonical .agents/skills tree and run checks without mirrors.
 EOF

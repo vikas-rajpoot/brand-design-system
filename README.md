@@ -1,5 +1,66 @@
 # Brand OS Kit
 
+Brand OS Kit is a skills-based workspace for building production-ready brand systems with an AI assistant. It keeps every project under `brand/<project-slug>/` and makes important decisions explicit, reviewable, and append-only.
+
+## Quick Start
+
+Requirements: Node.js 18 or newer and Git.
+
+```sh
+git clone <repository-url>
+cd brand-design-system
+.agents/setup.sh
+```
+
+Setup enables the repository checks and Git hooks. It does not create brand output or start a background watcher. To keep skill mirrors synchronized automatically on macOS, opt in with:
+
+```sh
+.agents/sync.sh --watch
+```
+
+Without the watcher, run `.agents/sync.sh` after changing a canonical skill. Use `.agents/sync.sh --check` to verify that mirrors are current.
+
+## Workflow
+
+1. Confirm the five-file product packet in `brand/<project-slug>/product/`.
+2. Run `/brand-new-project` or `/product-intake` when the packet is missing or unconfirmed.
+3. Work through one subsystem at a time in the run order below.
+4. Review the 2-4 options in the immutable `options/` archive and explicitly select one.
+5. Run the checks before sharing or merging the result.
+
+The assistant must not invent brand decisions before the product packet is approved, write official subsystem files before selection, or overwrite an existing option file.
+
+## Run Order
+
+The folder number is an ID, not the execution order:
+
+`00 foundation` -> `02 color` -> `03 typography` -> `01 logo` -> `15 voice` -> `05 visual style` -> `04 tokens` -> `06 UI` -> `07 website` -> `08 app` -> `09 social` -> `10 presentation` -> `11 document` -> `12 email` -> `13 marketing` -> `14 diagrams` -> `21 corporate identity` -> `16 asset library` -> `17 guidelines site` -> `18 AI-ready spec` -> `19 templates` -> `20 approved examples`
+
+Prerequisites and the full folder map live in [AGENTS.md](AGENTS.md). Project output conventions live in [brand/README.md](brand/README.md).
+
+## Checks
+
+```sh
+node .agents/scripts/brand-check.mjs
+.agents/scripts/lint-skills.sh
+.agents/sync.sh --check
+```
+
+The checks validate frontmatter, product intake, run-order prerequisites, token layering, generated exports, AI-ready specs, Markdown links, and immutable option history. CI runs the same checks on pushes and pull requests.
+
+## Configuration
+
+- `.agents/skills/` is the canonical skill source.
+- `.github/skills/` and `.claude/skills/` are generated symlink mirrors.
+- `.github/hooks/brand-guard.json`, `.claude/settings.json`, and `.codex/hooks.json` enforce write safety for supported tools.
+- Codex uses `.agents/skills` directly; it does not need a `.codex/skills` mirror. Run `/hooks` once in Codex to trust the repository hooks.
+- Windows users need Git symlink support enabled. If symlinks are unavailable, keep `.agents/skills` as the source and use the checks without creating mirrors.
+
+## License
+
+See [LICENSE](LICENSE).
+# Brand OS Kit
+
 A GitHub Copilot customization kit (instructions, skills, agents, prompts, hooks) that generates a
 complete, consistent **brand design system** for any new project or idea.
 An agentic customization kit (instructions, skills, agents, slash commands, lifecycle hooks, and rules) that generates a complete, consistent **brand design system** for any new project or idea. Fully compatible with **Google Antigravity (AGY)** and **GitHub Copilot**.

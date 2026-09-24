@@ -1,1 +1,0 @@
-../../../.agents/skills/brand-asset-generator/SKILL.md
