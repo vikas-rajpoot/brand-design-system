@@ -18,11 +18,13 @@ description: 'Use when documenting final, approved examples showing exactly how 
    reflects, and why it's a good reference (what it demonstrates well).
 3. Optionally capture 1-2 anti-pattern examples (real mistakes that were corrected) to make "don't"
    rules concrete — label these clearly as anti-patterns, never as approved.
+4. Show the captured examples for review in `brand/<slug>/options/20-approved-examples-v1.html` and
+   wait for explicit approval before writing them.
 
 ## Output
 - `brand/<slug>/20-approved-examples/<example-name>/` (artifact + `notes.md`)
 - `brand/<slug>/20-approved-examples/approved-examples.md` (index)
 
 ## Consistency Rules
-- Never mark an example "approved" without explicit user confirmation; default to
-  `status: pending-approval`.
+- Never mark an example approved without explicit user confirmation, and write nothing to
+  `brand/<slug>/20-approved-examples/` before it.

@@ -5,11 +5,11 @@ description: 'Define primary, secondary, accent, neutral, and semantic colors, a
 # Color System
 
 ## When to Use
-- Establishing or revising the brand's color palette, syntax highlighting colors, and theme behavior
+- Establishing or revising the brand's color palette and theme behavior, plus any product-specific palettes the packet calls for (e.g. syntax highlighting for a developer tool)
 
 ## Inputs Required
 - `00-brand-foundation` (approved personality and tone directly dictate color temperature, saturation, and contrast)
-- `01-logo-system` (harmonize with approved logo lockups and marks)
+- If the foundation is not approved, stop and run `brand-foundation` first (run order in [AGENTS.md](../../../AGENTS.md)). The logo comes after this step and uses this palette.
 
 ## Interactive Decision-Gate Procedure
 1. **Never generate the color system in one go.**

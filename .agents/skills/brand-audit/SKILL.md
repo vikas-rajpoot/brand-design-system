@@ -1,6 +1,7 @@
 ---
 name: brand-audit
 description: Audit an existing generated brand system for completeness, token consistency, and required frontmatter.
+argument-hint: "project-slug to audit"
 ---
 
 # Brand Audit Workflow
@@ -19,6 +20,7 @@ Use this skill to audit an existing generated brand project under `brand/<projec
 2. **Folder Completeness Check**:
    - Compare `brand/<slug>/` against the 22-folder map defined in [AGENTS.md](../../../AGENTS.md).
    - Identify missing, empty, or unstarted folders.
+   - Flag any approved subsystem whose prerequisites (Run Order & Prerequisites in [AGENTS.md](../../../AGENTS.md)) are not approved.
 
 3. **Design Token Consistency Check**:
    - Inspect `brand/<slug>/04-design-tokens/tokens.json`.

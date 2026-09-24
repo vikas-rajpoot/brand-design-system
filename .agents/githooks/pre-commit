@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
-# Keep the per-tool agent config mirrors in step with .agents/.
+# Lint skill frontmatter, then keep the per-tool agent config mirrors in step with .agents/.
 # Installed via: git config core.hooksPath .agents/githooks
-exec "$(git rev-parse --show-toplevel)/.agents/sync.sh"
+root="$(git rev-parse --show-toplevel)"
+"$root/.agents/scripts/lint-skills.sh" || exit 1
+exec "$root/.agents/sync.sh"

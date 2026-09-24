@@ -18,6 +18,8 @@ description: 'Use when packaging pre-approved starting templates for website sec
 2. Organize by medium: `website/`, `app/`, `social/`, `presentations/`, `documents/`.
 3. Each template file should be usable as-is (correct tokens/components wired in) — not just a
    picture of one.
+4. Present the template set for review in `brand/<slug>/options/19-templates-v1.html` and wait for
+   explicit approval before writing to `brand/<slug>/19-templates/`.
 
 ## Output
 - `brand/<slug>/19-templates/<medium>/<template-name>.*`

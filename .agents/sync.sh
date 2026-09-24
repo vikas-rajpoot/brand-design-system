@@ -126,9 +126,12 @@ source_for_mirror() {
 # Two tools writing the same mirrors is how this system breaks. A second one
 # once generated a copy of every rule into .agents/skills/ and every reviewer
 # showed up twice in every tool. Fail loudly rather than fight it.
+# Scan the whole repo: a rival once lived in scripts/, outside .agents/.
 while IFS= read -r rogue; do
   die "second sync tool found: $rogue — .agents/sync.sh is the only one, remove it"
-done < <(find .agents -maxdepth 1 -type f -name 'sync.*' ! -name 'sync.sh' 2>/dev/null)
+done < <(find . \( -path ./.git -o -path ./node_modules -o -path ./brand -o -path ./external \) -prune -o \
+  -type f -name 'sync[._-]*' \( -name '*.sh' -o -name '*.py' -o -name '*.js' -o -name '*.mjs' -o -name '*.cjs' -o -name '*.ts' \) \
+  ! -path ./.agents/sync.sh -print 2>/dev/null)
 
 # --- sanity: the source must be real files, never links ------------------
 while IFS= read -r bad; do

@@ -10,8 +10,8 @@ description: 'Use when producing the structured, machine-readable brand-spec.jso
 - Any time an external agent/tool needs one file to understand the whole brand
 
 ## Inputs Required
-- Every existing subsystem file for the project; schema at
-  [brand/_template/ai-ready-spec.schema.json](../../../brand/_template/ai-ready-spec.schema.json)
+- Approved `00-brand-foundation` and `04-design-tokens`, plus every other approved subsystem file;
+  schema at [brand/_template/ai-ready-spec.schema.json](../../../brand/_template/ai-ready-spec.schema.json)
 
 ## Procedure
 1. Aggregate: foundation summary, full token set (from `04-design-tokens/tokens.json`), color/type
@@ -23,6 +23,8 @@ description: 'Use when producing the structured, machine-readable brand-spec.jso
    token name must exist in `tokens.json`.
 4. Version the spec (`specVersion` field) and bump it on every regeneration; note what changed since
    the previous version in a short changelog array.
+5. On first creation, show a short summary (sections, token count, linked docs) and wait for explicit
+   approval before writing. Later regenerations after an approved change need no new gate.
 
 ## Output
 - `brand/<slug>/18-ai-ready-spec/brand-spec.json`

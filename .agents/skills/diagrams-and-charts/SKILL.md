@@ -1,42 +1,38 @@
 ---
 name: diagrams-and-charts
-description: 'Use when defining styling for architecture diagrams, workflow/process diagrams, charts, tables, and data visualizations for a brand.'
 description: 'Use when defining styling for architecture diagrams, workflow/process diagrams, charts, tables, and data visualizations for a brand. Presents cohesive visualization options with pros & cons.'
 ---
 # Diagrams and Charts
 
 ## When to Use
-- Establishing consistent visual rules for technical diagrams and data visualization
 - Establishing consistent visual rules for technical diagrams, flowcharts, and data visualizations
 
 ## Inputs Required
-- `02-color-system` (categorical/sequential palettes must derive from brand colors), `03-typography-system`
-- `02-color-system`, `03-typography-system`, `04-design-tokens`, `05-visual-style`
+- Approved `04-design-tokens` (colors, type, radius, borders, shadows) and `05-visual-style` (shape language, iconography)
+- If an input is missing, stop and name the skill to run first (run order in [AGENTS.md](../../../AGENTS.md)).
 
-## Procedure
-1. Define a categorical color palette (distinct colors for categories, colorblind-safe check) and a
-   sequential/diverging palette (for heatmaps/scales), both derived from `02-color-system`.
-2. Define diagram conventions: node/box style (radius, border, shadow from tokens), connector style
-   (arrow style, line weight), typography for labels.
-3. Define chart conventions: gridline style, axis label style, legend placement, tooltip style.
-4. Define table styling: header style, zebra striping (if any), alignment rules for numbers vs text.
 ## Interactive Decision-Gate Procedure
-1. Never generate charting guidelines in one go.
-2. Present **2–3 distinct, cohesive visualization styling options** (e.g. Minimalist Wireframe Diagrams vs. High-Contrast Monochromatic + Accent vs. Rich Analytical Gradient):
+1. **Never generate charting guidelines in one go.**
+2. **Present 2–3 distinct, cohesive visualization styling options** (e.g. Minimalist Wireframe Diagrams vs. High-Contrast Monochrome + Accent vs. Rich Analytical):
+   - Compile all options into a self-contained interactive preview in `brand/<slug>/options/14-diagrams-and-charts-v1.html` (or the next `-vN.html` on revisions).
    - For each option:
-     - **Diagram Language**: Node geometry, corner radius, borders, connector arrows, and container frames.
-     - **Data Palette**: Categorical series palette (colorblind-accessible), sequential ramps, and diverging heatmaps derived from approved brand colors.
-     - **Brand Cohesion Rationale**: How the technical visualization style reflects the precision or warmth of the brand identity.
-     - **Pros**: Readability in whitepapers/docs, distinct technical identity, chart library compatibility.
-     - **Cons**: Categorical count limitations, accessibility trade-offs across dense charts.
-3. **STOP and wait for user selection.**
-4. Only when the user explicitly selects a diagramming direction (*"this one selected"* or provides refinements), write `brand/<slug>/14-diagrams-and-charts/diagrams-and-charts.md` with `status: approved`.
+     - **Diagram Language**: Node geometry, radius, borders, and shadows from tokens; connector arrows and line weights; container frames; label typography.
+     - **Data Palette**: A colorblind-safe categorical palette plus sequential and diverging ramps, all derived from approved token colors.
+     - **Chart & Table Conventions**: Gridlines, axis labels, legend placement, tooltips; table headers, zebra striping (if any), and alignment of numbers vs. text.
+     - **Brand Cohesion Rationale**: How the visualization style reflects the precision or warmth of the brand identity.
+     - **Pros**: Readability in docs and reports, distinct identity, charting-library compatibility.
+     - **Cons**: Categorical color limits, accessibility trade-offs in dense charts.
+3. **Dedicated Immutable Archive**: Save in `brand/<slug>/options/`. **NEVER update/overwrite or delete** existing option files; revisions are append-only.
+4. **Zero Premature Writes**: Do NOT write or create any files in `brand/<slug>/14-diagrams-and-charts/` until explicit user selection.
+5. **STOP and wait for user selection.**
+6. Only when the user explicitly selects a direction (*"Concept 1 selected"*):
+   - Write `brand/<slug>/14-diagrams-and-charts/diagrams-and-charts.md` with `status: approved`, covering diagram, chart, and table conventions and the data palettes.
+   - Optionally, add `chart-palette.json` for direct use in charting libraries.
 
 ## Output
-- `brand/<slug>/14-diagrams-and-charts/diagrams-and-charts.md`
-- Optional: a small palette JSON (`chart-palette.json`) for direct use in charting libraries
+- `brand/<slug>/options/14-diagrams-and-charts-v<n>.html` (immutable options archive)
+- `brand/<slug>/14-diagrams-and-charts/diagrams-and-charts.md` (committed only after selection)
 - Optional: `brand/<slug>/14-diagrams-and-charts/chart-palette.json`
 
 ## Consistency Rules
-- Every color used must come from `02-color-system`/tokens; don't invent chart-only hues.
-- All diagram node colors and chart series must derive from approved tokens.
+- Every diagram and chart color derives from `04-design-tokens`; no chart-only hues.

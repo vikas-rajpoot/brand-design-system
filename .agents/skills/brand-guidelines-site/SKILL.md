@@ -8,7 +8,8 @@ description: 'Use when assembling one browsable website that shows all approved 
 - Most/all subsystems are drafted or approved and need a single browsable reference site
 
 ## Inputs Required
-- All existing subsystem folders for the project, `16-asset-library`
+- Approved `04-design-tokens`, `06-ui-design-system`, and `16-asset-library`, plus every other approved subsystem
+- If one of the first three is missing, stop and name the skill to run first (run order in [AGENTS.md](../../../AGENTS.md)).
 
 ## Procedure
 1. Structure the site as sections mirroring the folder map: Foundation, Logo, Color, Typography,
@@ -18,6 +19,7 @@ description: 'Use when assembling one browsable website that shows all approved 
    docs theme).
 3. Clearly mark each section's approval status (draft/approved) so viewers know what's final.
 4. Link every asset/download to its file under `16-asset-library`.
+5. Show a single-page preview of the site in `brand/<slug>/options/17-brand-guidelines-site-v1.html` and wait for explicit approval before writing `brand/<slug>/17-brand-guidelines-site/`.
 
 ## Output
 - `brand/<slug>/17-brand-guidelines-site/` (static site: `index.html` + per-section pages, using

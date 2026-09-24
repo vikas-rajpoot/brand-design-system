@@ -1,43 +1,37 @@
 ---
 name: marketing-assets
-description: 'Use when creating ads, banners, posters, product-launch graphics, thumbnails, and campaign assets for a brand.'
 description: 'Use when creating ads, banners, posters, product-launch graphics, thumbnails, and campaign assets for a brand. Presents cohesive campaign creative concepts with pros & cons.'
 ---
 # Marketing Assets
 
 ## When to Use
-- One-off or campaign-based promotional graphics (not the recurring social templates)
-- One-off or campaign-based promotional graphics (ads, banners, launch posters)
+- One-off or campaign-based promotional graphics (ads, banners, launch posters, thumbnails), not the recurring social templates
 
 ## Inputs Required
-- `00-brand-foundation`, `02-color-system`, `05-visual-style`, `15-brand-voice-and-copy`
-- `00-brand-foundation`, `01-logo-system`, `02-color-system`, `05-visual-style`, `15-brand-voice-and-copy`
+- Approved `01-logo-system`, `04-design-tokens`, and `05-visual-style` (imagery treatment, icon and illustration style)
+- Approved `15-brand-voice-and-copy` (headline and CTA copy)
+- If an input is missing, stop and name the skill to run first (run order in [AGENTS.md](../../../AGENTS.md)).
 
-## Procedure
-1. Clarify the campaign goal, channel, and required sizes (web ad standard sizes, poster/print
-   dimensions, video thumbnail sizes) before producing anything.
-2. Compose using only approved colors/fonts/logo variants and the visual-style rules (imagery
-   treatment, icon/illustration style).
-3. Keep headline/CTA copy consistent with `15-brand-voice-and-copy`.
-4. Produce as SVG when feasible; otherwise write a structured creative brief (see
-   `brand-asset-generator` skill) for a designer or image-gen tool.
 ## Interactive Decision-Gate Procedure
-1. Never produce campaign assets in one go.
-2. Present **2–3 distinct, cohesive campaign visual concepts**:
+1. **Never produce campaign assets in one go.** First clarify the campaign name, goal, channels, and required sizes (web ad sizes, print dimensions, video thumbnails).
+2. **Present 2–3 distinct, cohesive campaign visual concepts**:
+   - Compile all concepts into a self-contained interactive preview in `brand/<slug>/options/13-marketing-assets-<campaign>-v1.html` (or the next `-vN.html` on revisions).
    - For each concept:
      - **Creative Angle & Hook**: Visual metaphor, headline hook, hero element treatment.
-     - **Channel Applications**: Display ad ratios (300x250, 728x90, 160x600), promotional banner, poster/thumbnail.
+     - **Channel Applications**: The concept at each required size (e.g. display ads 300x250, 728x90, 160x600; promotional banner; poster; thumbnail).
      - **Brand Cohesion Rationale**: How this creative direction stays true to approved positioning and visual style.
      - **Pros**: Attention capture, conversion relevance, message memorability.
      - **Cons**: Asset creation effort, platform fit.
-3. **STOP and wait for user selection.**
-4. Only when the user explicitly selects a campaign direction (*"this one selected"* or provides refinements):
-   - Produce SVG assets or structured creative briefs via `brand-asset-generator`.
-   - Write `brand/<slug>/13-marketing-assets/<campaign-name>/` files with `status: approved`.
+3. **Dedicated Immutable Archive**: Save in `brand/<slug>/options/`. **NEVER update/overwrite or delete** existing option files; revisions are append-only.
+4. **Zero Premature Writes**: Do NOT write or create any files in `brand/<slug>/13-marketing-assets/` until explicit user selection.
+5. **STOP and wait for user selection.**
+6. Only when the user explicitly selects a concept (*"Concept 1 selected"*):
+   - Use `brand-asset-generator` to produce SVG assets where feasible, or structured creative briefs otherwise.
+   - Write them to `brand/<slug>/13-marketing-assets/<campaign>/`, with a `brief.md` (`status: approved`) describing the campaign goal, sizes, and copy.
 
 ## Output
-- `brand/<slug>/13-marketing-assets/<campaign-name>/*.svg` or `brief.md`
+- `brand/<slug>/options/13-marketing-assets-<campaign>-v<n>.html` (immutable options archive)
+- `brand/<slug>/13-marketing-assets/<campaign>/*.svg` and `brief.md` (committed only after selection)
 
 ## Consistency Rules
-- No campaign-only color/font; reuse only what's already approved elsewhere.
-- Assets must exclusively use approved colors, typography, and logo assets.
+- No campaign-only color, font, or logo variant; use only what is already approved.

@@ -9,7 +9,7 @@ Use this skill for logos, icons, simple vector illustrations, campaign graphics,
 
 ## Required context
 
-Read the selected project's approved `00-brand-foundation`, `04-design-tokens`, and `05-visual-style` first. Do not introduce colors, typefaces, or shapes that are absent from those sources.
+Read the approved sources for the subsystem you are serving first. For `01-logo-system`, that is the approved `00-brand-foundation`, `02-color-system`, and `03-typography-system` (tokens and visual style come later in the run order). For every other subsystem, it is the approved `00-brand-foundation`, `04-design-tokens`, and `05-visual-style`. Do not introduce colors, typefaces, or shapes that are absent from those sources.
 
 ## Approval boundary
 

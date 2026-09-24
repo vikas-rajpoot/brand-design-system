@@ -5,15 +5,16 @@ This workspace generates **brand design systems** for arbitrary new projects and
 ## Hard Rules
 
 - **Single Project Boundary**: Every generated artifact belongs to exactly one project: `brand/<project-slug>/`. Never write brand output to the repository root or mix two projects' files.
-- **Mandatory Product Intake Gate**: Do not begin brand-system work, including an `options/` preview, a foundation draft, or any subsystem, until the user has supplied and confirmed the complete product packet at `brand/<project-slug>/product/`. Required user-authored files: `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, and `04-decisions-and-questions.md`. When the user starts with only a basic description, use `product-intake` to interview them and write their confirmed answers into these files.
-- **Project Discovery & Incomplete Intake**: At intake, inspect `brand/*/product/`. If exactly one project contains all five required files, use its enclosing slug. If multiple complete packets exist, ask the user to select the slug. If none are complete, stop brand work, state what is missing for the intended slug, and invoke `product-intake` when the user wants help completing it. Never invent contents or generate brand artifacts during intake. Read the selected complete packet before offering foundation options.
+- **Mandatory Product Intake Gate**: Do not begin brand-system work, including an `options/` preview, a foundation draft, or any subsystem, until the user has supplied and confirmed the complete product packet at `brand/<project-slug>/product/`. Required user-authored files: `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, and `04-decisions-and-questions.md`. When the user starts with only a basic description, use `product-intake` to interview them and write their confirmed answers into these files. The packet counts as confirmed only when all five files exist and each starts with `status: approved` frontmatter, which `product-intake` writes after the user confirms the intake summary.
+- **Project Discovery & Incomplete Intake**: At intake, inspect `brand/*/product/`. If exactly one project has a confirmed packet, use its enclosing slug. If several do, ask the user to select the slug. If none does, stop brand work, state which files are missing or unconfirmed for the intended slug, and invoke `product-intake` when the user wants help completing or confirming them. Never invent contents or generate brand artifacts during intake. Read the selected packet before offering foundation options.
 - **Slug Confirmation**: Never invent a new project slug without confirming it with the user; derive it from the project name in kebab-case (e.g. `brand/acme-labs/`).
 - **No "In One Go" Generation (Strict Step-by-Step Gate)**: Never generate brand decisions, foundation, tokens, or subsystems in a single autonomous pass. Every element must proceed through an interactive decision gate.
-- **Mandatory Cohesive Options with Pros & Cons**: For each decision area (foundation angles, color schemes, font pairings, logo lockups, tokens, visual style, UI components, etc.), provide **2–4 distinct, cohesive options**. Each option must include:
+- **Mandatory Cohesive Options with Pros & Cons**: For each decision step (foundation angles, color schemes, font pairings, logo lockups, visual style, UI components, etc.), provide **2–4 distinct, cohesive options**. Each option must include:
   1. Detailed concept / specifications / visual preview.
   2. **Brand Cohesion Rationale**: Explicitly explain how this option harmonizes with the brand foundation and previously approved tokens/decisions.
   3. **Pros**: Key strengths, emotional appeal, and strategic advantages.
   4. **Cons**: Trade-offs, risks, or contextual limitations.
+- **Compile Steps**: `04-design-tokens` and `16`–`20` only assemble approved decisions. They present one preview for review instead of 2–4 options (an `options/` HTML file when the result is visual; a short summary for `18-ai-ready-spec`), still wait for explicit approval, and never introduce a new value.
 - **Interactive HTML Options Preview**: For every decision gate, compile all options into a self-contained, beautifully styled interactive HTML preview file in `brand/<project-slug>/options/` (e.g., `01-logo-system-v1.html`) featuring live SVG renders, interactive mode toggles (dark/light), contextual mockups (mobile/desktop), and side-by-side comparisons.
 - **Dedicated Immutable Options Archive**:
   - All proposed options must be saved under `brand/<project-slug>/options/` with clear sequential numbering and descriptive names (e.g. `01-logo-system-v1.html`).
@@ -61,17 +62,47 @@ Each brand subsystem has a dedicated Antigravity skill in `.agents/skills/<name>
 | 20 | `20-approved-examples` | `approved-examples` | `/approved-examples` |
 | 21 | `21-corporate-visual-identity` | `corporate-visual-identity` | `/corporate-visual-identity` |
 
-Always check whether `00-brand-foundation` exists before generating any other subsystem. If it does not, invoke the `brand-foundation` skill first.
+## Run Order & Prerequisites
 
-`21-corporate-visual-identity` is a content subsystem, not an aggregation one. Generate it after `05-visual-style` and before the `16`–`20` aggregation folders, then refresh those folders once it is approved. Its number is 21 only because 00–20 were already assigned; never renumber existing folders.
+Folder numbers are fixed IDs, not the run order; never renumber folders. Run subsystems one at a time in this order:
+
+| Step | Folder | Type | Requires (approved) |
+|------|--------|------|---------------------|
+| 1 | `00-brand-foundation` | Decision | Confirmed product packet |
+| 2 | `02-color-system` | Decision | 00 |
+| 3 | `03-typography-system` | Decision | 00, 02 |
+| 4 | `01-logo-system` | Decision | 00, 02, 03 |
+| 5 | `15-brand-voice-and-copy` | Decision | 00 |
+| 6 | `05-visual-style` | Decision | 00, 01, 02, 03 |
+| 7 | `04-design-tokens` | Compile | 02, 03, 05 |
+| 8 | `06-ui-design-system` | Decision | 04, 05, 15 |
+| 9 | `07-website-system` | Decision | 04, 06, 15 |
+| 10 | `08-app-system` | Decision | 04, 06, 15 |
+| 11 | `09-social-media-system` | Decision | 01, 04, 05, 15 |
+| 12 | `10-presentation-system` | Decision | 01, 04, 05, 15 |
+| 13 | `11-document-system` | Decision | 01, 04, 15 |
+| 14 | `12-email-system` | Decision | 01, 04, 15 |
+| 15 | `13-marketing-assets` | Decision | 01, 04, 05, 15 |
+| 16 | `14-diagrams-and-charts` | Decision | 04, 05 |
+| 17 | `21-corporate-visual-identity` | Decision | 01, 04, 05 |
+| 18 | `16-asset-library` | Compile | Every approved subsystem that has assets |
+| 19 | `17-brand-guidelines-site` | Compile | 04, 06, 16 |
+| 20 | `18-ai-ready-spec` | Compile | 00, 04 |
+| 21 | `19-templates` | Compile | The subsystems each template packages |
+| 22 | `20-approved-examples` | Compile | Finished, shipped work |
+
+- **Check before starting**: each folder under "Requires" must have its main doc (`<NN-name>/<name>.md`, e.g. `02-color-system/color-system.md`) at `status: approved`; for `04`, `tokens.json` must exist. If one is missing, stop, name the skill to run first, and do not propose options.
+- **Skip only with agreement**: skip a step only when the user says it is out of scope (e.g. `08-app-system` for a marketing-only site). A step whose prerequisite was skipped cannot run until that prerequisite is done.
+- **Projections**: after their first approval, `16-asset-library` and `18-ai-ready-spec` are refreshed after every later approval without a new gate (`18` only once `04` exists).
+- `21-corporate-visual-identity` is a content subsystem: run it before the `16`–`20` compile steps, and refresh those once it is approved.
 
 ## Skills & Workflows
 
 - **Product Intake Interview**: Use `/product-intake` when the user provides only a basic product description or when the five-file product packet is missing, incomplete, or outdated. It interviews in small rounds and writes the packet only after explicit user confirmation.
-- **End-to-End Orchestration**: Use `/brand-new-project`. It guides the project step by step through an interactive decision-gate loop. At every stage, it presents **2–4 cohesive options with pros and cons**, stops for user feedback, and locks in the choice only when explicitly selected.
-- **Single Subsystem Generation / Revision**: Run `/brand-generate-system` to build or update one subsystem for an existing project. It presents cohesive options with pros and cons adhering to existing foundation and tokens before writing any files.
+- **End-to-End Orchestration**: Use `/brand-new-project`. It follows the run order one step at a time: decision steps present **2–4 cohesive options with pros and cons**, compile steps present one preview, and every step stops for user feedback and locks in the choice only when explicitly approved.
+- **Single Subsystem Generation / Revision**: Run `/brand-generate-system` to build or update one subsystem for an existing project. It checks the step's prerequisites first, then follows that subsystem's skill before writing any files.
 - **Auditing & Consistency**: Use `/brand-audit` to generate a checklist (`✅ | ⚠️ | ❌`) verifying folder completeness, token traceability, and document frontmatter.
-- **Visual Assets**: Use `brand-asset-generator` to generate SVG code or detailed briefs adhering to `04-design-tokens` and `05-visual-style`.
+- **Visual Assets**: Use `brand-asset-generator` to generate SVG code or detailed briefs from approved sources only (for logos: `00`, `02`, `03`; for everything else: `04-design-tokens` and `05-visual-style`).
 
 ## Design Token Rules
 
