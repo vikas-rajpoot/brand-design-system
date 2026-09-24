@@ -9,6 +9,7 @@ description: 'Define shape language, surfaces, gradients, elevation, iconography
 
 ## Inputs Required
 - Approved `00-brand-foundation`, `01-logo-system`, `02-color-system`, and `03-typography-system`. If one is missing, stop and name the skill to run first (run order in [AGENTS.md](../../../AGENTS.md)).
+- Approved `product/reference-screens.md` as the fixed comparison surface.
 - Design tokens are compiled after this step, from the values chosen here.
 
 ## Interactive Decision-Gate Procedure
@@ -21,6 +22,7 @@ description: 'Define shape language, surfaces, gradients, elevation, iconography
      - **Density & Motion**: Spacing base and rhythm (e.g. compact 4pt vs. airy 8pt) and motion character (durations, easing).
      - **Iconography & Illustration**: Stroke vs. duotone vs. filled glyphs with live SVG examples.
      - **Imagery & Mockup Framing**: Photography art direction, screen framing, duotone overlays.
+     - **Reference-Screen Comparison**: Apply shape, surface, elevation, icon, spacing, and motion choices to the same approved fixtures for every direction.
      - **Brand Cohesion Rationale**: How this aesthetic reinforces the foundation personality and the approved logo, color, and typography.
      - **Pros & Cons**: Distinctiveness, implementation overhead, and visual resonance.
 3. **Dedicated Immutable Archive**:

@@ -10,6 +10,8 @@ Before any brand work, confirm these files with `status: approved` frontmatter:
 
 If the packet is incomplete, use `/product-intake`. Do not create an options preview or subsystem draft first.
 
+After intake, use `/reference-screens`. Review the neutral screen-set options in `options/product-reference-screens-v<n>.html`, then approve one as `product/reference-screens.md`. This fixture defines the tasks, states, content, and viewports used in later visual comparisons without choosing any brand styling. No numbered subsystem starts before it is approved.
+
 ## Output Map
 
 | ID | Folder | Focus |

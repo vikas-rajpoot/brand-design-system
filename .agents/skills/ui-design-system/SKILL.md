@@ -11,6 +11,7 @@ description: 'Define reusable UI components (buttons, inputs, cards, navigation,
 - Approved `04-design-tokens` (new component tokens are added here)
 - Approved `05-visual-style` (shape language, depth, elevation)
 - Approved `15-brand-voice-and-copy` (copy for empty and error states)
+- Approved `product/reference-screens.md` (the fixed tasks, states, data, and viewports used to compare component directions)
 - If one is missing, stop and name the skill to run first (run order in [AGENTS.md](../../../AGENTS.md)).
 
 ## Interactive Decision-Gate Procedure
@@ -19,6 +20,7 @@ description: 'Define reusable UI components (buttons, inputs, cards, navigation,
    - Compile all component styling options into a self-contained interactive preview in `brand/<slug>/options/06-ui-design-system-v1.html` (or `-v2.html` on revisions).
    - For each option:
      - **Interactive Live Components**: Buttons, text fields, cards, tabs, badges, and any product-specific components the packet calls for (e.g. diff viewers or agent status pills for a developer tool), with working hover/active/focus states.
+     - **Reference-Screen Comparison**: Compose the same approved screens from each component direction. Preserve fixture content and state across options.
      - **Touch Affordances**: Minimum 44x44pt touch targets for mobile alongside compact desktop density modes.
      - **Content States**: Define the 7 non-happy-path states (3 empty states: first-run, user-cleared, no-results; 4 error tiers with What/Why/Next formula).
      - **Token Traceability**: Clear mapping to semantic tokens.

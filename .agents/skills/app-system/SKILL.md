@@ -11,6 +11,7 @@ description: 'Use when defining desktop/web-app/mobile screen styles, navigation
 - Approved `06-ui-design-system` (components) and `04-design-tokens`
 - Approved `15-brand-voice-and-copy` (message tone for states and dialogs)
 - The product packet, for the platforms (desktop, web, mobile) and core workflow the app must support
+- Approved `product/reference-screens.md` for the tasks, states, sample data, and viewports every shell option must retain
 - If an input is missing, stop and name the skill to run first (run order in [AGENTS.md](../../../AGENTS.md)).
 
 ## Interactive Decision-Gate Procedure
@@ -22,6 +23,7 @@ description: 'Use when defining desktop/web-app/mobile screen styles, navigation
      - **Shell & Lifecycle Screens**: Cold start/splash, auth gates and session expiry, permission priming, background state restoration.
      - **Onboarding & Key States**: Onboarding steps (including the empty first run), plus empty, loading/skeleton, error, and offline states, each with its icon or illustration, message tone, and primary action.
      - **Platform Adaptations**: Safe areas and native-feeling gestures on mobile, where relevant.
+     - **Reference-Screen Application**: Place the approved fixture tasks and states inside each proposed shell. Navigation and flow may change here, but fixture data and state coverage must stay comparable.
      - **Brand Cohesion Rationale**: How the application ergonomics match the brand's positioning (e.g. power-user efficiency vs. guided simplicity).
      - **Pros**: Productivity speed, information density, mobile adaptability.
      - **Cons**: Screen space consumption, complexity.

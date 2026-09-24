@@ -4,6 +4,7 @@ applyTo: "brand/**/*.md"
 ---
 # Brand Doc Conventions
 
+- Before writing any numbered brand subsystem, require an approved `brand/<project-slug>/product/reference-screens.md`. Digital visual-system previews must apply their alternatives to the same approved tasks, states, sample content, and viewports.
 - Start every doc with frontmatter: `status: draft|approved`, `version: <n>`, `owner: <system name>`.
 - Start every doc with frontmatter: `status: draft|approved`, `version: <n>`, `owner: <system name>`. Set `status: draft` during review and `status: approved` only when the user explicitly selects and confirms the option.
 - One doc = one decision area. Don't mix e.g. color rules into the typography doc.

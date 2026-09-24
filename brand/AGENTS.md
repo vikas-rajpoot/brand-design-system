@@ -6,6 +6,10 @@ These rules apply to all files and directories under `brand/`.
 - Each project must keep its user-authored product packet in `brand/<project-slug>/product/`: `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, and `04-decisions-and-questions.md`.
 - Do not create a preview, foundation, token, or subsystem for a project without its confirmed packet (all five files at `status: approved`). If more than one project has a confirmed packet, ask the user which slug to work on.
 
+## Reference Screens
+- After intake, run `reference-screens` before any numbered subsystem. The selected neutral fixture lives at `product/reference-screens.md`; its proposal history lives in `options/product-reference-screens-v<n>.html`.
+- Keep the approved tasks, states, sample content, and viewports constant when comparing later digital visual-system options. Reference screens are evaluation fixtures, not approval of final color, typography, components, or navigation.
+
 ## Interactive Decision Gate
 - **No Direct Generation in One Go**: No document, token, or asset may be written to a project directory without first passing its gate: decision steps present 2–4 cohesive options with pros and cons; compile steps (`04`, `16`–`20`) present one preview. Either way, wait for explicit user approval ("Concept 1 selected").
 - **Run Order**: Follow the run order and prerequisites in the root [AGENTS.md](../AGENTS.md); folder numbers are IDs, not the order.
@@ -40,4 +44,3 @@ When authoring or modifying Markdown files under `brand/**/*.md`:
 ## AI-Ready Specification
 
 - `brand/<project-slug>/18-ai-ready-spec/brand-spec.json` must always be valid JSON conforming to `brand/_template/ai-ready-spec.schema.json`.
-

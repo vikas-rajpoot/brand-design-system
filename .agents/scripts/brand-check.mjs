@@ -11,6 +11,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import {
   ROOT, rel, kindOf, checkFile, checkTokens, packetGaps, projects, runOrder,
+  referenceScreensApproved, hasReferenceScreenOptions,
   isApproved, prereqGaps, hasOptions, optionsRewrites,
 } from './brand-lib.mjs';
 import { exportFiles } from './tokens-export.mjs';
@@ -38,6 +39,20 @@ function checkProject(slug) {
     errors.push(`brand/${slug}: brand work exists (${started.join(', ')}) but the product packet is not confirmed (${gaps.join(', ')} need status: approved). Run /product-intake.`);
   } else if (gaps.length) {
     warnings.push(`brand/${slug}: product packet not confirmed yet (${gaps.length} of 5 files need status: approved). Run /product-intake before brand work.`);
+  }
+  const optionsDir = path.join(dir, 'options');
+  const numberedOptions = fs.existsSync(optionsDir) && fs.readdirSync(optionsDir).some((f) => /^\d\d-[a-z-]+-v\d+\.(html|tokens\.json)$/.test(f));
+  const numberedFolders = fs.readdirSync(dir, { withFileTypes: true }).some((d) => d.isDirectory() && /^\d\d-[a-z-]+$/.test(d.name));
+  const screensApproved = referenceScreensApproved(slug);
+  if (screensApproved && !hasReferenceScreenOptions(slug)) {
+    errors.push(`brand/${slug}/product/reference-screens.md: approved without a review file options/product-reference-screens-v<n>.html`);
+  }
+  if (!gaps.length && !screensApproved) {
+    if (numberedOptions || numberedFolders) {
+      errors.push(`brand/${slug}: numbered brand work exists before product/reference-screens.md is approved. Run /reference-screens first.`);
+    } else {
+      warnings.push(`brand/${slug}: reference screens are not approved yet. Run /reference-screens before numbered brand work.`);
+    }
   }
   for (const [nn, entry] of runOrder()) {
     if (!isApproved(slug, nn)) continue;

@@ -123,4 +123,4 @@ Check that:
 - every unresolved decision appears in `04-decisions-and-questions.md`;
 - no brand-system artifact was created during intake.
 
-Report the completed file paths and the most important open decisions. The packet is then ready for `brand-new-project`.
+Report the completed file paths and the most important open decisions. The packet is then ready for `reference-screens`; the numbered brand workflow begins only after that fixture is approved.

@@ -3,6 +3,8 @@
 This documents the folder map every `brand/<project-slug>/` is expected to follow, and what belongs
 in each. Folders are created on demand by the matching skill — don't pre-create empty ones.
 
+Before the numbered folders, each project approves `product/reference-screens.md` through the `reference-screens` skill. It is a neutral comparison fixture for applying later color, type, visual-style, token, component, and app-system options to the same product states.
+
 | Folder | Purpose | Key file(s) |
 |--------|---------|--------------|
 | `00-brand-foundation` | Name usage, positioning, audience, personality, values, voice | `brand-foundation.md` |

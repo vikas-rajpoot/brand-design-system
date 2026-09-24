@@ -31,17 +31,21 @@ Before any brand work, inspect `brand/*/product/`. A packet is confirmed only wh
    - Use the slug of the confirmed packet; do not propose a new slug.
    - Read the full packet before creating any options preview.
 
-2. **Agree on Scope**
+2. **Approve Reference Screens**
+   - If `product/reference-screens.md` is missing or not approved, load `reference-screens`, present its 2–3 neutral screen-set options, and stop for explicit selection.
+   - Do not create `00-brand-foundation` or another numbered preview until the screen fixture is approved.
+
+3. **Agree on Scope**
    - Show the user the run order (Run Order & Prerequisites in [AGENTS.md](../../../AGENTS.md)) and ask which steps the product clearly does not need yet (e.g. `08-app-system` for a marketing-only site, or `21-corporate-visual-identity` for a digital-only product). Skip a step only with the user's agreement.
 
-3. **Run Each Step in Order (One at a Time)**
+4. **Run Each Step in Order (One at a Time)**
    For each in-scope step, in run order:
    1. Check that its prerequisites are approved. If one is missing, stop and resolve it first.
-   2. Load the step's skill and follow it exactly. Decision steps present 2–4 cohesive options in `brand/<slug>/options/<NN-subsystem>-v1.html`; compile steps present one preview.
+   2. Load the step's skill and follow it exactly. Decision steps present 2–4 cohesive options in `brand/<slug>/options/<NN-subsystem>-v1.html`; compile steps present one preview. Digital visual-system previews apply every alternative to the approved reference-screen fixture with identical content and state.
    3. **WAIT for the user's explicit selection or approval** (*"Concept 1 selected"*). On feedback, create the next `-vN.html` and wait again.
    4. Commit the approved files (`status: approved`) only after that confirmation.
    5. Once `04-design-tokens` exists, keep `brand/<slug>/18-ai-ready-spec/brand-spec.json` in sync after every approval.
    6. Summarize what was approved and ask before moving to the next step.
 
-4. **Quality Review & Audit**
+5. **Quality Review & Audit**
    - Use `brand-audit` to verify token completeness, options immutability, and document frontmatter consistency.

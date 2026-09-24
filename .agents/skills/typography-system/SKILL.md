@@ -10,6 +10,7 @@ description: 'Define heading, body, and monospace font families, type scales, we
 ## Inputs Required
 - `00-brand-foundation` (personality dictates serif vs. sans, geometric vs. humanist, density)
 - `02-color-system` (ensure typography pairs harmoniously with surface contrasts)
+- Approved `product/reference-screens.md` (fixed content, code, labels, and density cases for comparison)
 
 ## Interactive Decision-Gate Procedure
 1. **Never generate typography in one go.**
@@ -17,6 +18,7 @@ description: 'Define heading, body, and monospace font families, type scales, we
    - Compile all pairings into a self-contained interactive preview in `brand/<slug>/options/03-typography-system-v1.html` (or `-v2.html` on revisions).
    - For each pairing option:
      - **Live Rendered Typography Hierarchy**: Heading, Subheading, Body copy, and Monospace code specimens.
+     - **Reference-Screen Comparison**: Render the same approved screen content under every pairing, preserving line lengths, code samples, labels, and state.
      - **Scale & Line-Height Table**: xs through 4xl steps with mobile vs. desktop fluid sizing.
      - **Cross-Platform Spec**: Google Fonts / system fallback stacks.
      - **Brand Cohesion Rationale**: How the pairing reflects approved foundation traits and color palette.

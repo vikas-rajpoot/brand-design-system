@@ -41,6 +41,7 @@ export function kindOf(relPath) {
   if (/^brand\/[^/]+\/options\/04-design-tokens-v\d+\.tokens\.json$/.test(relPath)) return 'tokens';
   if (/^brand\/[^/]+\/18-ai-ready-spec\/brand-spec\.json$/.test(relPath)) return 'spec';
   if (/^brand\/.+\.json$/.test(relPath)) return 'json';
+  if (/^brand\/(?!_template\/)[^/]+\/product\/reference-screens\.md$/.test(relPath)) return 'doc';
   if (/^brand\/(?!_template\/)[^/]+\/.+\.md$/.test(relPath)) return relPath.split('/')[2] === 'product' ? 'packet' : 'doc';
   return null;
 }
@@ -333,6 +334,21 @@ export function packetGaps(slug) {
     const p = path.join(dir, f);
     return !fs.existsSync(p) || readFrontmatter(fs.readFileSync(p, 'utf8'))?.fm.status !== 'approved';
   });
+}
+
+// The approved neutral product fixture required before any numbered subsystem.
+export function referenceScreensApproved(slug) {
+  const p = path.join(ROOT, 'brand', slug, 'product', 'reference-screens.md');
+  return fs.existsSync(p) && readFrontmatter(fs.readFileSync(p, 'utf8'))?.fm.status === 'approved';
+}
+
+export function referenceScreenGaps(slug) {
+  return referenceScreensApproved(slug) ? [] : ['product/reference-screens.md'];
+}
+
+export function hasReferenceScreenOptions(slug) {
+  const dir = path.join(ROOT, 'brand', slug, 'options');
+  return fs.existsSync(dir) && fs.readdirSync(dir).some((f) => /^product-reference-screens-v\d+\.html$/.test(f));
 }
 
 export function projects() {

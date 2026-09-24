@@ -6,7 +6,11 @@
 // Reports use exit 2 + stderr (plus each tool's JSON shape). Anything unexpected fails open.
 import fs from 'node:fs';
 import path from 'node:path';
-import { rel, kindOf, isOptionsPath, checkFile, packetGaps, runOrder, prereqGaps, hasOptions } from './brand-lib.mjs';
+import {
+  rel, kindOf, isOptionsPath, checkFile, packetGaps,
+  referenceScreensApproved, hasReferenceScreenOptions,
+  runOrder, prereqGaps, hasOptions,
+} from './brand-lib.mjs';
 
 const mode = process.argv[2] === 'post' ? 'post' : 'pre';
 const GENERATED = /^brand\/[^/]+\/04-design-tokens\/(tokens\.css|tokens\.dtcg\.json|tokens\.dark\.dtcg\.json)$/;
@@ -78,6 +82,8 @@ const stepOf = (sub) => {
   return nn && runOrder().has(nn) ? nn : null;
 };
 
+const isReferenceScreenOption = (sub) => /^options\/product-reference-screens-v\d+\.html$/.test(sub);
+
 function preProblems(op) {
   const r = rel(op.file);
   if (r.startsWith('..')) return [];
@@ -88,11 +94,21 @@ function preProblems(op) {
   if (GENERATED.test(r)) problems.push(`${r} is generated. Edit tokens.json, then run: node .agents/scripts/tokens-export.mjs ${r.split('/')[1]}`);
 
   const m = /^brand\/([^/]+)\/(.+)$/.exec(r);
-  if (m && !m[1].startsWith('_') && !m[2].startsWith('product/') && op.kind !== 'delete') {
+  if (m && !m[1].startsWith('_') && m[2] === 'product/reference-screens.md' && op.kind !== 'delete') {
+    const [, slug] = m;
+    const gaps = packetGaps(slug);
+    if (gaps.length) {
+      problems.push(`the product packet for "${slug}" is not confirmed (${gaps.join(', ')} need status: approved). Run /product-intake before reference screens.`);
+    } else if (!hasReferenceScreenOptions(slug)) {
+      problems.push(`show the reference-screen options in options/product-reference-screens-v1.html and get the user's explicit choice before writing ${r}.`);
+    }
+  } else if (m && !m[1].startsWith('_') && !m[2].startsWith('product/') && op.kind !== 'delete') {
     const [, slug, sub] = m;
     const gaps = packetGaps(slug);
     if (gaps.length) {
       problems.push(`the product packet for "${slug}" is not confirmed (${gaps.join(', ')} need status: approved). Run /product-intake before any brand work.`);
+    } else if (!isReferenceScreenOption(sub) && !referenceScreensApproved(slug)) {
+      problems.push(`the reference-screen fixture for "${slug}" is not approved. Run /reference-screens and approve product/reference-screens.md before numbered brand work.`);
     } else {
       const nn = stepOf(sub);
       const entry = nn && runOrder().get(nn);

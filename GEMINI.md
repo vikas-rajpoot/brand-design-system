@@ -1,6 +1,6 @@
 # Brand OS Kit
 
-Use [AGENTS.md](AGENTS.md) as the single source of truth for this workspace. It defines the product intake gate, source-of-truth order, run order, token rules, and checks.
+Use [AGENTS.md](AGENTS.md) as the single source of truth for this workspace. It defines the product intake gate, reference-screen gate, source-of-truth order, run order, token rules, and checks.
 
 Canonical skills live in `.agents/skills/`. Run `.agents/setup.sh` after cloning, then use `.agents/sync.sh` when the generated mirrors need updating. The macOS watcher is optional: `.agents/sync.sh --watch`.
 # Antigravity Workspace Configuration: Brand OS Kit
@@ -23,5 +23,4 @@ See [AGENTS.md](./AGENTS.md) for full workspace rules, source-of-truth hierarchy
 - All tokens must follow `primitive -> semantic -> component` layering.
 - Never invent colors or typography outside the approved `02-color-system`, `03-typography-system`, and (once compiled) `tokens.json`.
 - Physical/print colors (Pantone, CMYK, RAL, thread) belong in `21-corporate-visual-identity/production-specs.md` as mapped equivalents of an existing palette hex — never as new brand colors.
-
 

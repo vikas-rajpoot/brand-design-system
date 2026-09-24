@@ -9,6 +9,7 @@ description: 'Define primary, secondary, accent, neutral, and semantic colors, a
 
 ## Inputs Required
 - `00-brand-foundation` (approved personality and tone directly dictate color temperature, saturation, and contrast)
+- Approved `product/reference-screens.md` (fixed product states and content for palette comparisons)
 - If the foundation is not approved, stop and run `brand-foundation` first (run order in [AGENTS.md](../../../AGENTS.md)). The logo comes after this step and uses this palette.
 
 ## Interactive Decision-Gate Procedure
@@ -19,6 +20,7 @@ description: 'Define primary, secondary, accent, neutral, and semantic colors, a
      - **Interactive Swatch Previews**: Primary, Secondary, Accent, and Neutral ramps (50–900).
      - **Semantic System**: Success, warning, danger, and info colors.
      - **Theme Previews**: Live light and dark mode toggles with realistic UI surfaces.
+     - **Reference-Screen Comparison**: Apply the palette to the same approved reference screens and fixed content for every option, including material status, permission, and recovery states.
      - **WCAG Contrast Ratios**: Automated contrast badges (AA / AAA compliance).
      - **Brand Cohesion Rationale**: How this palette expresses approved foundation personality traits.
      - **Pros & Cons**: Emotional impact, contrast fidelity, and trade-offs.

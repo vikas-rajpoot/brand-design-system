@@ -7,6 +7,8 @@ This workspace generates **brand design systems** for arbitrary new projects and
 - **Single Project Boundary**: Every generated artifact belongs to exactly one project: `brand/<project-slug>/`. Never write brand output to the repository root or mix two projects' files.
 - **Mandatory Product Intake Gate**: Do not begin brand-system work, including an `options/` preview, a foundation draft, or any subsystem, until the user has supplied and confirmed the complete product packet at `brand/<project-slug>/product/`. Required user-authored files: `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, and `04-decisions-and-questions.md`. When the user starts with only a basic description, use `product-intake` to interview them and write their confirmed answers into these files. The packet counts as confirmed only when all five files exist and each starts with `status: approved` frontmatter, which `product-intake` writes after the user confirms the intake summary.
 - **Project Discovery & Incomplete Intake**: At intake, inspect `brand/*/product/`. If exactly one project has a confirmed packet, use its enclosing slug. If several do, ask the user to select the slug. If none does, stop brand work, state which files are missing or unconfirmed for the intended slug, and invoke `product-intake` when the user wants help completing or confirming them. Never invent contents or generate brand artifacts during intake. Read the selected packet before offering foundation options.
+- **Mandatory Reference-Screen Gate**: After intake and before `00-brand-foundation`, use `reference-screens` to approve a small, neutral set of representative product screens. Save the approved fixture in `brand/<project-slug>/product/reference-screens.md`; proposals live in the immutable `options/product-reference-screens-v<n>.html` archive. These screens lock the tasks, states, sample content, and comparison viewports used to judge later visual systems. They do **not** approve color, typography, shape language, components, or final app navigation.
+- **Apply Systems to the Same Screens**: Every later preview that affects the digital product UI (color, typography, logo placement, visual style, tokens, UI components, and app system) must show each option on the approved reference-screen fixtures. Keep fixture content and state constant across options so the user is comparing the system, not different mockups. The `app-system` may propose new navigation and flow structures while retaining the same tasks and states.
 - **Slug Confirmation**: Never invent a new project slug without confirming it with the user; derive it from the project name in kebab-case (e.g. `brand/acme-labs/`).
 - **No "In One Go" Generation (Strict Step-by-Step Gate)**: Never generate brand decisions, foundation, tokens, or subsystems in a single autonomous pass. Every element must proceed through an interactive decision gate.
 - **Mandatory Cohesive Options with Pros & Cons**: For each decision step (foundation angles, color schemes, font pairings, logo lockups, visual style, UI components, etc.), provide **2–4 distinct, cohesive options**. Each option must include:
@@ -25,12 +27,13 @@ This workspace generates **brand design systems** for arbitrary new projects and
 
 ## Source-of-Truth Order (Highest Priority First)
 
-1. User-confirmed `brand/<project-slug>/product/` packet (strategy, positioning, messaging, unresolved decisions)
-2. `brand/<project-slug>/00-brand-foundation/brand-foundation.md` (name, audience, positioning, personality, voice)
-3. `brand/<project-slug>/04-design-tokens/tokens.json` (primitive → semantic → component tokens)
-4. Any other already-generated subsystem file in that project
-5. Skill defaults and workspace rules
-6. Agent judgment — only when nothing above applies, and explicitly stated as an assumption
+1. User-confirmed core product packet and additional product requirements (strategy, positioning, messaging, unresolved decisions)
+2. `brand/<project-slug>/product/reference-screens.md` (approved comparison tasks, states, content, and viewports; not visual style)
+3. `brand/<project-slug>/00-brand-foundation/brand-foundation.md` (name, audience, positioning, personality, voice)
+4. `brand/<project-slug>/04-design-tokens/tokens.json` (primitive → semantic → component tokens)
+5. Any other already-generated subsystem file in that project
+6. Skill defaults and workspace rules
+7. Agent judgment — only when nothing above applies, and explicitly stated as an assumption
 
 If a later subsystem contradicts an earlier approved decision (e.g. a UI element introduces a hex code not in `tokens.json`), stop and flag the conflict rather than silently introducing a new value.
 
@@ -67,9 +70,11 @@ Each brand subsystem has a dedicated Antigravity skill in `.agents/skills/<name>
 
 Folder numbers are fixed IDs, not the run order; never renumber folders. Run subsystems one at a time in this order:
 
+Before step 1, run the unnumbered `reference-screens` product gate. It requires only the confirmed product packet. No numbered subsystem preview or official subsystem file may be created until `product/reference-screens.md` is approved.
+
 | Step | Folder | Type | Requires (approved) |
 |------|--------|------|---------------------|
-| 1 | `00-brand-foundation` | Decision | Confirmed product packet |
+| 1 | `00-brand-foundation` | Decision | Confirmed product packet + approved reference screens |
 | 2 | `02-color-system` | Decision | 00 |
 | 3 | `03-typography-system` | Decision | 00, 02 |
 | 4 | `01-logo-system` | Decision | 00, 02, 03 |
@@ -100,7 +105,8 @@ Folder numbers are fixed IDs, not the run order; never renumber folders. Run sub
 ## Skills & Workflows
 
 - **Product Intake Interview**: Use `/product-intake` when the user provides only a basic product description or when the five-file product packet is missing, incomplete, or outdated. It interviews in small rounds and writes the packet only after explicit user confirmation.
-- **End-to-End Orchestration**: Use `/brand-new-project`. It follows the run order one step at a time: decision steps present **2–4 cohesive options with pros and cons**, compile steps present one preview, and every step stops for user feedback and locks in the choice only when explicitly approved.
+- **Reference Screens**: Use `/reference-screens` after intake. It presents 2–3 neutral, product-grounded screen-set options, then records the selected comparison fixture in `product/reference-screens.md`. Later visual previews apply their alternatives to this same fixture.
+- **End-to-End Orchestration**: Use `/brand-new-project`. It runs the reference-screen gate first, then follows the numbered run order one step at a time: decision steps present **2–4 cohesive options with pros and cons**, compile steps present one preview, and every step stops for user feedback and locks in the choice only when explicitly approved.
 - **Single Subsystem Generation / Revision**: Run `/brand-generate-system` to build or update one subsystem for an existing project. It checks the step's prerequisites first, then follows that subsystem's skill before writing any files.
 - **Auditing & Consistency**: Use `/brand-audit` to generate a checklist (`✅ | ⚠️ | ❌`) verifying folder completeness, token traceability, and document frontmatter.
 - **Visual Assets**: Use `brand-asset-generator` to generate SVG code or detailed briefs from approved sources only (for logos: `00`, `02`, `03`; for everything else: `04-design-tokens` and `05-visual-style`).
@@ -138,6 +144,6 @@ Delete skills only from `.agents/skills/`. Deleting only a mirror is drift, so t
 ## Checks & Hooks
 
 - **Setup**: run `.agents/setup.sh` once after cloning. It turns on the git hooks and runs every check. Node 18+ is required.
-- **Checker**: `node .agents/scripts/brand-check.mjs` checks brand JSON, tokens, the AI spec, doc frontmatter, project rules (confirmed packet, run order, review files, generated exports), and Markdown links. Pass file paths to check only those files.
-- **Agent hooks**: `.github/hooks/brand-guard.json` (VS Code, Copilot CLI, and cloud agent), `.claude/settings.json` (Claude Code), `.codex/hooks.json` (Codex; trust it once with `/hooks`), and `.agents/hooks.json` (Antigravity) all run `.agents/scripts/brand-guard.mjs`. It blocks edits to existing options files, brand writes that skip intake or the run order, and hand edits to generated token files, and it reports problems right after a write. If a hook blocks you, fix the cause it names; never work around it.
+- **Checker**: `node .agents/scripts/brand-check.mjs` checks brand JSON, tokens, the AI spec, doc frontmatter, project rules (confirmed packet, approved reference screens, run order, review files, generated exports), and Markdown links. Pass file paths to check only those files.
+- **Agent hooks**: `.github/hooks/brand-guard.json` (VS Code, Copilot CLI, and cloud agent), `.claude/settings.json` (Claude Code), `.codex/hooks.json` (Codex; trust it once with `/hooks`), and `.agents/hooks.json` (Antigravity) all run `.agents/scripts/brand-guard.mjs`. It blocks edits to existing options files, brand writes that skip intake, reference screens, or the run order, and hand edits to generated token files, and it reports problems right after a write. If a hook blocks you, fix the cause it names; never work around it.
 - **Git hooks**: pre-commit only checks (skill frontmatter, mirror sync, staged brand files, options history) and never changes files. CI (`.github/workflows/brand-os-checks.yml`) runs the same checks on every push and pull request.

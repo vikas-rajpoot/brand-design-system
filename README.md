@@ -23,12 +23,13 @@ Without the watcher, run `.agents/sync.sh` after changing a canonical skill. Use
 ## Workflow
 
 1. Confirm the five-file product packet in `brand/<project-slug>/product/`.
-2. Run `/brand-new-project` or `/product-intake` when the packet is missing or unconfirmed.
-3. Work through one subsystem at a time in the run order below.
-4. Review the 2-4 options in the immutable `options/` archive and explicitly select one.
-5. Run the checks before sharing or merging the result.
+2. Run `/product-intake` when the packet is missing or unconfirmed.
+3. Run `/reference-screens` and approve a neutral product-screen fixture, or let `/brand-new-project` run this gate first.
+4. Run `/brand-new-project` and work through one subsystem at a time in the run order below.
+5. Review the 2-4 options in the immutable `options/` archive and explicitly select one.
+6. Run the checks before sharing or merging the result.
 
-The assistant must not invent brand decisions before the product packet is approved, write official subsystem files before selection, or overwrite an existing option file.
+The assistant must not invent brand decisions before the product packet and reference screens are approved, write official subsystem files before selection, or overwrite an existing option file. Visual-system previews reuse the approved screens so alternatives are compared against the same tasks and states.
 
 ## Run Order
 
@@ -46,7 +47,7 @@ node .agents/scripts/brand-check.mjs
 .agents/sync.sh --check
 ```
 
-The checks validate frontmatter, product intake, run-order prerequisites, token layering, generated exports, AI-ready specs, Markdown links, and immutable option history. CI runs the same checks on pushes and pull requests.
+The checks validate frontmatter, product intake, reference screens, run-order prerequisites, token layering, generated exports, AI-ready specs, Markdown links, and immutable option history. CI runs the same checks on pushes and pull requests.
 
 ## Configuration
 

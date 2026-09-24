@@ -10,6 +10,7 @@ description: 'Design the primary logo, alternate lockups, icon/mark, light/dark 
 ## Inputs Required
 - `00-brand-foundation` (personality, values, name usage rules)
 - `02-color-system` and `03-typography-system`, both approved (logo colors and lettering come only from these). If either is missing, stop and name the skill to run first (run order in [AGENTS.md](../../../AGENTS.md)).
+- Approved `product/reference-screens.md` for fixed app-icon and in-product placement contexts.
 
 ## Interactive Decision-Gate Procedure
 1. **Never generate official logo files in one go.**
@@ -18,7 +19,7 @@ description: 'Design the primary logo, alternate lockups, icon/mark, light/dark 
    - For each concept:
      - **Visual Metaphor & Structure**: Live SVG renders for horizontal lockup, stacked lockup, app icon, and favicon, plus any product-specific marks the packet calls for (e.g. a CLI badge for a developer tool).
      - **Palette & Typography**: How the mark uses the approved colors and typefaces.
-     - **Contextual Mockups**: Views on the product's real surfaces from the packet (e.g. a phone frame and a desktop window).
+     - **Contextual Mockups**: Views on the approved reference screens and other real product surfaces from the packet. Keep screen content and placement constant across concepts.
      - **Brand Cohesion Rationale**: How this concept visually embodies approved foundation personality and values.
      - **Pros & Cons**: Scalability, favicon legibility, emotional resonance, and trade-offs.
 3. **Dedicated Immutable Archive**:

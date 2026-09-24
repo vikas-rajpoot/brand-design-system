@@ -19,9 +19,10 @@ Use this skill to audit an existing generated brand project under `brand/<projec
 
 2. **Run the Automatic Checks First**:
    - Run `node .agents/scripts/brand-check.mjs` and include every error and warning for this project in the report.
-   - It already checks: the product packet, run-order prerequisites, review files in `options/`, token format and invariants, generated exports, frontmatter, the AI spec, and Markdown links. Do not repeat these by hand; spend the audit on the judgment checks below.
+   - It already checks: the product packet, approved reference screens, run-order prerequisites, review files in `options/`, token format and invariants, generated exports, frontmatter, the AI spec, and Markdown links. Do not repeat these by hand; spend the audit on the judgment checks below.
 
 3. **Folder Completeness Check**:
+   - Verify `product/reference-screens.md` is approved and trace later digital visual previews back to its fixed tasks, states, sample content, and viewports.
    - Compare `brand/<slug>/` against the 22-folder map defined in [AGENTS.md](../../../AGENTS.md).
    - Identify missing, empty, or unstarted folders, and note which were skipped on purpose.
 
