@@ -1,140 +1,104 @@
-# Messaging & Market Context
+# Messaging and Market Context
+
+**Status:** Approved messaging framework; market facts dated 2026-09-24  
+**Last reviewed:** 2026-09-24  
+**Owner:** Product Marketing
 
 ## Messaging Hierarchy
 
-### Level 1 — Brand Idea
-Do serious work from anywhere, with any agent, in one mobile workspace.
+### Brand Idea
 
-### Level 2 — Primary Value Proposition
-MobileAgenticIDE gives people one native mobile workspace to prompt, create, edit, review, and approve work across a laptop, VPS, or managed Vercel Sandbox, using its own agent harness or compatible runtimes such as Claude CLI, Codex, GitHub Copilot, and future integrations.
+Direct serious work from your phone.
 
-### Level 3 — Major Benefits
-- **Un-tethered Freedom**: Leave your desk while the agent refactors.
-- **Absolute Privacy**: Your data travels directly between your phone and your Mac.
-- **Clear Control**: Tap-to-approve permission cards replace messy terminal prompts.
-- **Runtime Choice**: Keep the same mobile workflow while choosing the agent harness or CLI that fits the task.
-- **Beyond Code**: Apply the same agent direction and review model to research, writing, planning, analysis, and operations.
+### Product Definition
 
-### Level 4 — Proof
-- Communicates purely over your private Tailscale network or SSH.
-- No developer backend, no telemetry, no accounts required.
-- Parses agent event streams into a deterministic, pure-rendered iOS timeline.
-- Provides a runtime adapter boundary for the first-party harness and future agent integrations.
-- Presents laptop, VPS, and managed Vercel Sandbox as explicit workspace targets.
+A mobile agent workspace that lets people connect to a laptop, VPS, or managed Vercel Sandbox and complete technical or non-technical work with MobileAgenticIDE's own harness or compatible agents.
 
-### Level 5 — Features
-- SSH bootstrapping to VPS instances.
-- Native React Native / Expo UI.
-- Voice dictation for prompts.
-- Live subagent observability cards.
-- In-app file and diff viewer.
-- First-party MobileAgenticIDE agent harness.
-- Adapters for Claude CLI, Codex, GitHub Copilot, and future runtimes.
-- Workspace switcher for laptop, VPS, and managed Vercel Sandbox.
-- Workspaces for coding, research, writing, planning, analysis, and operations.
+### Primary Value Proposition
 
-## Messaging Pillars
+MobileAgenticIDE provides one structured mobile surface for starting, directing, inspecting, and approving supported agent work across supported execution environments.
 
-### Pillar 1: Total Control, Zero Desk
-* **Core idea**: You don't have to watch the terminal to manage your agent.
-* **User benefit**: Reclaim time and physical freedom while maintaining oversight.
-* **Supporting capabilities**: Tap-to-approve permission cards, push notifications (planned).
-* **Language we can use**: "Steer", "Un-tether", "Monitor remotely", "Approve with a tap".
-* **Language we should avoid**: "Fully autonomous", "Replaces you", "Set and forget" (because we emphasize human-in-the-loop approval).
+### Major Benefits
 
-### Pillar 2: Private by Design
-* **Core idea**: A tool that respects your proprietary codebase.
-* **User benefit**: Zero risk of leaking source code to third-party app developers.
-* **Supporting capabilities**: Direct WebSocket/SSH connections, device-local keychain, no telemetry.
-* **Language we can use**: "Direct connection", "Your own network", "BYO-Mac", "No middleman".
-* **Language we should avoid**: "Cloud sync", "Accounts", "Our servers".
+- **Mobility:** Keep a supported agent workflow moving away from the desk.
+- **Clarity:** Review actions, files, diffs, tests, and artifacts in a mobile interface.
+- **Control:** Approve or deny the consequential actions exposed by the runtime.
+- **Choice:** Use a reference harness or a tested compatible adapter.
+- **Execution options:** Choose an owned laptop, controlled VPS, or explicitly hosted sandbox when supported.
+- **Expansion beyond code:** Apply the same workspace model to verified non-coding workflows as they ship.
 
-### Pillar 3: Native Clarity
-* **Core idea**: Abstracting terminal chaos into structured iOS UI.
-* **User benefit**: Faster comprehension of what the agent is doing, reducing cognitive load.
-* **Supporting capabilities**: Pure timeline reducer, grouped step cards, syntax highlighting.
-* **Language we can use**: "Native UI", "Structured cards", "Clear diffs", "Calm chat".
-* **Language we should avoid**: "Terminal emulator" (it's more than that).
+## Availability Rule
 
-### Pillar 4: Any Agent, Any Workspace
-* **Core idea**: The mobile workspace should not force the developer into one agent runtime or one machine.
-* **User benefit**: Move between the first-party harness, Claude CLI, Codex, GitHub Copilot, and future integrations without relearning the product.
-* **Supporting capabilities**: Runtime adapters, workspace switching, shared permissions, files, diffs, tests, and deployment state.
-* **Language we can use**: "Use the agent you choose", "One mobile workspace", "Laptop, VPS, or sandbox", "Bring your runtime".
-* **Language we should avoid**: "Every agent works exactly the same", "Universal compatibility".
+The product definition states the direction. External feature copy must be generated from the **VERIFIED** rows in [`05-launch-scope-and-capabilities.md`](05-launch-scope-and-capabilities.md). Do not turn a **REPORTED**, **PLANNED**, or **RESEARCH** row into present-tense marketing.
 
-### Pillar 5: More Than Code
-* **Core idea**: Coding is a flagship workflow, not the limit of what the workspace can support.
-* **User benefit**: Use the same clear agent controls for research, writing, planning, analysis, and operations.
-* **Supporting capabilities**: Workspace templates, artifact review, structured approvals, source/context management, and runtime adapters.
-* **Language we can use**: "Direct serious work from your phone", "Code and beyond", "Research, write, plan, operate", "One agent workspace".
-* **Language we should avoid**: "General chatbot", "Anything automatically", "Works for everyone".
+## Approved Claim Patterns
 
-## Trust Strategy
+| Topic | Safe message | Required qualifier or evidence |
+|---|---|---|
+| Owned-host networking | Direct-host modes do not require a MobileAgenticIDE-operated traffic relay. | Name the supported transport and release. Tailscale itself may use encrypted relay infrastructure. |
+| Credentials | Supported credentials are stored in the documented device or host security store. | Name each credential, location, lifecycle, and build. |
+| Telemetry | The named build sends no MobileAgenticIDE product analytics. | Verify crash reporting, logs, model-provider traffic, and hosted-mode traffic separately. |
+| Runtime choice | Connect to listed compatible runtimes. | Link the capability matrix; do not imply parity. |
+| Managed sandbox | Run work in an explicitly hosted Vercel Sandbox mode. | Use only after the hosted beta gates pass. Explain identity, retention, networking, secrets, and cost. |
+| Battery | Uses event-driven updates rather than continuous application polling. | Validate in supported background states; do not promise that battery will not drain. |
+| Human control | Approve or deny actions that the runtime exposes for approval. | Do not imply visibility into every side effect or general rollback. |
 
-Users must trust this product with:
-- Source code.
-- Terminal access (Remote Code Execution on their host).
-- Private network access.
-- Agent API costs.
+## Trust Message
 
-**Verified Claims to emphasize**:
-- "No intermediary server for direct laptop and VPS connections" (Provable via open source code and network monitors).
-- "Keys stay on your device" (Stored in iOS Keychain).
-- "Managed sandbox is an explicit hosted execution option" (Only claim after isolation and data-flow behavior are documented).
+Users may entrust the product with source code, documents, host access, private network access, credentials, and model usage costs. Trust must come from inspectable boundaries, limited permissions, and test evidence—not absolute adjectives.
 
-**Claims to avoid**:
-- "Completely secure" (SSH/Network security depends entirely on the user's Tailscale/VPS setup, which is out of our control).
+The trust model has three distinct parties:
 
-## Competitive Context
+1. MobileAgenticIDE software and any services it operates.
+2. Infrastructure providers such as Tailscale and Vercel.
+3. The selected runtime and model provider, which may receive prompts, files, or tool results under its own terms.
 
-* **Direct Competitors**: Currently none. Most mobile AI apps are generic wrappers (e.g., official Claude app, ChatGPT app) or single-runtime clients, while coding tools focus narrowly on developer workflows.
-* **Indirect Competitors**: Mobile SSH clients (Termius, Prompt 3) used to manually view the agent running in `tmux`.
-* **Substitutes**: Sitting at the desk; using cloud-hosted agent platforms (like GitHub Copilot Workspaces, which don't run locally).
-* **Competitive dimensions**: UX clarity (vs SSH), Privacy (vs Cloud agents), Setup complexity (we are harder to set up but vastly superior once running).
+See [`06-trust-and-data-flows.md`](06-trust-and-data-flows.md) for the required disclosures.
 
-## PRODUCT / BRAND CONTRADICTIONS
+## Market Context
 
-1. **Audience Vibe vs Setup Reality**: The mobile-control promise may feel consumer-friendly and easy. But the actual setup requires minting a token via a Node CLI, setting up Tailscale, and potentially configuring an SSH bootstrap. The brand needs to acknowledge this technical barrier rather than hiding it.
-2. **Design System Disconnect**: `design-system/README.md` outlines a beautiful, mathematically proven design system with OkLCH color ramps, but explicitly notes: "The app: consuming none of it. 910 raw values across 137 files." The brand foundation exists in a silo from the product implementation.
-3. **Platform Promise vs Integration Reality**: Supporting a first-party harness plus Claude CLI, Codex, GitHub Copilot, and future runtimes requires adapters, capability negotiation, and honest feature parity language.
+The market has direct and adjacent competitors. “No direct competitors” is not an approved claim.
 
-## Naming
+| Product or alternative | Current overlap | Important difference to investigate | Primary source |
+|---|---|---|---|
+| OpenAI Codex in ChatGPT mobile | Connects to development machines; supports remote prompts, approvals, terminal output, diffs, tests, and files. | Uses the Codex ecosystem and a secure relay layer; compare runtime choice, owned-host networking, and permission semantics. | [OpenAI, 2026-05-14](https://openai.com/index/work-with-codex-from-anywhere/) |
+| GitHub Mobile with coding agents | Starts and tracks Copilot and third-party coding-agent sessions associated with GitHub repositories. | Cloud- and repository-centered workflow; compare local host control and artifact depth. | [GitHub Docs, accessed 2026-09-24](https://docs.github.com/en/copilot/concepts/agents/about-third-party-coding-agents) |
+| Cursor Web and Mobile | Starts background coding agents from a phone and hands work back to desktop. | Web/PWA and GitHub-centered experience; compare direct hosts, native review, and adapter model. | [Cursor Docs, accessed 2026-09-24](https://docs.cursor.com/en/background-agent/web-and-mobile) |
+| Replit mobile | Provides mobile agent-assisted application creation in a hosted workspace. | Integrated hosted platform; compare owned-host support and advanced review controls. | [Replit Docs, accessed 2026-09-24](https://docs.replit.com/power-ups/replitai/replitai-chat) |
+| Mobile SSH clients | Provide general remote terminal access. | Broad host access but little agent-specific structure, capability negotiation, or artifact review. | Validate named products before publishing a comparison. |
+| Staying at the desk | Preserves full access to the development environment. | No mobile setup, but no physical freedom. This remains the default substitute. | User research required. |
 
-- **Canonical Product Name**: MobileAgenticIDE
-- **Daemon Name**: agent-host
-- **Protocol version**: protocol-v1
-- **Runtime model**: first-party harness plus adapter-based integrations
-- **Workspace targets**: laptop, VPS, managed Vercel Sandbox
-- **Work types**: coding, research, writing, planning, analysis, operations
+## Differentiation Hypotheses
 
-*Use MobileAgenticIDE consistently in all product-facing naming. The daemon and protocol names may remain technical identifiers unless separately renamed.*
+These points are plausible differentiation, not established market facts:
 
-## Existing Visual Brand Audit
+1. A capability-aware interface across more than one supported runtime.
+2. Structured mobile permissions and artifact review instead of a small terminal.
+3. A no-MobileAgenticIDE-relay path for owned environments.
+4. An explicit choice between owned execution and a managed sandbox.
+5. One workspace model that can expand from code to other serious work.
 
-*Based on `design-system/` inspection:*
-- **Logos/Icons**: Unclear/Missing in current view.
-- **Colors**: Defined mathematically via OkLCH scripts in `design-system/scripts/spec/`. (Very consistent theoretically, inconsistent in actual app).
-- **Typography**: Heavily systematized in `theory/` docs, not yet applied.
-- **Spacing/Radius**: Exists in `tokens/`, governed strictly.
-- **Overall**: The visual brand is currently in a state of mid-migration ("in handoff").
+Each hypothesis needs a named competitor comparison, a verified implementation, and user evidence before it becomes a strong external claim.
 
-## Brand Design Implications
+## Resolved Product and Brand Tensions
 
-- **Visual Personality**: Should reflect the "Calm" and "Structured" personality.
-- **Density**: Because it displays code and terminal output, the UI needs comfortable padding but high information density (monospaced fonts for paths, distinct visual boundaries for permission cards).
-- **Color Personality**: Muted, dark-mode first (terminal aesthetic), with strict, highly visible semantic colors for destructive actions (e.g., Red for Deny, Green/Blue for Allow).
-- **Motion**: Instantaneous. The pure timeline reducer is fast; UI animations should not slow down the developer.
+- **Broad promise versus technical setup:** Lead launch acquisition with technically capable software builders. Expand the audience only as onboarding and managed workspaces improve.
+- **Platform direction versus runtime parity:** Publish capability differences. Never simulate features an adapter cannot provide.
+- **Owned-host privacy versus hosted convenience:** Treat these as separate modes with separate disclosures.
+- **Coding depth versus non-coding range:** Keep coding as the launch wedge. Describe non-coding workflows as they become verified.
+- **Mobile category versus platform support:** State iOS availability directly. Do not imply Android support from the word “mobile.”
+
+## Market Maintenance Rule
+
+Review this section at least quarterly and before a launch, fundraising document, press release, or comparison page. Every competitor statement must include a review date and a primary source. Remove claims that cannot be revalidated.
 
 ## Brand System Requirements
 
-The eventual design system (which is already partly built in `design-system/`) requires:
-- App Icon / Logo.
-- Typography (UI sans-serif + high legibility monospace).
-- Color system (Support for dark/light mode, semantic alerts for permissions).
-- UI Component Tokens (Cards, Buttons, Terminal blocks).
-- Runtime and workspace switching states, including capability differences between adapters.
-- Workspace templates and artifact states for coding and non-technical work.
-- App Store / Marketing screenshots.
-*(We do not need presentation templates, social media assets, or billboard guidelines right now).*
+- App icon and logo.
+- Accessible light and dark color systems.
+- UI and monospaced typography.
+- Components for permissions, artifacts, diffs, terminal details, runtime state, and workspace state.
+- Visible capability and trust-boundary differences.
+- App Store and product screenshots that show only verified features.
 
+No design-system implementation is claimed in this checkout.

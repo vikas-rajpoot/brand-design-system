@@ -1,121 +1,132 @@
-# Brand & Positioning
+# Brand and Positioning
 
-## Positioning
-
-### Territory 1: Productivity-first (The Catalyst)
-* **Target audience**: Fast-moving solo developers and indie hackers.
-* **Primary problem**: Waiting for agents to finish kills momentum.
-* **Market category**: AI Developer Tool.
-* **Core promise**: Never block on your AI agent again.
-* **Reason to believe**: Direct push notifications and mobile permissions mean you can keep the workflow moving from anywhere.
-* **Brand personality**: Energetic, fast, sharp.
-* **Advantages**: Highly appealing to users focused on shipping speed.
-
-### Territory 2: Privacy-first (The Fortress)
-* **Target audience**: Enterprise engineers and security-conscious developers.
-* **Primary problem**: Running agents via cloud proxies exposes proprietary code.
-* **Market category**: Secure Agent Infrastructure.
-* **Core promise**: 100% private agent control.
-* **Reason to believe**: Direct SSH/Tailscale tunneling; no developer-operated backend.
-* **Brand personality**: Calm, impenetrable, professional.
-* **Advantages**: Solves the biggest enterprise objection to AI tools.
-
-### Territory 3: Control-first (The Command Center)
-* **Target audience**: Senior engineers and tech leads managing complex refactors.
-* **Primary problem**: CLI agent output is chaotic and hard to oversee safely.
-* **Market category**: Agent Orchestration Client.
-* **Core promise**: Total clarity and control over autonomous work.
-* **Reason to believe**: Tap-to-approve permission cards and subagent observability UI.
-* **Brand personality**: Analytical, structured, confident.
-* **Advantages**: Directly maps to the unique UI of the product.
-
-### Territory 4: Platform-first (The Mobile IDE)
-* **Target audience**: Engineers who use multiple agent runtimes and move work between local and remote environments.
-* **Primary problem**: Agent tools and execution environments fragment the development workflow across separate interfaces.
-* **Market category**: Mobile IDE / Agent Control Plane.
-* **Core promise**: One mobile workspace for any agent and any place your code runs.
-* **Reason to believe**: A first-party agent harness, runtime adapters, and consistent workspace primitives for laptop, VPS, and managed sandbox connections.
-* **Brand personality**: Composed, capable, extensible.
-* **Advantages**: Creates the strongest long-term category and product moat.
-* **Trade-offs**: Requires a credible integration strategy and must avoid implying every runtime has identical capabilities.
-
-### Territory 5: General Agent Workspace (The Work Surface)
-* **Target audience**: People who want to direct serious work from a phone, whether the work is code, research, writing, planning, analysis, or operations.
-* **Primary problem**: Agent-assisted work is scattered across specialized apps, machines, and disconnected approval loops.
-* **Market category**: Mobile Agent Workspace / Agent Control Plane.
-* **Core promise**: One calm mobile surface for any agent, task, and workspace.
-* **Reason to believe**: A first-party harness, runtime adapters, shared artifacts and approvals, and connections to laptops, VPS instances, and managed sandboxes.
-* **Brand personality**: Calm, capable, open-ended, precise.
-* **Advantages**: Expands the addressable product without discarding the strong coding wedge.
-* **Trade-offs**: Must avoid becoming a vague general-purpose assistant; concrete work surfaces and permission boundaries remain essential.
+**Status:** Approved direction  
+**Last reviewed:** 2026-09-24  
+**Owner:** Product and Brand
 
 ## Positioning Statement
 
-> **[REQUIRES FOUNDER APPROVAL]**
-> **Candidate 1**: For people who want to direct serious work from anywhere, MobileAgenticIDE is the mobile agent workspace that connects to a laptop, VPS, or managed sandbox and lets them use the runtime they choose, unlike single-purpose AI apps, because its native surface is built around extensible agents, artifacts, and approvals.
-> 
-> **Candidate 1**: For software engineers who need to monitor long-running tasks, MobileAgenticIDE is the AI agent client that provides un-tethered control, unlike standard SSH apps, because it renders local terminal events into structured, native iOS permission cards.
-> 
-> **Candidate 2**: For security-conscious developers running local coding agents, MobileAgenticIDE is the mobile remote that provides direct, private control, unlike cloud-proxied AI wrappers, because it connects directly to your own Mac over your local network.
->
-> **Candidate 3**: For fast-moving developers who hate breaking flow, MobileAgenticIDE is the companion app that lets you step away from the desk, unlike local CLI tools, because you can steer and approve agent work from your phone.
+For technically capable people who want to direct serious work away from their desk, MobileAgenticIDE is a mobile agent workspace that connects to supported laptops, VPS instances, and managed sandboxes. It provides a consistent surface for supported agent runtimes, artifacts, and approvals while making capability and trust boundaries visible.
+
+## Positioning Components
+
+- **Launch audience:** Software builders already using coding agents.
+- **Expansion audience:** Researchers, writers, analysts, and operators using prepared workspaces and bounded capabilities.
+- **User-facing category:** Mobile Agent Workspace.
+- **Architectural category:** Agent Control Plane.
+- **Flagship mode:** Mobile IDE.
+- **Primary problem:** Agent work is tied to machines and fragmented interfaces.
+- **Core promise:** Direct supported agent work from a phone with clear context and control.
+- **Reason to believe:** Structured permissions and artifacts, a reference harness, capability-aware adapters, resilient sessions, and explicit owned-host versus hosted-sandbox modes.
 
 ## Mission
 
-**Candidate 1**: To un-tether software engineers from their desks by making autonomous coding observable and steerable from anywhere.
-**Candidate 2**: To bridge the gap between local developer environments and mobile freedom, without compromising privacy.
-**Candidate 3**: To give developers absolute control and clarity over their AI coding agents.
+Make agentic work portable by giving people one clear mobile interface for supported agents, workspaces, and execution environments.
 
-## Vision (PROPOSED)
+## Vision
 
-* **3-Year Vision**: MobileAgenticIDE becomes the default mobile workspace for local and remote agent workflows, with coding as a flagship use case and adapters for leading agent runtimes.
-* **5-Year Vision**: MobileAgenticIDE becomes a persistent mobile control plane across laptops, VPS instances, managed sandboxes, CI/CD agents, research environments, and other workspaces.
-* **Long-Term Vision**: To build the ultimate interface for human-agent collaboration in software engineering, making geography and hardware irrelevant to creative output.
-
-## Product Principles
-
-1. **Host is Truth**: The host daemon owns the state; the client is just a pure projection of the event log. (Derived from the timeline reducer architecture).
-2. **Private by Default**: No analytics, no telemetry, no middleman. If the app can't talk directly to the host, it doesn't talk at all.
-3. **Structured over Streamed**: We don't just dump raw stdout to the user. We parse agent intent (tools, files, errors) into explicit, actionable UI cards.
-4. **Resilient to Disconnects**: Mobile networks drop. The protocol must always gracefully replay missed events and deduplicate without flickering. (Derived from the `lastSeq` replay mechanism).
-5. **Capabilities are Earned**: Destructive access (like the terminal) requires explicit enablement by the user on the host. Security is opt-in.
-6. **Runtime Choice is Yours**: The product should make the workspace consistent while leaving the developer free to choose the agent runtime.
+MobileAgenticIDE becomes the default mobile workspace for human-directed agent work, beginning with software development and expanding to research, writing, planning, analysis, and bounded operations.
 
 ## Brand Promise
 
-* **Primary Promise**: You can build from anywhere, with the agent and workspace that fit the job, while staying in control of every consequential step.
-* **Supporting Promises**: Direct laptop and VPS connections do not require our servers. Managed sandbox use is explicit and isolated. Your battery won't be drained by background polling.
-* **Promises we should NOT make yet**: "Guaranteed bug-free code", "Universal support for all AI models" (until broad agent-framework support exists).
+MobileAgenticIDE will show the context available for important agent actions and keep the user in control of approvals the product can mediate.
+
+This promise does not mean that the product can observe every side effect, guarantee safe output, or reverse an approved action.
+
+## Messaging Pillars
+
+### 1. Serious Work From Your Phone
+
+- **Idea:** Start, steer, inspect, and approve meaningful work away from a desk.
+- **Benefit:** Keep work moving without shrinking a desktop terminal onto a phone.
+- **Proof requirement:** A verified mobile workflow covering session start, progress, review, decisions, and recovery.
+
+### 2. Supported Agents, One Workspace Model
+
+- **Idea:** Use the same core concepts across compatible runtimes without pretending they are identical.
+- **Benefit:** Less relearning and less lock-in to one interface.
+- **Proof requirement:** A published capability matrix and tested adapters.
+
+### 3. Private by Design
+
+- **Idea:** Offer an owned-host path that does not require a MobileAgenticIDE-operated traffic relay.
+- **Benefit:** Users can keep execution and credentials in environments they control.
+- **Proof requirement:** Documented data flows, credential storage, network behavior, and limitations.
+
+### 4. Native Clarity
+
+- **Idea:** Turn agent events, requested actions, files, and results into a structured mobile interface.
+- **Benefit:** Faster comprehension and more informed decisions.
+- **Proof requirement:** Usability evidence showing that users understand state and permission impact.
+
+### 5. Code and Beyond
+
+- **Idea:** Reuse the same context, artifact, review, and approval model for non-code work.
+- **Benefit:** One workspace model can support more than software development.
+- **Proof requirement:** At least one verified non-coding workflow before using broad external claims.
 
 ## Brand Personality
 
-* **Professional ←→ Playful**: *Professional*. We handle people's source code and root terminals.
-* **Minimal ←→ Expressive**: *Minimal*. The UI should stay out of the way of the code and the agent's work.
-* **Technical ←→ Human**: *Technical but legible*. We don't hide the complexity (we show bash commands), but we make it readable.
-* **Premium ←→ Accessible**: *Premium*. It should feel like a high-end, native Apple utility (like Things 3 or linear), not a hacky terminal wrapper.
-* **Calm ←→ Energetic**: *Calm*. The core value is reducing the anxiety of leaving your desk.
+- **Professional:** The product handles code, files, credentials, and commands.
+- **Minimal:** The interface prioritizes work state and decisions.
+- **Technical but legible:** Show precise details without assuming every user lives in a terminal.
+- **Premium:** Deliberate, reliable, and native to the supported mobile platform.
+- **Calm:** Organize complex activity instead of amplifying urgency.
 
-**Core Traits**:
-1. Confident — but never arrogant.
-2. Transparent — exposing exactly what the agent wants to do.
-3. Native — feeling like it belongs on iOS.
-4. Secure — but not overly alarmist.
-5. Calm — organizing chaos into clean cards.
+Core traits: confident, transparent, precise, secure-minded, and calm.
 
 ## Brand Voice
 
-* **Voice characteristics**: Direct, clear, unembellished.
-* **Tone**: Helpful but restrained. We don't use emojis or exclamation points excessively.
-* **Vocabulary**: Precise technical terms (e.g., "Daemon", "SSH", "Local Network", "Subagent").
-* **Error message style**: Actionable and exact. (e.g., "Host unreachable on port 8787" instead of "Oops! Something went wrong").
-* **Marketing style**: Feature-led and privacy-led. Show the work surface, explain the architecture, and demonstrate concrete coding and non-coding workflows.
+- Use short, direct sentences.
+- Name the action, target, and consequence.
+- Explain technical terms when speaking to expansion audiences.
+- Use restrained language. Avoid hype, fear, and unsupported superlatives.
+- Write errors as actionable diagnoses: “Host unreachable on port 8787. Check the host service and network route.”
 
-### We sound like:
-* A senior engineer explaining how a reliable system works.
-* Apple's developer documentation (precise, native).
+We should sound like a senior engineer explaining a reliable system. We should not sound like a generic chatbot, a terminal pasted into a phone, or an autonomy-at-all-costs product.
 
-### We do NOT sound like:
-* A hype-driven crypto startup.
-* A consumer social app ("Hey guys! Check out this new feature! 🚀").
-* A generic ChatGPT wrapper ("Supercharge your productivity!").
+## Platform Language
 
+The documented client direction is iOS-first. Use “mobile” for the product category, but do not imply Android availability until it is approved and verified. “Native” describes the user experience; technical framework names belong in engineering documentation, not the value proposition.
+
+## Approved Terminology
+
+- Agent
+- Agent harness
+- Compatible runtime
+- Adapter
+- Host
+- Workspace
+- Artifact
+- Subagent
+- Client
+- Managed sandbox
+- Allow / Deny
+- Direct-host mode
+- Hosted-sandbox mode
+
+Use `agent-host` and `protocol-v1` only as technical identifiers after their specifications are linked.
+
+## Claims That Require Qualification
+
+| Avoid | Use instead |
+|---|---|
+| Any agent | Supported or compatible agents |
+| Any workspace | Supported laptops, VPS instances, and managed sandboxes |
+| 100% private / absolute privacy | Private by design, with documented mode-specific boundaries |
+| Zero risk | Reduces specific risks; limitations are documented |
+| Direct over Tailscale | End-to-end encrypted; the path may be peer-to-peer or relayed by Tailscale |
+| No servers or accounts required | No MobileAgenticIDE relay is required for verified direct-host modes |
+| Always know exactly what the agent is doing | See structured activity and approval requests exposed by the runtime |
+| Full control | Control the actions and permissions the runtime exposes |
+| Undo an approval | Recover through version control, snapshots, backups, or runtime-specific mechanisms |
+
+## Visual Direction
+
+- Calm, high-density layouts with comfortable spacing.
+- Strong hierarchy for requested actions, diffs, errors, and status.
+- Monospaced text for commands and paths; readable UI text elsewhere.
+- Semantic colors that do not rely on color alone.
+- Motion that communicates state without delaying interaction.
+- Explicit visual distinction between owned-host and hosted-sandbox modes.
+- Accessibility targets for text size, contrast, touch targets, and screen readers.

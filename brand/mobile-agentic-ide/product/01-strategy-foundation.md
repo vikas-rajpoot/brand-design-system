@@ -1,141 +1,151 @@
 # Product Strategy Foundation
 
-## Product Name
-**Canonical Name**: MobileAgenticIDE
+**Status:** Approved direction  
+**Last reviewed:** 2026-09-24  
+**Owner:** Product
 
-## One-Sentence Product Definition
+## Product Definition
 
-**Candidate 1 (Platform-focused):**
-> MobileAgenticIDE is a mobile agent workspace that lets people work from anywhere by connecting one native interface to their laptop, VPS, or managed sandbox and running the agent harness or compatible agents they choose.
+**Product:** MobileAgenticIDE  
+**Category:** Mobile Agent Workspace / Agent Control Plane / Mobile IDE  
+**One-line definition:** A mobile agent workspace that lets people connect to a laptop, VPS, or managed Vercel Sandbox and complete technical or non-technical work with MobileAgenticIDE's own harness or compatible agents.
 
-**Candidate 2 (Control-focused):**
-> MobileAgenticIDE is a mobile control plane that lets people prompt, create, review, and approve agentic work across their environments without returning to a desk.
+Category hierarchy:
 
-**Candidate 3 (Freedom-focused):**
-> MobileAgenticIDE is the agent workspace that travels with the work, giving people a clear mobile interface for local agents, remote servers, and on-demand sandboxes.
+- **Mobile Agent Workspace:** the category users should remember.
+- **Agent Control Plane:** the architecture that normalizes sessions, artifacts, approvals, and workspace state.
+- **Mobile IDE:** the first and deepest mode, used for software development.
 
-*Recommendation*: Candidate 1 establishes the strongest long-term category and product architecture; Candidate 3 supplies the clearest emotional hook. Coding remains the sharpest technical proof point, not the boundary of the product.
+The definition is the product destination. Release-specific availability is governed by [`05-launch-scope-and-capabilities.md`](05-launch-scope-and-capabilities.md).
 
-## Product Category
-* **Primary**: Mobile Agent Workspace / Agent Control Plane
-* **Secondary**: Mobile IDE / AI Agent Client
-* **Alternative**: Personal agent operating surface.
-*(Recommendation: "Mobile Agent Workspace" is the user-facing category; "Mobile IDE" is the flagship technical mode; "Agent Control Plane" describes the extensible architecture.)*
+## Strategic Choice
+
+MobileAgenticIDE will build a broad agent workspace through a narrow initial wedge:
+
+1. Deliver a strong mobile coding workflow for technically capable users.
+2. Establish the first-party harness as the reference runtime.
+3. Add capability-aware adapters for compatible external agents.
+4. Extend the workspace model from owned laptops and VPS instances to an optional managed Vercel Sandbox.
+5. Reuse the same artifact, context, review, and approval primitives for research, writing, planning, analysis, and carefully bounded operations.
+
+This sequence avoids presenting a broad vision as a day-one feature set.
 
 ## Product Problem
 
-### Primary Problem
-People are physically tethered to a particular screen when running iterative agent workflows because agents require context, approvals, tool access, and monitoring.
+Agent work remains tied to particular machines, runtimes, and interfaces. A person may need to return to a desk to provide context, inspect a change, approve a command, or recover a disconnected session. Mobile SSH exposes the terminal but does not turn agent activity into a clear review and approval workflow.
 
-### Secondary Problems
-- Terminal interfaces for AI agents are dense, linear, and hard to parse on the go.
-- Traditional mobile AI apps (like ChatGPT/Claude) do not provide a unified IDE surface across a user's filesystem, terminal, git repository, and remote workspaces.
-- Agent runtimes are fragmented: developers must learn separate workflows for their own harness, Claude CLI, Codex, GitHub Copilot, and future tools.
-- Non-technical workflows are fragmented too: research, writing, planning, analysis, and operations often require separate tools, files, prompts, and review loops.
-- Relying on a third-party server to proxy terminal commands introduces massive security vulnerabilities.
+The product must address four related problems:
 
-### Current Alternatives
-- Manually sitting at the desk watching the terminal.
-- Using generic SSH clients on mobile (horrible UX, tiny text).
-- Not using agents for long-running tasks.
-- Switching between separate mobile apps or desktop clients for each agent runtime and workspace.
+- **Mobility:** work stops or becomes hard to supervise when the user leaves the primary machine.
+- **Fragmentation:** runtimes and workspace types expose different interaction models.
+- **Clarity:** raw terminal output makes intent, impact, and required action hard to scan on a phone.
+- **Trust:** source code, credentials, commands, and hosted execution cross different security boundaries.
 
-### Pain Points
-- Context switching (breaking flow to check on the agent).
-- Time wasted waiting for an agent to finish a task before leaving the desk.
-- Stress and anxiety about what an agent is doing unattended.
-- Privacy concerns about exposing local environments to cloud proxy servers.
+## Audience
 
-## Target Users
+### Launch Audience
 
-### Primary Audience: The Capable Agent Director
-* **Job-to-be-done**: Wants to start meaningful work, give an agent the right context, and direct or approve progress from a phone.
-* **Pain points**: Being stuck at a desk or switching between fragmented tools and agent interfaces.
-* **Desired outcome**: Uninterrupted velocity and physical freedom.
-* **Frequency of use**: Multiple times daily across active work sessions.
-* **Technical sophistication**: Ranges from technically advanced engineers to capable professionals using prepared workspaces and agents.
-* **Purchase motivation**: Reclaiming personal time.
+The primary launch audience is technically capable software builders who already use coding agents and can operate a laptop or VPS workspace. This includes individual developers, technical founders, and engineering leads.
 
-### Secondary Audiences
-* **Engineer / Tech Lead**: Reviewing code, diffs, tests, and deployments generated by an agent.
-* **Researcher / Writer**: Gathering sources, drafting, revising, and organizing work with agent assistance.
-* **Founder / Operator**: Monitoring recurring tasks, analyzing information, and approving operational actions.
+Their main job is:
 
-### Audience that should NOT currently be targeted
-* Users who need a fully managed, zero-configuration consumer assistant before workspace setup and permission boundaries are simplified.
+> When an agent is working in my development environment, help me start, steer, inspect, and approve its work from my phone without losing context or control.
+
+This audience matches the current setup reality: host installation, networking, credentials, and permission configuration require technical judgment.
+
+### Expansion Audience
+
+Researchers, writers, analysts, operators, and less-technical users become addressable after prepared workspaces, templates, and safer permission boundaries reduce setup cost. They are part of the product direction, not the initial acquisition promise.
+
+### Not a Current Target
+
+Do not position the product as a zero-configuration consumer assistant. Do not target users who cannot assess command, file, credential, or data-sharing consequences until managed setup and guardrails are proven.
 
 ## Jobs To Be Done
 
-1. **When** I start a complex refactor with a local coding agent, **I want to** step away from my laptop, **so that** I can take a break without stalling the agent's progress.
-2. **When** a local coding agent wants to run a destructive shell command, **I want to** clearly see what it's trying to do in a structured UI, **so that** I can approve or deny it with confidence.
-3. **When** I have a sudden idea away from my desk, **I want to** use voice dictation to send a prompt to my local codebase, **so that** the work is done by the time I sit back down.
-4. **When** my agent is working on a long task, **I want to** observe its subagents working in parallel, **so that** I know it's on the right track.
-5. **When** I choose a different agent runtime or execution environment, **I want to** keep the same mobile workspace and controls, **so that** my tools do not dictate how I work.
-6. **When** I need to research, write, plan, analyze, or operate away from my desk, **I want to** give an agent context and review its work from my phone, **so that** the product is useful beyond coding.
+### Launch Jobs
 
-## Core Product Capabilities
+1. Start or continue an agent task away from the primary computer.
+2. Understand what the agent is doing from structured status, files, diffs, tests, and terminal output.
+3. Approve or deny a consequential action with enough context to make an informed choice.
+4. Recover cleanly after a mobile network interruption.
+5. Move between supported hosts without relearning the core mobile workflow.
 
-### 1. Core Experience (Implemented)
-- Native chat UI with streaming responses and markdown.
-- Voice dictation for composing prompts.
-- Model & permission-mode switcher.
-- Demo mode with a mock host.
+### Expansion Jobs
 
-### 2. Remote Control & Steerability (Implemented)
-- Tap-to-approve permission cards for tool execution.
-- Live subagent cards (observability).
-- Terminal visibility.
+1. Use a compatible runtime while retaining the same core workspace concepts.
+2. Create and review non-code artifacts with clear sources, context, and approvals.
+3. Run work in an explicitly hosted and isolated sandbox when an owned host is unsuitable.
 
-### 3. Privacy & Connectivity (Implemented)
-- Direct SSH bootstrap or WebSocket over Tailscale.
-- Device-local keychain storage.
-- No third-party proxy servers (Zero telemetry).
-
-### 4. File & Environment Context (Implemented)
-- In-app file viewer and diff viewer.
-- Git operations interface.
-- Bound to specific `allowedDirs` for security.
-
-### 5. Runtime & Workspace Layer (Strategic Direction)
-- First-party MobileAgenticIDE agent harness for a coherent default experience.
-- Adapter boundary for Claude CLI, Codex, GitHub Copilot, and future agent runtimes.
-- Workspace connections for a developer laptop, VPS, and managed Vercel Sandbox.
-- Shared mobile primitives for prompts, files, artifacts, approvals, reviews, tests, terminal sessions, and deployment state.
-- Workspace templates for coding, research, writing, planning, analysis, and operations.
-
-## Product Value Proposition
+## Value Proposition
 
 ### Functional Value
-Enables people to use one mobile agent workspace to start, direct, review, and complete work across their laptop, VPS, or managed sandbox, without changing interfaces when they change runtimes or work types.
+
+One mobile-native workspace for starting, directing, inspecting, and approving supported agent work across supported environments.
 
 ### Emotional Value
-- **Calm**: No more anxious polling of the terminal.
-- **In control**: Clear permission cards give a sense of mastery over the AI.
-- **Free**: Un-tethers the developer from the physical desk.
+
+- **Calm:** important state and decisions are visible without constant terminal polling.
+- **Control:** permissions show the requested action and its scope.
+- **Freedom:** work can continue when the user steps away from a desk.
 
 ### Economic Value
-- **Time**: Converts idle/waiting time into productive agent time.
-- **Choice**: Keeps the developer's workflow portable across agent runtimes and execution environments.
-- **Range**: Extends the same human-directed agent model from coding into research, writing, planning, analysis, and operations.
 
-## Product Differentiation
+- Reduce idle time while an agent waits for input.
+- Reduce the cost of switching between runtime-specific interfaces.
+- Reuse one workspace model across multiple work types as they become supported.
 
-### Strong Differentiators
-- **Runtime-neutral mobile workspace:** The product can use its own harness or connect to compatible agents through a consistent mobile interface.
-- **Portable execution:** The same workspace model spans a personal laptop, VPS, and managed Vercel Sandbox.
-- **Direct privacy path:** In laptop and VPS modes, the app talks directly to the developer's environment with no intermediary cloud service.
-- **Native UX for Abstract Permissions:** Turning CLI prompts into rich, tappable UI cards is vastly superior to SSH apps.
+## Product Principles
 
-### Supporting Differentiators
-- **SSH Bootstrapping:** Capable of connecting to headless VPS environments natively.
-- **Pure Local Reducer:** The timeline pure reducer ensures instantaneous local echo and bulletproof reconnection without UI flickering.
-- **Adapter boundary:** Agent-specific protocol details stay behind runtime adapters instead of shaping the whole mobile product.
+1. **The host owns execution truth.** The client projects authoritative host events and must reconcile after disconnection.
+2. **Least privilege by default.** High-impact capabilities require explicit enablement. Security is not optional.
+3. **Structured over raw.** Convert agent intent and results into inspectable cards and artifacts while retaining access to raw details.
+4. **Designed for interruption.** Replay, deduplication, and recovery are product requirements, not edge cases.
+5. **Capabilities are explicit.** The interface must show when a runtime or workspace cannot support a feature.
+6. **Runtime choice without false parity.** A shared workspace model must not hide meaningful differences between agents.
+7. **Hosted mode is visibly different.** A managed sandbox has different data, identity, retention, and cost boundaries from an owned host.
+8. **Human approval is not rollback.** Permission prompts reduce risk but do not guarantee reversibility.
 
-### Weak Differentiators
-- **Markdown / Chat UI:** Standard across all LLM apps.
+## Product Scope
 
-### Claims Requiring Validation
-- **Battery / Network efficiency:** We assume NDJSON over WebSocket is efficient, but mobile network drops could affect reliability if not tested extensively.
-- **Runtime parity:** Claude CLI, Codex, GitHub Copilot, and future adapters may expose different permission, streaming, filesystem, and session semantics.
-- **Sandbox parity:** The managed Vercel Sandbox must provide clear isolation, lifecycle, persistence, and cost behavior before it is marketed as equivalent to a personal host.
+### Flagship Mode
 
+Mobile software development: prompts, streaming activity, permissions, files, diffs, tests, terminal visibility, and session recovery.
+
+### Runtime Model
+
+- The MobileAgenticIDE harness is the reference implementation.
+- External agents integrate through a minimum capability contract.
+- The UI exposes capability differences instead of simulating unsupported parity.
+- An agent is called “compatible” only after it passes the contract and release evidence gate.
+
+### Workspace Model
+
+- **Owned laptop:** direct-host mode.
+- **Owned or controlled VPS:** direct-host mode with remote bootstrap and stricter exposure guidance.
+- **Managed Vercel Sandbox:** optional hosted mode, gated by the requirements in [`06-trust-and-data-flows.md`](06-trust-and-data-flows.md).
+
+### Work Types
+
+Coding is the launch wedge. Research and writing are the first expansion candidates because their artifacts and review loops map cleanly to the workspace model. Planning and analysis follow. Operational actions require a stricter permission and audit model before they can be first-class.
+
+## Non-Goals
+
+- Universal compatibility with every agent, model, tool, or host.
+- A full terminal emulator as the primary experience.
+- Fully autonomous execution without meaningful user controls.
+- A promise that approval makes an action safe or reversible.
+- Identical behavior across direct-host and hosted-sandbox modes.
+- Android availability unless it is separately approved and verified.
+
+## Differentiation To Validate
+
+The intended differentiation is the combination of:
+
+- A structured mobile review and approval surface.
+- A capability-aware workspace spanning multiple supported runtimes.
+- A no-MobileAgenticIDE-relay option for owned laptop and VPS modes.
+- An explicit choice between owned execution and a managed hosted environment.
+- Shared artifact and approval primitives that can extend beyond coding.
+
+These are hypotheses until supported by release evidence, user research, and dated competitor comparisons. Success measures are defined in [`05-launch-scope-and-capabilities.md`](05-launch-scope-and-capabilities.md).

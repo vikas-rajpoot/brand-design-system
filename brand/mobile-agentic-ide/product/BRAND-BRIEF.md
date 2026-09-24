@@ -1,68 +1,68 @@
 # Brand Brief
 
-**Product**: MobileAgenticIDE
-**Category**: Mobile Agent Workspace / Agent Control Plane / Mobile IDE
-**One-line definition**: A mobile agent workspace that lets people connect to a laptop, VPS, or managed Vercel Sandbox and complete technical or non-technical work with MobileAgenticIDE's own harness or compatible agents.
+**Status:** Approved summary  
+**Last reviewed:** 2026-09-24
 
-**Primary audience**: Technically capable people who want to direct agentic work from anywhere, across personal devices, remote machines, and managed sandboxes.
-**Secondary audience**: Engineers, researchers, writers, operators, founders, and teams reviewing or approving agent-generated work.
+**Product:** MobileAgenticIDE  
+**Category:** Mobile Agent Workspace / Agent Control Plane / Mobile IDE  
+**One-line definition:** A mobile agent workspace that lets people connect to a laptop, VPS, or managed Vercel Sandbox and complete technical or non-technical work with MobileAgenticIDE's own harness or compatible agents.
 
-**Primary problem**: People are tethered to a specific machine, app, or agent interface, while their files, tools, execution environments, and agent workflows remain fragmented across laptops, VPS instances, and cloud sandboxes.
+The category has a clear hierarchy: **Mobile Agent Workspace** is the user-facing category, **Agent Control Plane** is the architecture, and **Mobile IDE** is the flagship coding mode. The definition states the product direction; release availability comes from the capability matrix.
 
-**Core value proposition**: Use one mobile-native workspace to prompt, inspect, create, edit, run, review, and approve work across your laptop, VPS, or managed Vercel Sandbox, using our agent harness or compatible runtimes such as Claude CLI, Codex, GitHub Copilot, and future integrations.
+**Launch audience:** Technically capable software builders who already use coding agents and want to direct work from a phone across an owned laptop or VPS.
 
-**Primary differentiation**: A native mobile IDE with a runtime-neutral agent layer, direct private connections for owned environments, and a clear path to an optional managed sandbox.
+**Expansion audience:** Researchers, writers, analysts, operators, and less-technical users after prepared workspaces and safer permission boundaries are verified.
 
-**Brand promise**: You will always know exactly what your agent is doing, and you control its next step.
+**Primary problem:** Agent work remains tied to particular machines, runtimes, and interfaces. Important context, review, and approval loops often pull the user back to a desk.
 
-**Mission**: To make agentic work portable by giving people one clear mobile interface for every agent, workspace, and execution environment.
+**Core value proposition:** One structured mobile surface for starting, directing, inspecting, and approving supported agent work across supported execution environments.
 
-**Vision**: To become the default mobile control surface for human-directed agentic work, from software development to research, writing, planning, and operations.
+**Primary differentiation to validate:** A capability-aware workspace across supported runtimes, structured mobile permissions and artifacts, a no-MobileAgenticIDE-relay option for owned hosts, and an explicit path to managed execution.
 
-**Product principles**:
-1. Host is Truth.
-2. Private by Default.
-3. Structured over Streamed.
-4. Resilient to Disconnects.
-5. Capabilities are Earned.
-6. Runtime Choice is Yours.
+**Brand promise:** Show the context available for important agent actions and keep the user in control of approvals the product can mediate.
 
-**Brand personality**: Professional, Minimal, Technical but legible, Premium, Calm.
+**Mission:** Make agentic work portable by giving people one clear mobile interface for supported agents, workspaces, and execution environments.
 
-**Voice**: Direct, clear, unembellished. Like a senior engineer explaining a reliable system.
+**Vision:** Become the default mobile workspace for human-directed agent work, beginning with software development and expanding to research, writing, planning, analysis, and bounded operations.
 
-**Messaging pillars**:
-1. A Complete Agent Workspace in Your Hand
-2. Any Agent, Any Workspace
-3. Private by Design
-4. Native Clarity
+**Product principles:**
 
-**Trust principles**:
-- Verifiable local-only network traffic (Tailscale/SSH).
-- Device-local keys.
-- Explicit enablement required for destructive host access.
-- Direct laptop and VPS connections do not require a MobileAgenticIDE proxy.
-- Managed sandbox use is explicit, isolated, and clearly identified as a hosted execution path.
+1. The host owns execution truth.
+2. Least privilege is the default.
+3. Structured information is better than undifferentiated output.
+4. Disconnection and recovery are normal product states.
+5. Runtime and workspace capabilities are explicit.
+6. Runtime choice must not hide capability differences.
+7. Hosted mode is visibly different from owned-host mode.
+8. Approval is not rollback.
 
-**Visual direction**:
-- Muted, terminal-inspired dark modes with strict, highly visible semantic colors for permissions.
-- High information density with comfortable padding.
-- Fast, unblocked motion.
+**Brand personality:** Professional, minimal, technical but legible, premium, and calm.
 
-**Things the brand should NEVER feel like**:
-- A generic cloud AI wrapper.
-- A hype-driven startup.
-- A chaotic SSH window.
-- A coding-only product that excludes other forms of serious work.
+**Voice:** Direct, clear, precise, and restrained. Explain the action, target, consequence, and recovery path.
 
-**Approved terminology**: 
-- Daemon, Agent, Agent Harness, Runtime, Adapter, Host, Workspace, Subagent, Client, Sandbox, Allow/Deny.
+**Messaging pillars:**
 
-**Avoided terminology**: 
-- Fully autonomous, Our servers, Set-and-forget, ChatGPT alternative.
+1. Serious Work From Your Phone.
+2. Supported Agents, One Workspace Model.
+3. Private by Design.
+4. Native Clarity.
+5. Code and Beyond.
 
-**Current unresolved decisions**:
-- Which agent runtimes receive first-class adapters at launch: own harness, Claude CLI, Codex, GitHub Copilot, or another order.
-- Exact capability and isolation model for the managed Vercel Sandbox.
-- Future monetization strategy for hosted sandbox capacity and premium integrations.
+**Trust principles:**
 
+- Make owned-host and hosted-sandbox boundaries explicit.
+- Require limited, explicit enablement for high-impact access.
+- Disclose where credentials, files, prompts, logs, and artifacts travel.
+- Explain that runtimes and model providers have their own data practices.
+- Use verifiable, mode-specific claims instead of absolute privacy or security language.
+- Provide recovery guidance without promising universal Undo.
+
+**Launch scope:** iOS-first mobile coding with the first-party harness as the reference runtime and owned laptop/VPS workspaces as the initial execution targets. Every current feature claim requires linked release evidence.
+
+**Gated expansion:** Compatible runtime adapters, managed Vercel Sandbox, verified non-coding workflows, and any additional mobile platform.
+
+**Approved terminology:** Agent, Agent Harness, Compatible Runtime, Adapter, Host, Workspace, Artifact, Subagent, Client, Managed Sandbox, Direct-Host Mode, Hosted-Sandbox Mode, Allow, Deny.
+
+**Avoid:** Any agent, any workspace, fully autonomous, 100% private, zero risk, completely secure, set-and-forget, universal compatibility, guaranteed rollback, or no accounts required without a mode-specific qualifier.
+
+**Source documents:** [`README.md`](README.md), [`01-strategy-foundation.md`](01-strategy-foundation.md), [`04-decisions-and-questions.md`](04-decisions-and-questions.md), [`05-launch-scope-and-capabilities.md`](05-launch-scope-and-capabilities.md), and [`06-trust-and-data-flows.md`](06-trust-and-data-flows.md).
