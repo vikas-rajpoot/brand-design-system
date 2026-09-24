@@ -226,8 +226,10 @@ done
 # --- the watcher is part of the contract, so put it back if it went missing
 WATCHER_PLIST="$HOME/Library/LaunchAgents/com.vikas.brand-design-system.agent-sync.plist"
 if [[ ! -f "$WATCHER_PLIST" ]] && command -v launchctl >/dev/null 2>&1; then
-  change "watcher missing — reinstalling"
-  if (( CHECK_ONLY == 0 )); then
+  if (( CHECK_ONLY )); then
+    note "  NOTE   watcher not installed (optional): .agents/watch.sh --install"
+  else
+    change "watcher missing — reinstalling"
     "$ROOT/.agents/watch.sh" --install >/dev/null 2>&1 || note "  WARN   could not reinstall the watcher"
   fi
 fi

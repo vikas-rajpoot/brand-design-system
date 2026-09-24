@@ -1,15 +1,19 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Brand AI-Ready Specification",
+  "description": "Format of brand/<slug>/18-ai-ready-spec/brand-spec.json. Check it with: node .agents/scripts/brand-check.mjs <file> (which also checks links to docs and tokens).",
   "type": "object",
-  "required": ["specVersion", "slug", "foundation", "tokens"],
+  "additionalProperties": false,
+  "required": ["specVersion", "slug", "foundation", "tokens", "subsystems"],
   "properties": {
+    "$schema": { "type": "string" },
     "specVersion": { "type": "integer", "minimum": 1 },
     "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
     "changelog": {
       "type": "array",
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "required": ["version", "summary"],
         "properties": {
           "version": { "type": "integer" },
@@ -19,36 +23,41 @@
     },
     "foundation": {
       "type": "object",
+      "additionalProperties": false,
       "required": ["name", "positioning", "audience", "personality", "voice"],
       "properties": {
-        "name": { "type": "string" },
-        "positioning": { "type": "string" },
+        "name": { "type": "string", "minLength": 1 },
+        "positioning": { "type": "string", "minLength": 1 },
         "audience": { "type": "array", "items": { "type": "string" } },
         "personality": { "type": "array", "items": { "type": "string" } },
-        "voice": { "type": "string" }
+        "values": { "type": "array", "items": { "type": "string" } },
+        "voice": { "type": "string", "minLength": 1 }
       }
     },
     "tokens": {
+      "description": "An exact copy of 04-design-tokens/tokens.json",
+      "$ref": "tokens.schema.json"
+    },
+    "voice": {
       "type": "object",
-      "description": "Mirrors 04-design-tokens/tokens.json",
-      "required": ["schemaVersion", "tokens"],
+      "additionalProperties": false,
+      "required": ["traits", "doc"],
       "properties": {
-        "schemaVersion": { "type": "integer" },
-        "tokens": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": ["id", "name", "layer", "category", "value"],
-            "properties": {
-              "id": { "type": "string" },
-              "name": { "type": "string" },
-              "layer": { "enum": ["primitive", "semantic", "component"] },
-              "category": { "type": "string" },
-              "value": {},
-              "reference": { "type": "string" },
-              "theme": { "enum": ["light", "dark"] }
-            }
-          }
+        "traits": { "type": "array", "items": { "type": "string" } },
+        "rules": { "type": "array", "items": { "type": "string" } },
+        "doc": { "type": "string", "description": "Path relative to brand/<slug>/, e.g. 15-brand-voice-and-copy/brand-voice-and-copy.md" }
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "doc", "tokens"],
+        "properties": {
+          "name": { "type": "string" },
+          "doc": { "type": "string", "description": "Path relative to brand/<slug>/" },
+          "tokens": { "type": "array", "items": { "type": "string" }, "description": "Token names this component uses" }
         }
       }
     },
@@ -57,6 +66,7 @@
       "description": "Physical reproduction equivalents declared in 21-corporate-visual-identity/production-specs.md. Each entry must map to a hex already present in 02-color-system; it never introduces a new brand color.",
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "required": ["tokenId", "hex"],
         "properties": {
           "tokenId": { "type": "string", "description": "Primitive color token this physical value reproduces" },
@@ -78,7 +88,8 @@
     },
     "subsystems": {
       "type": "object",
-      "description": "Map of folder name -> relative doc path, for every generated subsystem beyond foundation/tokens",
+      "description": "Map of folder name -> main doc path (relative to brand/<slug>/) for every approved subsystem",
+      "propertyNames": { "pattern": "^\\d\\d-[a-z-]+$" },
       "additionalProperties": { "type": "string" }
     }
   }

@@ -1,0 +1,31 @@
+{
+  "description": "Brand OS guard: keeps brand/*/options/ append-only and brand files valid. Trust it once with /hooks.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "apply_patch|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "r=\"$(git rev-parse --show-toplevel 2>/dev/null)\"; [ -f \"$r/.agents/scripts/brand-guard.sh\" ] || exit 0; exec sh \"$r/.agents/scripts/brand-guard.sh\" pre",
+            "timeout": 10,
+            "statusMessage": "Checking brand rules"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "apply_patch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "r=\"$(git rev-parse --show-toplevel 2>/dev/null)\"; [ -f \"$r/.agents/scripts/brand-guard.sh\" ] || exit 0; exec sh \"$r/.agents/scripts/brand-guard.sh\" post",
+            "timeout": 10,
+            "statusMessage": "Checking brand files"
+          }
+        ]
+      }
+    ]
+  }
+}

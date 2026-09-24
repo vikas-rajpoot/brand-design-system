@@ -19,8 +19,8 @@ When authoring or modifying `brand/**/04-design-tokens/tokens.json`:
   1. `primitive`: Raw values only (`color.blue.500 = #2563eb`, `space.4 = 16px`).
   2. `semantic`: References a single primitive (`color.bg.brand -> color.blue.500`). Must provide both `light` and `dark` themes for colors.
   3. `component`: References a single semantic token (`button.primary.bg -> color.bg.brand`).
-- **Naming**: `category.role.variant` (e.g. `color.text.muted`, `radius.card`, `shadow.md`).
-- **Validation**: No orphaned references, cyclic dependencies, or duplicate token names.
+- **Naming**: `category.role.variant` (e.g. `color.text.muted`, `radius.card`, `shadow.md`). A name repeats only as a light/dark pair; every `id` is unique.
+- **Format & Validation**: Follow [tokens.schema.json](_template/tokens.schema.json) and check with `node .agents/scripts/brand-check.mjs <file>` (no orphaned references, wrong layers, or duplicate ids). Generate `tokens.css` and the DTCG files with `node .agents/scripts/tokens-export.mjs <slug>`; never hand-edit them.
 
 ## Brand Documentation Conventions
 

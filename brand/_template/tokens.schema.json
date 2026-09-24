@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "tokens.schema.json",
+  "title": "Brand OS design tokens",
+  "description": "Format of brand/<slug>/04-design-tokens/tokens.json and its drafts in options/. Check files with: node .agents/scripts/brand-check.mjs <file>",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "tokens"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "type": "integer", "enum": [1] },
+    "tokens": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/token" } }
+  },
+  "definitions": {
+    "name": {
+      "type": "string",
+      "description": "Lowercase dot-separated segments, e.g. color.text.muted",
+      "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+$"
+    },
+    "token": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "layer", "category"],
+      "properties": {
+        "id": { "$ref": "#/definitions/name", "description": "The name, plus .light or .dark for themed tokens" },
+        "name": { "$ref": "#/definitions/name" },
+        "layer": { "enum": ["primitive", "semantic", "component"] },
+        "category": {
+          "enum": ["color", "space", "size", "radius", "border", "shadow", "font", "motion", "breakpoint", "layers", "opacity"]
+        },
+        "value": { "type": ["string", "number", "array"], "description": "Primitives only" },
+        "reference": { "$ref": "#/definitions/name", "description": "Semantic and component tokens only" },
+        "theme": { "enum": ["light", "dark"], "description": "Semantic tokens only" },
+        "description": { "type": "string" },
+        "deprecated": { "type": ["boolean", "string"] }
+      },
+      "allOf": [
+        {
+          "if": { "required": ["layer"], "properties": { "layer": { "enum": ["primitive"] } } },
+          "then": { "required": ["value"], "properties": { "reference": false, "theme": false } },
+          "else": { "required": ["reference"], "properties": { "value": false } }
+        },
+        {
+          "if": { "required": ["layer"], "properties": { "layer": { "enum": ["component"] } } },
+          "then": { "properties": { "theme": false } }
+        }
+      ]
+    }
+  }
+}

@@ -14,13 +14,17 @@ description: 'Use when producing the structured, machine-readable brand-spec.jso
   schema at [brand/_template/ai-ready-spec.schema.json](../../../brand/_template/ai-ready-spec.schema.json)
 
 ## Procedure
-1. Aggregate: foundation summary, full token set (from `04-design-tokens/tokens.json`), color/type
-   references, voice rules summary, component list with token bindings, and links back to the
-   human-readable doc for each section.
+1. Aggregate, using exactly the fields in the schema (doc paths are relative to `brand/<slug>/`):
+   - `foundation`: `name`, `positioning`, `audience`, `personality`, `values`, `voice` from `00-brand-foundation`.
+   - `tokens`: an exact copy of `04-design-tokens/tokens.json`.
+   - `voice`: `traits`, `rules`, and `doc` from `15-brand-voice-and-copy`, if approved.
+   - `components`: one entry per `06-ui-design-system` component: `name`, `doc`, and the token names it uses.
+   - `subsystems`: folder name -> main doc path for every approved subsystem.
 2. If `21-corporate-visual-identity/production-specs.md` exists, project its colour-mapping table
    into the `printColors` array, with each entry pointing at the primitive token it reproduces.
-3. Validate against the schema in `brand/_template/ai-ready-spec.schema.json` — every referenced
-   token name must exist in `tokens.json`.
+3. Check it with `node .agents/scripts/brand-check.mjs brand/<slug>/18-ai-ready-spec/brand-spec.json`.
+   It validates the schema, that `tokens` matches `tokens.json`, that every doc path exists, and that
+   every token name and print color points at a real token.
 4. Version the spec (`specVersion` field) and bump it on every regeneration; note what changed since
    the previous version in a short changelog array.
 5. On first creation, show a short summary (sections, token count, linked docs) and wait for explicit

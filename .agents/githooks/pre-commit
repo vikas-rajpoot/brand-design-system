@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
-# Lint skill frontmatter, then keep the per-tool agent config mirrors in step with .agents/.
-# Installed via: git config core.hooksPath .agents/githooks
+# Checks only; never changes files. Installed by .agents/setup.sh (core.hooksPath=.agents/githooks).
 root="$(git rev-parse --show-toplevel)"
 "$root/.agents/scripts/lint-skills.sh" || exit 1
-exec "$root/.agents/sync.sh"
+
+if ! out="$("$root/.agents/sync.sh" --check 2>&1)"; then
+  printf '%s\n' "$out" >&2
+  echo "pre-commit: agent config mirrors are out of sync. Run .agents/sync.sh, stage the result, and commit again." >&2
+  exit 1
+fi
+
+if command -v node >/dev/null 2>&1; then
+  node "$root/.agents/scripts/brand-check.mjs" --staged || exit 1
+else
+  echo "pre-commit: node not found, so brand checks were skipped. Install Node 18+." >&2
+fi

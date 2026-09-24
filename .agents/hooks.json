@@ -1,12 +1,12 @@
 {
-  "validate-json": {
+  "brand-guard": {
     "PreToolUse": [
       {
-        "matcher": "write_to_file",
+        "matcher": "write_to_file|replace_file_content|multi_replace_file_content",
         "hooks": [
           {
             "type": "command",
-            "command": "./scripts/validate-json.sh pre",
+            "command": "./scripts/brand-guard.sh pre",
             "timeout": 10
           }
         ]
@@ -14,11 +14,11 @@
     ],
     "PostToolUse": [
       {
-        "matcher": "write_to_file|replace_file_content",
+        "matcher": "write_to_file|replace_file_content|multi_replace_file_content",
         "hooks": [
           {
             "type": "command",
-            "command": "./scripts/validate-json.sh post",
+            "command": "./scripts/brand-guard.sh post",
             "timeout": 10
           }
         ]

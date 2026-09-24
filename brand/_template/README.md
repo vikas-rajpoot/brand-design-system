@@ -9,7 +9,7 @@ in each. Folders are created on demand by the matching skill — don't pre-creat
 | `01-logo-system` | Logo variants, clear space, usage/misuse | `logo-system.md`, `logos/*.svg` |
 | `02-color-system` | Palettes, light/dark themes, contrast notes | `color-system.md` |
 | `03-typography-system` | Fonts, type scale, hierarchy | `typography-system.md` |
-| `04-design-tokens` | Machine-readable primitive/semantic/component tokens | `tokens.json`, `tokens.css` |
+| `04-design-tokens` | Machine-readable primitive/semantic/component tokens | `tokens.json`, `enforcement.md`; generated `tokens.css`, `tokens.dtcg.json`, `tokens.dark.dtcg.json` |
 | `05-visual-style` | Shape, gradients, imagery, icon/illustration style | `visual-style.md` |
 | `06-ui-design-system` | Reusable UI components + states | `ui-design-system.md`, `components/*` |
 | `07-website-system` | Homepage, landing, pricing, blog, auth, dashboard layouts | `website-system.md` |
@@ -28,5 +28,6 @@ in each. Folders are created on demand by the matching skill — don't pre-creat
 | `20-approved-examples` | Final, approved cross-medium examples | `<example>/`, index |
 | `21-corporate-visual-identity` | Stationery, signage, merch, livery, co-branding, trademark usage | `corporate-visual-identity.md`, `production-specs.md`, `assets/*.svg` |
 
-See [ai-ready-spec.schema.json](ai-ready-spec.schema.json) for the schema `18-ai-ready-spec` must
-validate against.
+See [tokens.schema.json](tokens.schema.json) for the exact `tokens.json` format, and
+[ai-ready-spec.schema.json](ai-ready-spec.schema.json) for the schema `18-ai-ready-spec` must
+validate against. Check any brand file with `node .agents/scripts/brand-check.mjs <file>`.

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "command",
+        "command": "sh .agents/scripts/brand-guard.sh pre",
+        "bash": "sh .agents/scripts/brand-guard.sh pre",
+        "powershell": "if (Get-Command node -ErrorAction SilentlyContinue) { node .agents/scripts/brand-guard.mjs pre; exit $LASTEXITCODE }",
+        "cwd": ".",
+        "timeoutSec": 10
+      }
+    ],
+    "postToolUse": [
+      {
+        "type": "command",
+        "command": "sh .agents/scripts/brand-guard.sh post",
+        "bash": "sh .agents/scripts/brand-guard.sh post",
+        "powershell": "if (Get-Command node -ErrorAction SilentlyContinue) { node .agents/scripts/brand-guard.mjs post; exit $LASTEXITCODE }",
+        "cwd": ".",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}

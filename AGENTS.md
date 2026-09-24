@@ -19,6 +19,7 @@ This workspace generates **brand design systems** for arbitrary new projects and
 - **Dedicated Immutable Options Archive**:
   - All proposed options must be saved under `brand/<project-slug>/options/` with clear sequential numbering and descriptive names (e.g. `01-logo-system-v1.html`).
   - **Strict Immutability**: NEVER update/overwrite or delete existing options files. If options are revised or refined, append a new version (`-v2.html`, `-v3.html`).
+  - **Enforced**: agent hooks block edits to existing options files, and the pre-commit hook and CI reject changed, deleted, or moved ones. To start over, keep the old files, continue with the next `-vN`, and revise approved docs with a `version` bump. Rewrite history only on purpose: commit with `BRAND_ALLOW_OPTIONS_REWRITE=1` (in CI, put `[allow-options-rewrite]` in the commit message).
 - **Zero Premature System Writes**: Before the user makes an explicit decision, **NEVER** write or modify files in the official brand subsystem directories (`01-logo-system/`, `02-color-system/`, etc.).
 - **Explicit User Selection Required**: Always stop and wait for the user's feedback or explicit choice (e.g. *"Concept 1 selected"*). **Only when the user confirms their selection does the agent lock it in and commit it to official subsystem files, and only then proceed to the next item.** If the user gives feedback, generate the next immutable version in the options folder before moving forward.
 
@@ -113,6 +114,8 @@ Tokens in `brand/<project-slug>/04-design-tokens/tokens.json` must be strictly l
 2. `semantic`: References exactly one primitive (`color.bg.brand -> color.blue.500`). Includes `light` and `dark` themes.
 3. `component`: References exactly one semantic token (`button.primary.bg -> color.bg.brand`).
 
+The exact file format, value rules, and required invariants are in [tokens.schema.json](brand/_template/tokens.schema.json) and [design-tokens.instructions.md](.github/instructions/design-tokens.instructions.md). Never hand-write `tokens.css` or the DTCG files; generate them with `node .agents/scripts/tokens-export.mjs <slug>`.
+
 ## Document Conventions
 
 - Start every brand Markdown doc with frontmatter: `status: draft|approved`, `version: <n>`, `owner: <system name>`.
@@ -131,3 +134,10 @@ Tokens in `brand/<project-slug>/04-design-tokens/tokens.json` must be strictly l
 A watcher runs `.agents/sync.sh` within seconds of changes, and git hooks run it on commit, checkout, merge, and rebase. Create a skill in any mirrored tool folder and the sync adopts it into `.agents/skills/`, then mirrors it everywhere. Editing a mirrored file edits the source because it is a symlink.
 
 Delete skills only from `.agents/skills/`. Deleting only a mirror is drift, so the mirror will be recreated.
+
+## Checks & Hooks
+
+- **Setup**: run `.agents/setup.sh` once after cloning. It turns on the git hooks and runs every check. Node 18+ is required.
+- **Checker**: `node .agents/scripts/brand-check.mjs` checks brand JSON, tokens, the AI spec, doc frontmatter, project rules (confirmed packet, run order, review files, generated exports), and Markdown links. Pass file paths to check only those files.
+- **Agent hooks**: `.github/hooks/brand-guard.json` (VS Code, Copilot CLI, and cloud agent), `.claude/settings.json` (Claude Code), `.codex/hooks.json` (Codex; trust it once with `/hooks`), and `.agents/hooks.json` (Antigravity) all run `.agents/scripts/brand-guard.mjs`. It blocks edits to existing options files, brand writes that skip intake or the run order, and hand edits to generated token files, and it reports problems right after a write. If a hook blocks you, fix the cause it names; never work around it.
+- **Git hooks**: pre-commit only checks (skill frontmatter, mirror sync, staged brand files, options history) and never changes files. CI (`.github/workflows/brand-os-checks.yml`) runs the same checks on every push and pull request.
