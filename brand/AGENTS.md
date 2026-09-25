@@ -3,8 +3,8 @@
 These rules apply to all files and directories under `brand/`.
 
 ## Product Intake
-- Each project must keep its user-authored product packet in `brand/<project-slug>/product/`: `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, and `04-decisions-and-questions.md`.
-- Do not create a preview, foundation, token, or subsystem for a project without its confirmed packet (all five files at `status: approved`). If more than one project has a confirmed packet, ask the user which slug to work on.
+- Each project must keep its user-authored product packet in `brand/<project-slug>/product/`: `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, `04-decisions-and-questions.md`, `05-launch-scope-and-capabilities.md`, and `06-trust-and-data-flows.md`.
+- Do not create a preview, foundation, token, or subsystem for a project without its confirmed packet (all seven files at `status: approved`). If more than one project has a confirmed packet, ask the user which slug to work on.
 
 ## Reference Screens
 - After intake, run `reference-screens` before any numbered subsystem. The selected neutral fixture lives at `product/reference-screens.md`; its proposal history lives in `options/product-reference-screens-v<n>.html`.

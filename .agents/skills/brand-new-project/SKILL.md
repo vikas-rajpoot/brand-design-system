@@ -19,11 +19,11 @@ Use this skill when initiating a brand design system for a new project or idea f
 > - **Explicit User Selection Required**: Stop and wait for the user to evaluate and explicitly confirm (*"Concept 1 selected"*). Only upon explicit confirmation, commit the selected choice to the official subsystem directory, and only then proceed to the next item.
 
 ## Inputs Required
-- **Product Packet**: The confirmed, user-authored `brand/<project-slug>/product/` packet: `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, and `04-decisions-and-questions.md`, each starting with `status: approved` frontmatter.
+- **Product Packet**: The confirmed, user-authored `brand/<project-slug>/product/` packet: `BRAND-BRIEF.md`, `01-strategy-foundation.md`, `02-brand-positioning.md`, `03-messaging-and-market.md`, `04-decisions-and-questions.md`, `05-launch-scope-and-capabilities.md`, and `06-trust-and-data-flows.md`, each starting with `status: approved` frontmatter.
 
 ## Intake & Project Discovery
 
-Before any brand work, inspect `brand/*/product/`. A packet is confirmed only when all five files exist and each starts with `status: approved`. When exactly one project has a confirmed packet, use its enclosing slug; when several do, ask the user which slug to work on. When none does, stop brand work and tell the user which files are missing or unconfirmed for the intended project. If the user supplied only a basic product description, or wants help completing or confirming the packet, use `product-intake`. Resume this workflow only after the packet is confirmed. Never invent packet contents or create brand artifacts during intake.
+Before any brand work, inspect `brand/*/product/`. A packet is confirmed only when all seven files exist and each starts with `status: approved`. When exactly one project has a confirmed packet, use its enclosing slug; when several do, ask the user which slug to work on. When none does, stop brand work and tell the user which files are missing or unconfirmed for the intended project. If the user supplied only a basic product description, or wants help completing or confirming the packet, use `product-intake`. Resume this workflow only after the packet is confirmed. Never invent packet contents or create brand artifacts during intake.
 
 ## Step-by-Step Procedure
 

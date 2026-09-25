@@ -9,7 +9,7 @@ description: 'Use when starting a new brand system or when name usage, positioni
 - Positioning, audience, personality, or tone need clarifying or updating
 
 ## Inputs Required
-- The confirmed product packet in `brand/<slug>/product/` (all five files at `status: approved`). If it is missing or unconfirmed, stop and use `product-intake`.
+- The confirmed product packet in `brand/<slug>/product/` (all seven files at `status: approved`). If it is missing or unconfirmed, stop and use `product-intake`.
 - Approved `brand/<slug>/product/reference-screens.md`. Read it for real product touchpoints and constraints; do not treat its neutral wireframe styling as a brand decision.
 - The slug is the packet's folder name. Do not ask for or propose a new slug.
 

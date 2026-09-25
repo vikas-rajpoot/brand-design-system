@@ -1,3 +1,9 @@
+---
+status: approved
+version: 1
+owner: product
+---
+
 # Launch Scope and Capability Contract
 
 **Status:** Product requirement; implementation evidence incomplete  

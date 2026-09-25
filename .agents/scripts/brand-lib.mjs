@@ -15,7 +15,15 @@ export const NAME_RE = /^[a-z][a-z0-9-]*(\.[a-z0-9][a-z0-9-]*)+$/;
 export const HEX_RE = /^#([0-9a-f]{6}|[0-9a-f]{8})$/i;
 export const DIM_RE = /^(-?\d+(?:\.\d+)?)(px|rem)$/;
 export const DUR_RE = /^(\d+(?:\.\d+)?)(ms|s)$/;
-const PACKET_FILES = ['BRAND-BRIEF.md', '01-strategy-foundation.md', '02-brand-positioning.md', '03-messaging-and-market.md', '04-decisions-and-questions.md'];
+const PACKET_FILES = [
+  'BRAND-BRIEF.md',
+  '01-strategy-foundation.md',
+  '02-brand-positioning.md',
+  '03-messaging-and-market.md',
+  '04-decisions-and-questions.md',
+  '05-launch-scope-and-capabilities.md',
+  '06-trust-and-data-flows.md',
+];
 
 // Real path even for a file that does not exist yet, so symlinked paths compare equal to ROOT.
 function realish(p) {

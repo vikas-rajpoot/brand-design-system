@@ -38,7 +38,7 @@ function checkProject(slug) {
   if (gaps.length && started.length) {
     errors.push(`brand/${slug}: brand work exists (${started.join(', ')}) but the product packet is not confirmed (${gaps.join(', ')} need status: approved). Run /product-intake.`);
   } else if (gaps.length) {
-    warnings.push(`brand/${slug}: product packet not confirmed yet (${gaps.length} of 5 files need status: approved). Run /product-intake before brand work.`);
+    warnings.push(`brand/${slug}: product packet not confirmed yet (${gaps.length} required files need status: approved). Run /product-intake before brand work.`);
   }
   const optionsDir = path.join(dir, 'options');
   const numberedOptions = fs.existsSync(optionsDir) && fs.readdirSync(optionsDir).some((f) => /^\d\d-[a-z-]+-v\d+\.(html|tokens\.json)$/.test(f));

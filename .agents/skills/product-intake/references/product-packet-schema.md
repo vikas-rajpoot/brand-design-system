@@ -35,7 +35,7 @@ This is the concise entry point. Include:
 13. Messaging pillars
 14. Trust requirements and claims to avoid
 15. Approved and avoided terminology
-16. Links to the four detailed files
+16. Links to the six detailed files
 17. Short list of open decisions
 
 ## `01-strategy-foundation.md`
@@ -110,3 +110,33 @@ Finish with:
 
 Never hide open questions by converting them into recommendations.
 
+## `05-launch-scope-and-capabilities.md`
+
+Include:
+
+1. Product stage and the purpose of the capability register
+2. Evidence-status definitions, including at least `Live`, `In progress`, `Planned`, and `Not decided`
+3. The first complete product slice and explicit launch boundaries
+4. A capability table: capability, user value, status, dependency, evidence, and allowed external wording
+5. Platform, runtime, workspace, and work-type scope where relevant
+6. Minimum compatibility or integration requirements for external systems
+7. Success measures or validation signals, clearly separated from marketing claims
+8. The evidence required before a capability can be described as available
+
+Do not use a named build, release, test, or implementation as evidence unless the user supplies it or it is present in the inspected project. A planned capability is not a current feature.
+
+## `06-trust-and-data-flows.md`
+
+Include:
+
+1. Protected data, assets, actions, and costs
+2. Each distinct execution, storage, network, provider, and account boundary
+3. Data-flow descriptions for every materially different product mode
+4. Authentication, credentials, permissions, and revocation requirements
+5. Material threats, failure modes, and abuse cases
+6. Recovery, rollback, backup, and irreversibility limits
+7. Logging, analytics, telemetry, retention, deletion, and third-party processing
+8. Security, privacy, legal, or operational gates required before launch
+9. Safe trust wording and claims that must not be made
+
+Keep requirements separate from verified implementation facts. If a boundary or data flow is undecided, record it as `Open` with an owner and validation step rather than filling it in.

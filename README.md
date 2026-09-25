@@ -22,7 +22,7 @@ Without the watcher, run `.agents/sync.sh` after changing a canonical skill. Use
 
 ## Workflow
 
-1. Confirm the five-file product packet in `brand/<project-slug>/product/`.
+1. Confirm the seven-file product packet in `brand/<project-slug>/product/`, including launch scope/capabilities and trust/data flows.
 2. Run `/product-intake` when the packet is missing or unconfirmed.
 3. Run `/reference-screens` and approve a neutral product-screen fixture, or let `/brand-new-project` run this gate first.
 4. Run `/brand-new-project` and work through one subsystem at a time in the run order below.

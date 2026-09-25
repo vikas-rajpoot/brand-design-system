@@ -6,7 +6,7 @@ Generated brand systems live under `brand/<project-slug>/`. Keep product input, 
 
 Before any brand work, confirm these files with `status: approved` frontmatter:
 
-`product/BRAND-BRIEF.md`, `product/01-strategy-foundation.md`, `product/02-brand-positioning.md`, `product/03-messaging-and-market.md`, and `product/04-decisions-and-questions.md`.
+`product/BRAND-BRIEF.md`, `product/01-strategy-foundation.md`, `product/02-brand-positioning.md`, `product/03-messaging-and-market.md`, `product/04-decisions-and-questions.md`, `product/05-launch-scope-and-capabilities.md`, and `product/06-trust-and-data-flows.md`.
 
 If the packet is incomplete, use `/product-intake`. Do not create an options preview or subsystem draft first.
 

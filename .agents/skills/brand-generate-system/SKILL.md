@@ -27,7 +27,7 @@ Use this skill when generating, expanding, or revising a single brand subsystem 
 ## Procedure
 
 1. **Check Prerequisites** (stop on any failure and tell the user exactly what to run first):
-   - The product packet in `brand/<slug>/product/` is confirmed: all five files exist and start with `status: approved`. Otherwise use `product-intake`.
+   - The product packet in `brand/<slug>/product/` is confirmed: all seven files exist and start with `status: approved`. Otherwise use `product-intake`.
    - `brand/<slug>/product/reference-screens.md` exists at `status: approved`. Otherwise use `reference-screens` before any numbered subsystem.
    - Find the subsystem in the Run Order & Prerequisites table in [AGENTS.md](../../../AGENTS.md). Every folder under "Requires" must have its main doc at `status: approved` (for `04`, `tokens.json` must exist). Otherwise stop with a message such as *"Run `color-system` first."*
    - Load the approved foundation and, once it exists, `tokens.json` as the source of truth. Every proposed option must harmonize with them; flag any conflict immediately.

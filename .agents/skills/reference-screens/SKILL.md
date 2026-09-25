@@ -10,7 +10,7 @@ Use this skill after the product packet is confirmed and before any numbered bra
 
 ## Inputs Required
 
-- The confirmed product packet in `brand/<slug>/product/`: all five required files exist and start with `status: approved` frontmatter.
+- The confirmed product packet in `brand/<slug>/product/`: all seven required files exist and start with `status: approved` frontmatter, including launch scope/capabilities and trust/data flows.
 - Any additional product scope, capability, trust, or data-flow documents in the same packet.
 - The slug is the packet's folder name. Do not create or rename a project here.
 

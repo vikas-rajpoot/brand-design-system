@@ -1,6 +1,6 @@
 ---
 name: product-intake
-description: Interview a user who has only a basic product description, resolve ambiguity, and create or revise the five confirmed product-intake files required before brand-system work. Use before brand-new-project when a project's product packet is missing, incomplete, or no longer accurate.
+description: Interview a user who has only a basic product description, resolve ambiguity, and create or revise the seven confirmed product-intake files required before brand-system work. Use before brand-new-project when a project's product packet is missing, incomplete, or no longer accurate.
 ---
 
 # Product Intake
@@ -16,6 +16,8 @@ Create exactly these files under one confirmed project boundary:
 - `brand/<project-slug>/product/02-brand-positioning.md`
 - `brand/<project-slug>/product/03-messaging-and-market.md`
 - `brand/<project-slug>/product/04-decisions-and-questions.md`
+- `brand/<project-slug>/product/05-launch-scope-and-capabilities.md`
+- `brand/<project-slug>/product/06-trust-and-data-flows.md`
 
 Read [references/product-packet-schema.md](references/product-packet-schema.md) before composing or revising the packet.
 
@@ -28,7 +30,7 @@ Read [references/product-packet-schema.md](references/product-packet-schema.md) 
 - Ask no more than three focused questions in one turn. Use familiar language, define technical terms when needed, and separate unrelated decisions.
 - When the user does not know an answer, record it as an open question with an owner or validation step. Do not force a guess.
 - Resolve contradictions with the user. Do not silently choose one answer or average incompatible answers.
-- Do not write any of the five files until the user confirms the final intake summary. Drafting that summary in chat is allowed.
+- Do not write any of the seven files until the user confirms the final intake summary. Drafting that summary in chat is allowed.
 - Do not overwrite an existing confirmed packet unless the user explicitly asks to revise it and confirms the replacement summary. Increment `version` when revising.
 - Do not browse for competitors or market claims unless the user asks for research. User-supplied competitor views remain perceptions until verified.
 
@@ -105,20 +107,21 @@ End by asking the user to confirm that this summary should become the product pa
 
 Only after explicit confirmation:
 
-1. Create or revise all five files using the required schema.
+1. Create or revise all seven files using the required schema.
 2. Use frontmatter with `status: approved`, the correct integer `version`, and `owner: product`.
 3. Write in direct, testable language. Prefer one clear definition over several unlabeled candidates.
 4. Label every unselected alternative `Proposed` and every unknown `Open`.
 5. Mark capabilities as `Live`, `In progress`, `Planned`, or `Not decided`; do not blur these states.
-6. Keep the short brief consistent with the four detailed files. Link between files with relative paths rather than duplicating long sections.
+6. Keep the short brief consistent with the six detailed files. Link between files with relative paths rather than duplicating long sections.
 
 ### 7. Validate Before Handoff
 
 Check that:
 
-- all five required filenames exist in the confirmed slug;
+- all seven required filenames exist in the confirmed slug;
 - each file has valid frontmatter and no template placeholders;
 - product name, audience, category, promise, and capability status agree across files;
+- launch boundaries, capability evidence states, trust boundaries, and data flows agree across files;
 - every strong claim has evidence or is clearly marked Proposed/Open;
 - every unresolved decision appears in `04-decisions-and-questions.md`;
 - no brand-system artifact was created during intake.

@@ -5,7 +5,7 @@ Brand OS Kit helps an AI assistant build a complete brand system in small, revie
 ## Operating Rules
 
 - Every project lives in `brand/<project-slug>/`.
-- Work starts only after all five product packet files are approved.
+- Work starts only after all seven product packet files are approved, including launch scope/capabilities and trust/data flows.
 - Decision steps present 2-4 cohesive options with rationale, pros, and cons.
 - Compile steps present one preview and add no new decisions.
 - Options are immutable. Revisions use a new `-vN` file.
@@ -20,7 +20,7 @@ Brand OS Kit helps an AI assistant build a complete brand system in small, revie
 - `brand/_template/`: schemas and project templates.
 - `brand/<project-slug>/`: generated brand work.
 
-There are no custom subagents in this kit. The workflow is packaged as skills, including `/brand-new-project`, `/brand-generate-system`, `/brand-audit`, and `/product-intake`.
+There are no custom subagents in this kit. The workflow is packaged as skills, including `/brand-new-project`, `/brand-generate-system`, `/brand-audit`, `/product-intake`, and `/brand-os-maintainer` for maintaining the Brand OS contract itself.
 
 ## Lifecycle
 
@@ -54,4 +54,3 @@ The kit comes with 21 "Skills" which map exactly to 21 numbered folders. The sys
 ## Current Status
 - ✅ **Fully Synced**: Works seamlessly on Google Antigravity (`.agents/`), GitHub Copilot (`.github/`), Claude (`.claude/`), and Codex (`.codex/`).
 - ✅ **Production-Ready**: Recently upgraded with advanced rules like CI contrast checks, strict Component APIs (no random style overrides), and non-happy-path content states (errors, empty states).
-

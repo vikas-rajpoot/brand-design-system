@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MobileAgenticIDE — Complete Reference Screen Set v2</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --page: #f2f2ef;
+      --paper: #fff;
+      --ink: #181818;
+      --muted: #686862;
+      --line: #d4d4ce;
+      --soft: #e9e9e4;
+      --mid: #a0a099;
+      --shadow: 0 22px 60px rgba(0,0,0,.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button { font: inherit; }
+    .shell { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0,1.3fr) minmax(280px,.7fr);
+      gap: 28px;
+      align-items: end;
+    }
+    .eyebrow, .label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h1 { max-width: 900px; margin: 8px 0 0; font-size: clamp(38px,6vw,72px); line-height: .96; letter-spacing: -.055em; }
+    h2 { margin: 4px 0 0; font-size: 28px; letter-spacing: -.035em; }
+    h3 { margin: 0; font-size: 16px; }
+    p { margin: 0; }
+    .lead { color: var(--muted); font-size: 17px; }
+    .notice, .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+    .notice { margin: 24px 0 18px; padding: 13px 15px; }
+    .notice strong { display: block; }
+    .notice span { color: var(--muted); }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .metric { padding: 16px; }
+    .metric b { display: block; font-size: 26px; line-height: 1; margin-bottom: 7px; }
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(290px,360px) minmax(0,1fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .rail { position: sticky; top: 16px; display: grid; gap: 10px; }
+    .rail-card { padding: 16px; }
+    .screen-list { display: grid; gap: 7px; margin-top: 12px; }
+    .screen-btn {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 9px;
+      padding: 9px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: white;
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+    }
+    .screen-btn.active { border-color: var(--ink); box-shadow: inset 3px 0 var(--ink); }
+    .num { color: var(--muted); font-size: 11px; padding-top: 2px; }
+    .screen-btn strong, .screen-btn span { display: block; }
+    .screen-btn strong { font-size: 13px; }
+    .screen-btn span { color: var(--muted); font-size: 11px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
+    .chip {
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: white;
+      cursor: pointer;
+    }
+    .chip.active { background: var(--ink); color: white; border-color: var(--ink); }
+    .stage {
+      min-height: 900px;
+      display: grid;
+      place-items: start center;
+      padding: 34px;
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background-color: #dddcd7;
+      background-image: linear-gradient(#d1d0ca 1px, transparent 1px), linear-gradient(90deg,#d1d0ca 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .phone {
+      width: 393px;
+      min-height: 852px;
+      overflow: hidden;
+      border: 9px solid #202020;
+      border-radius: 50px;
+      background: #f8f8f6;
+      box-shadow: var(--shadow);
+    }
+    .phone.compact { width: 375px; min-height: 667px; border-radius: 34px; }
+    .status { height: 38px; display: flex; justify-content: space-between; align-items: center; padding: 0 18px; font-size: 11px; font-weight: 800; }
+    .island { width: 104px; height: 25px; border-radius: 99px; background: #202020; }
+    .phone.compact .island { width: 70px; height: 5px; background: #999; }
+    .appbar { padding: 13px 16px; border-bottom: 1px solid var(--line); background: white; }
+    .row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .stack { display: grid; gap: 4px; }
+    .back, .meta { color: var(--muted); font-size: 11px; }
+    .appbar h4 { margin: 2px 0; font-size: 17px; }
+    .badge { border: 1px solid var(--mid); border-radius: 999px; padding: 3px 7px; font-size: 9px; font-weight: 800; }
+    .badge.dark { color: white; background: #292929; border-color: #292929; }
+    .body { display: grid; gap: 10px; padding: 14px; }
+    .panel, .banner {
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: white;
+    }
+    .banner { border: 2px solid #292929; background: #ecece7; }
+    .title { font-size: 14px; font-weight: 760; }
+    .rule { height: 1px; margin: 9px 0; background: var(--line); }
+    .code {
+      padding: 9px;
+      overflow: hidden;
+      border: 1px solid #d1d1cb;
+      border-radius: 9px;
+      background: #ecece8;
+      font: 10.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+      white-space: pre-wrap;
+    }
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+    .action { padding: 9px; border: 1px solid var(--ink); border-radius: 9px; text-align: center; font-size: 12px; font-weight: 800; }
+    .action.primary { color: white; background: var(--ink); }
+    .timeline { display: grid; gap: 10px; }
+    .event { display: grid; grid-template-columns: 16px 1fr; gap: 7px; }
+    .dot { width: 9px; height: 9px; margin-top: 5px; border: 2px solid #333; border-radius: 50%; }
+    .dot.fill { background: #333; }
+    .diff { font: 10px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .diff div { padding: 2px 6px; }
+    .diff .add { background: #dcdcd7; border-left: 3px solid #444; }
+    .diff .del { color: #666; background: #eeeeea; text-decoration: line-through; }
+    .details { display: grid; gap: 18px; margin-top: 18px; }
+    .detail-card { padding: 20px; }
+    .inventory {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 9px;
+      margin-top: 12px;
+    }
+    .item { padding: 12px; border: 1px solid var(--line); border-radius: 11px; }
+    .item p { margin-top: 5px; color: var(--muted); font-size: 12px; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    ul { margin: 8px 0 0; padding-left: 18px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { padding: 10px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+    footer { padding: 24px 0 8px; color: var(--muted); }
+    @media (max-width: 900px) {
+      .hero, .workspace { grid-template-columns: 1fr; }
+      .summary { grid-template-columns: repeat(2,1fr); }
+      .rail { position: static; }
+      .stage { min-height: 760px; padding: 18px; }
+    }
+    @media (max-width: 540px) {
+      .shell { padding: 16px; }
+      .inventory, .two { grid-template-columns: 1fr; }
+      .stage { display: block; padding: 8px; }
+      .phone { transform: scale(.78); transform-origin: top center; margin: 0 auto -180px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Reference screens · consolidated revision · v2</p>
+        <h1>One complete screen set</h1>
+      </div>
+      <p class="lead">All ten states from the first proposal are now one fixture. Approving this set fixes the product situations and sample data. It does not choose the visual brand.</p>
+    </section>
+
+    <div class="notice">
+      <strong>Neutral concept fixture—not a built product.</strong>
+      <span>Every later look will be applied to these same tasks, states, words, and viewports so the comparison stays fair.</span>
+    </div>
+
+    <section class="summary">
+      <article class="card metric"><b>10</b><span class="meta">screens in one set</span></article>
+      <article class="card metric"><b>2</b><span class="meta">iPhone viewports</span></article>
+      <article class="card metric"><b>4</b><span class="meta">state families</span></article>
+      <article class="card metric"><b>1</b><span class="meta">fixed sample task</span></article>
+    </section>
+
+    <section class="workspace">
+      <aside class="rail">
+        <div class="card rail-card">
+          <p class="label">Complete screen set</p>
+          <div id="screen-list" class="screen-list"></div>
+        </div>
+        <div class="card rail-card">
+          <p class="label">Viewport check</p>
+          <div class="chips">
+            <button class="chip active" data-view="primary">393 × 852</button>
+            <button class="chip" data-view="compact">375 × 667</button>
+          </div>
+          <p class="meta" style="margin-top:9px">Primary: iPhone 15 Pro logical viewport. Compact: 375 × 667. Later designs must respect system areas and a minimum 34px bottom safe area.</p>
+        </div>
+      </aside>
+      <div class="stage"><div id="phone" class="phone" aria-live="polite"></div></div>
+    </section>
+
+    <section class="details">
+      <article class="card detail-card">
+        <p class="label">Inventory and inclusion reason</p>
+        <h2>Every screen has a distinct test job</h2>
+        <div id="inventory" class="inventory"></div>
+      </article>
+
+      <article class="card detail-card">
+        <div class="two">
+          <div>
+            <p class="label">Strengths</p>
+            <ul>
+              <li>Preserves every useful state from v1.</li>
+              <li>Tests normal, empty, risky, offline, recovery, and completion states.</li>
+              <li>Gives later visual options one stable comparison surface.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label">Tradeoffs</p>
+            <ul>
+              <li>Ten screens take longer to review.</li>
+              <li>Later previews may show a focused subset, while keeping content unchanged.</li>
+              <li>Hosted sandbox and external adapters remain intentionally deferred.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="card detail-card">
+        <p class="label">Coverage matrix</p>
+        <h2>State families</h2>
+        <table>
+          <thead><tr><th>Family</th><th>Screens</th><th>What later looks must communicate</th></tr></thead>
+          <tbody>
+            <tr><td>Entry and identity</td><td>Empty workspace, Verify host, Connect laptop</td><td>Onboarding hierarchy, trust boundaries, form density, and action priority</td></tr>
+            <tr><td>Normal work</td><td>Active session, Review changes, Task complete</td><td>Status clarity, code typography, artifact density, and success without decoration</td></tr>
+            <tr><td>Risk and permission</td><td>Permission request, Approval expired</td><td>Consequence, scope, disabled action, and warning clarity without color alone</td></tr>
+            <tr><td>Interruption and recovery</td><td>Connection lost, Reconcile state</td><td>Last-known versus current truth, unavailable controls, progress, and recovery confidence</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card detail-card">
+        <p class="label">Fixed sample content</p>
+        <p><b>Host:</b> Studio MacBook · <b>Workspace:</b> mobile-agentic-ide · <b>Runtime:</b> MobileAgenticIDE Harness · <b>Task:</b> Add retry handling to session sync · <b>Branch:</b> feat/session-retry · <b>Command:</b> swift test --filter SessionSyncTests.</p>
+        <p class="meta" style="margin-top:9px">Later options must not change these values, state meanings, or capability limits merely to make one visual direction look stronger.</p>
+      </article>
+
+      <article class="card detail-card">
+        <p class="label">Product traceability</p>
+        <p>Required by the approved strategy’s launch jobs, the capability contract’s session/artifact/permission/recovery requirements, and the trust document’s host identity, least-privilege, stale approval, interruption, and rollback limits. Managed sandbox, external adapters, Android, deployment, and universal Undo remain outside this fixture.</p>
+      </article>
+
+      <article class="card detail-card">
+        <p class="label">What comes next</p>
+        <h2>Visual options follow approval</h2>
+        <p class="lead" style="margin-top:8px">After this fixture is selected, the Brand OS proceeds through brand foundation, color, typography, logo, and visual style. Those stages provide distinct looks with rationale, pros, and cons, applied back to this same screen set.</p>
+      </article>
+    </section>
+
+    <footer>Approve this as “Complete Set v2” to write product/reference-screens.md. The v1 proposal remains unchanged in the immutable archive.</footer>
+  </main>
+
+  <script>
+    const sample = {
+      host: "Studio MacBook",
+      workspace: "mobile-agentic-ide",
+      runtime: "MobileAgenticIDE Harness",
+      task: "Add retry handling to session sync",
+      branch: "feat/session-retry",
+      command: "swift test --filter SessionSyncTests",
+      file: "Sources/Sync/RetryPolicy.swift"
+    };
+
+    const screens = [
+      { id:"empty", name:"No workspace", state:"Empty · first use", why:"Tests first-use guidance and keeps future environments clearly deferred." },
+      { id:"identity", name:"Verify host", state:"Trust · identity check", why:"Makes host identity a visible decision before powerful access begins." },
+      { id:"connect", name:"Connect laptop", state:"Waiting · setup", why:"Tests the first planned iPhone-to-owned-laptop flow and scoped workspace access." },
+      { id:"active", name:"Active session", state:"Normal · agent working", why:"Represents the core away-from-desk monitoring and steering experience." },
+      { id:"permission", name:"Permission request", state:"Risk · approval", why:"Tests action, target, scope, consequence, and Allow/Deny hierarchy." },
+      { id:"stale", name:"Approval expired", state:"Risk · stale request", why:"Prevents an old decision from appearing safe after host state changes." },
+      { id:"diff", name:"Review changes", state:"Normal · artifact review", why:"Tests dense code, file identity, change counts, and review navigation." },
+      { id:"offline", name:"Connection lost", state:"Offline · last-known state", why:"Separates cached information from authoritative host truth." },
+      { id:"reconcile", name:"Reconcile state", state:"Recovery · event replay", why:"Tests recovery progress, deduplication, and temporarily disabled controls." },
+      { id:"complete", name:"Task complete", state:"Success · confirmed result", why:"Shows a terminal state with evidence and a clear review next step." }
+    ];
+
+    function chrome(title, subtitle, content) {
+      return '<div class="status"><span>9:41</span><span class="island"></span><span>5G ▰</span></div>' +
+        '<header class="appbar"><div class="row"><div><span class="back">‹ Workspaces</span><h4>' + title + '</h4><span class="meta">' + subtitle + '</span></div><span class="badge">FIXTURE</span></div></header>' +
+        '<main class="body">' + content + '</main>';
+    }
+    function panel(title, meta, content) {
+      return '<section class="panel"><div class="stack"><strong class="title">' + title + '</strong><span class="meta">' + meta + '</span></div>' + (content || '') + '</section>';
+    }
+    function actions(left, right) {
+      return '<div class="actions"><div class="action">' + left + '</div><div class="action primary">' + right + '</div></div>';
+    }
+    function render(id) {
+      const s = sample;
+      if (id === "empty") return chrome("Workspaces","No connection configured",
+        '<div style="height:95px"></div>' + panel("No workspaces yet","Connect an owned laptop to begin",'<div class="rule"></div><p class="meta">The first planned flow uses the first-party harness. VPS and hosted sandbox setup are deferred.</p><div class="actions"><div class="action primary" style="grid-column:1/-1">Connect laptop</div></div>'));
+      if (id === "identity") return chrome("Verify host","Identity must be checked",
+        '<div class="banner"><strong>Do these details match your laptop?</strong><p class="meta" style="margin-top:5px">Stop if the name or fingerprint is unexpected.</p></div>' +
+        panel(s.host,"Owned laptop · direct-host mode",'<div class="rule"></div><div class="row"><span class="meta">Fingerprint</span><strong style="font:10px ui-monospace">SHA256:7mF2…kP9q</strong></div><div class="row" style="margin-top:7px"><span class="meta">Workspace</span><strong style="font:10px ui-monospace">' + s.workspace + '</strong></div>' + actions("Does not match","Matches")));
+      if (id === "connect") return chrome("Connect a laptop","Direct-host mode · planned",
+        panel("1 · Confirm this host",s.host + " · macOS",'<div class="rule"></div><div class="code">SHA256:7mF2…kP9q</div>') +
+        panel("2 · Limit workspace access",s.workspace,'<div class="rule"></div><div class="code">~/Projects/' + s.workspace + '</div>') +
+        panel("3 · Review connection path","Authenticated transport required",'<div class="rule"></div><p class="meta">Network and provider boundaries must be documented before release.</p>' + actions("Cancel","Connect")));
+      if (id === "active") return chrome(s.task,s.host + " · " + s.runtime,
+        panel("Agent working","Step 3 of 5 · editing retry policy",'<div class="rule"></div><div class="timeline"><div class="event"><span class="dot fill"></span><div><strong class="title">Inspected sync flow</strong><div class="meta">4 files read · 10:24</div></div></div><div class="event"><span class="dot fill"></span><div><strong class="title">Added retry policy</strong><div class="meta">' + s.file + '</div></div></div><div class="event"><span class="dot"></span><div><strong class="title">Preparing tests</strong><div class="meta">Waiting to run a command</div></div></div></div>') +
+        panel("Workspace state",s.branch,'<div class="rule"></div><div class="row"><span class="meta">Changed files</span><b>2</b></div><div class="row"><span class="meta">Pending approvals</span><b>1</b></div>'));
+      if (id === "permission") return chrome("Approval required",s.host + " · exact request",
+        '<div class="banner"><strong>Command needs approval</strong><p class="meta" style="margin-top:5px">Approval does not guarantee rollback.</p></div>' +
+        panel("Run test command",s.runtime + " · " + s.workspace,'<div class="rule"></div><div class="code">' + s.command + '</div><div class="rule"></div><div class="row"><span class="meta">Scope</span><b>Once</b></div><div class="row"><span class="meta">Directory</span><b style="font:10px ui-monospace">~/Projects/' + s.workspace + '</b></div>' + actions("Deny","Allow once")));
+      if (id === "stale") return chrome("Approval expired","Host state changed",
+        '<div class="banner"><strong>This request is no longer current</strong><p class="meta" style="margin-top:5px">The host changed after this request was created. It cannot be approved.</p></div>' +
+        panel("Expired request",s.command,'<div class="rule"></div><div class="row"><span class="meta">Requested</span><b>10:26:14</b></div><div class="row"><span class="meta">Host changed</span><b>10:26:41</b></div><div class="actions"><div class="action primary" style="grid-column:1/-1">Return to session</div></div>'));
+      if (id === "diff") return chrome("Review changes",s.branch + " · 2 files",
+        panel("2 changed files","+24 −4 · not committed",'<div class="rule"></div><div class="row"><strong class="title">' + s.file + '</strong><span class="badge">+18 −2</span></div>') +
+        '<section class="panel diff"><div>@@ retry policy</div><div class="del">let attempts = 1</div><div class="add">let maxAttempts = 3</div><div class="add">let delay = backoff.next()</div><div>try await sync()</div><div class="add">catch { schedule(delay) }</div></section>' +
+        panel("Tests/SessionSyncTests.swift","+6 −2",actions("Previous","Next file")));
+      if (id === "offline") return chrome("Connection lost","Showing last confirmed state",
+        '<div class="banner"><strong>Offline</strong><p class="meta" style="margin-top:5px">The host may still be working. Actions are disabled until current state is confirmed.</p></div>' +
+        panel("Last confirmed state","10:27:03 · event 184",'<div class="rule"></div><div class="timeline"><div class="event"><span class="dot fill"></span><div><strong class="title">Test command allowed</strong><div class="meta">One-time approval</div></div></div><div class="event"><span class="dot"></span><div><strong class="title">Outcome unknown</strong><div class="meta">Waiting for connection</div></div></div></div><div class="actions"><div class="action primary" style="grid-column:1/-1">Try reconnecting</div></div>'));
+      if (id === "reconcile") return chrome("Reconnecting",s.host + " · reconciling",
+        '<div class="banner"><strong>Reconciling with host</strong><p class="meta" style="margin-top:5px">12 events found after the last confirmed event. Controls remain disabled.</p></div>' +
+        panel("Recovery progress","Authoritative host state",'<div class="rule"></div><div class="row"><span class="meta">Events received</span><b>12 / 12</b></div><div class="row"><span class="meta">Duplicates ignored</span><b>2</b></div><div class="row"><span class="meta">Current state</span><span class="badge dark">VERIFYING</span></div>') +
+        panel("Last known task",s.task,'<div class="rule"></div><p class="meta">Waiting for the final session state.</p>'));
+      return chrome("Task complete",s.host + " · confirmed state",
+        '<div class="banner"><strong>Task reached a confirmed end state</strong><p class="meta" style="margin-top:5px">Review changes before merging or deploying.</p></div>' +
+        panel(s.task,"Completed · 10:29",'<div class="rule"></div><div class="row"><span class="meta">Files changed</span><b>2</b></div><div class="row"><span class="meta">Tests</span><b>12 passed</b></div><div class="row"><span class="meta">Branch</span><b style="font:10px ui-monospace">' + s.branch + '</b></div>' + actions("View activity","Review diff")));
+    }
+
+    const list = document.getElementById("screen-list");
+    const phone = document.getElementById("phone");
+    const inventory = document.getElementById("inventory");
+    list.innerHTML = screens.map(function(s,i) {
+      return '<button class="screen-btn ' + (i === 0 ? 'active' : '') + '" data-screen="' + s.id + '"><span class="num">' + String(i + 1).padStart(2,"0") + '</span><span><strong>' + s.name + '</strong><span>' + s.state + '</span></span></button>';
+    }).join("");
+    inventory.innerHTML = screens.map(function(s,i) {
+      return '<div class="item"><h3>' + (i + 1) + '. ' + s.name + '</h3><p><b>' + s.state + '.</b> ' + s.why + '</p></div>';
+    }).join("");
+    phone.innerHTML = render(screens[0].id);
+
+    list.querySelectorAll(".screen-btn").forEach(function(button) {
+      button.addEventListener("click", function() {
+        list.querySelectorAll(".screen-btn").forEach(function(x) { x.classList.remove("active"); });
+        button.classList.add("active");
+        phone.innerHTML = render(button.dataset.screen);
+      });
+    });
+    document.querySelectorAll("[data-view]").forEach(function(button) {
+      button.addEventListener("click", function() {
+        document.querySelectorAll("[data-view]").forEach(function(x) { x.classList.remove("active"); });
+        button.classList.add("active");
+        phone.classList.toggle("compact", button.dataset.view === "compact");
+      });
+    });
+  </script>
+</body>
+</html>

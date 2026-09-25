@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MobileAgenticIDE — Reference Screen Options v1</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --page: #f4f4f1;
+      --paper: #ffffff;
+      --ink: #171717;
+      --muted: #676767;
+      --line: #d7d7d1;
+      --soft: #ecece7;
+      --mid: #a4a49d;
+      --dark: #292929;
+      --shadow: 0 18px 54px rgba(0,0,0,.10);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button { font: inherit; }
+    a { color: inherit; }
+    .shell { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h1 { max-width: 900px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height: .98; letter-spacing: -.05em; }
+    h2 { margin: 0; font-size: 28px; letter-spacing: -.03em; }
+    h3 { margin: 0; font-size: 18px; letter-spacing: -.02em; }
+    p { margin: 0; }
+    .intro { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(280px, .6fr); gap: 28px; align-items: end; }
+    .intro-copy { max-width: 600px; color: var(--muted); font-size: 17px; }
+    .notice {
+      margin-top: 24px;
+      border: 1px solid var(--ink);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: var(--paper);
+      font-weight: 650;
+    }
+    .notice span { color: var(--muted); font-weight: 500; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0 18px; }
+    .tab, .chip {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 9px 14px;
+      cursor: pointer;
+    }
+    .tab.active, .chip.active { background: var(--ink); border-color: var(--ink); color: white; }
+    .option { display: none; }
+    .option.active { display: block; }
+    .option-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .label { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .lead { margin-top: 10px; font-size: 18px; max-width: 760px; }
+    .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .pros-cons ul, .inventory ul { margin: 8px 0 0; padding-left: 18px; }
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(285px, 360px) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .controls { position: sticky; top: 18px; display: grid; gap: 12px; }
+    .screen-list { display: grid; gap: 8px; margin-top: 12px; }
+    .screen-btn {
+      width: 100%;
+      padding: 11px 12px;
+      text-align: left;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--paper);
+      cursor: pointer;
+    }
+    .screen-btn strong, .screen-btn span { display: block; }
+    .screen-btn span { margin-top: 2px; color: var(--muted); font-size: 12px; }
+    .screen-btn.active { border-color: var(--ink); box-shadow: inset 3px 0 0 var(--ink); }
+    .viewport-controls { display: flex; gap: 7px; margin-top: 12px; }
+    .stage {
+      min-height: 900px;
+      display: grid;
+      place-items: start center;
+      padding: 34px;
+      overflow: auto;
+      background-color: #deded8;
+      background-image: linear-gradient(#d3d3cd 1px, transparent 1px), linear-gradient(90deg, #d3d3cd 1px, transparent 1px);
+      background-size: 24px 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .phone {
+      width: 393px;
+      min-height: 852px;
+      border: 9px solid #202020;
+      border-radius: 50px;
+      background: #f8f8f6;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transform-origin: top center;
+    }
+    .phone.compact { width: 375px; min-height: 667px; border-radius: 34px; }
+    .statusbar { height: 38px; display: flex; justify-content: space-between; align-items: center; padding: 0 19px; font-size: 11px; font-weight: 700; }
+    .island { width: 104px; height: 25px; margin: 0 auto; border-radius: 99px; background: #202020; }
+    .phone.compact .island { width: 76px; height: 5px; background: #989892; }
+    .appbar { padding: 14px 17px 12px; border-bottom: 1px solid var(--line); background: white; }
+    .appbar-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .appbar h4 { margin: 2px 0 0; font-size: 17px; }
+    .back { font-size: 13px; color: var(--muted); }
+    .body { padding: 14px; display: grid; gap: 11px; }
+    .panel { border: 1px solid var(--line); border-radius: 13px; background: white; padding: 13px; }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .stack { display: grid; gap: 5px; }
+    .meta { color: var(--muted); font-size: 11px; }
+    .title { font-size: 14px; font-weight: 750; }
+    .badge { flex: 0 0 auto; border: 1px solid var(--mid); border-radius: 99px; padding: 3px 7px; font-size: 10px; font-weight: 700; }
+    .badge.dark { background: var(--dark); color: white; border-color: var(--dark); }
+    .rule { height: 1px; margin: 9px 0; background: var(--line); }
+    .code {
+      font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #ededE9;
+      border: 1px solid #d3d3cd;
+      border-radius: 9px;
+      padding: 9px;
+      overflow: hidden;
+      white-space: pre-wrap;
+    }
+    .action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+    .action { border: 1px solid var(--ink); border-radius: 10px; padding: 10px; background: white; font-weight: 750; text-align: center; }
+    .action.primary { background: var(--ink); color: white; }
+    .timeline { display: grid; gap: 10px; }
+    .event { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
+    .dot { width: 10px; height: 10px; margin-top: 5px; border: 2px solid var(--dark); border-radius: 50%; }
+    .dot.fill { background: var(--dark); }
+    .diff { font: 10px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .diff div { padding: 2px 6px; }
+    .diff .add { background: #ddddD8; border-left: 3px solid #444; }
+    .diff .del { background: #eeeeea; color: #666; text-decoration: line-through; }
+    .banner { border: 2px solid var(--dark); border-radius: 12px; padding: 12px; background: #ededE9; }
+    .placeholder { height: 10px; border-radius: 10px; background: #d1d1cb; }
+    .placeholder.short { width: 58%; }
+    .details { display: grid; gap: 18px; margin-top: 18px; }
+    .inventory-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+    .inventory-item { border: 1px solid var(--line); border-radius: 12px; padding: 13px; }
+    .inventory-item p { margin-top: 5px; color: var(--muted); font-size: 13px; }
+    .trace { margin-top: 10px; color: var(--muted); font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 14px; background: white; }
+    th, td { padding: 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+    .yes { font-weight: 800; }
+    footer { margin: 24px 0 8px; color: var(--muted); }
+    @media (max-width: 900px) {
+      .intro, .option-head, .workspace { grid-template-columns: 1fr; }
+      .controls { position: static; }
+      .stage { min-height: 760px; padding: 18px; }
+      .inventory-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .shell { padding: 18px; }
+      .stage { display: block; padding: 10px; }
+      .phone { transform: scale(.78); margin: 0 auto -180px; }
+      .pros-cons { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="intro">
+      <div>
+        <p class="eyebrow">Product fixture · decision gate · v1</p>
+        <h1>Reference screens for MobileAgenticIDE</h1>
+      </div>
+      <p class="intro-copy">Choose the neutral screen set that should remain fixed while later brand systems are compared. The choice locks tasks, states, sample content, and viewports—not the final UX or visual style.</p>
+    </section>
+
+    <div class="notice">Concept fixtures only. <span>Nothing shown here is a live or verified product capability. All screens use grayscale, system type, and functional shapes on purpose.</span></div>
+
+    <nav class="tabs" aria-label="Reference-screen options">
+      <button class="tab active" data-option="a">Option A · Core loop</button>
+      <button class="tab" data-option="b">Option B · Trust & recovery</button>
+      <button class="tab" data-option="c">Option C · End-to-end</button>
+    </nav>
+
+    <section id="option-a" class="option active">
+      <div class="option-head">
+        <article class="card">
+          <p class="label">Option A · Balanced · 5 screens</p>
+          <h2>Core work loop</h2>
+          <p class="lead">A compact fixture covering connection, active work, a consequential approval, code review, and reconnection. This is the smallest set that still exercises the product’s central promise.</p>
+        </article>
+        <article class="card pros-cons">
+          <div><p class="label">Pros</p><ul><li>Fast to review repeatedly</li><li>Balanced product coverage</li><li>Strong test of UI hierarchy</li></ul></div>
+          <div><p class="label">Cons</p><ul><li>Setup depth is limited</li><li>No empty or hard-error state</li><li>Hosted mode stays deferred</li></ul></div>
+        </article>
+      </div>
+      <div class="workspace" data-workspace="a"></div>
+      <div class="details" data-details="a"></div>
+    </section>
+
+    <section id="option-b" class="option">
+      <div class="option-head">
+        <article class="card">
+          <p class="label">Option B · Safety emphasis · 6 screens</p>
+          <h2>Trust and recovery</h2>
+          <p class="lead">A fixture centered on connection identity, permission scope, stale approvals, interruption, and honest recovery. It makes the hardest product boundaries visible early.</p>
+        </article>
+        <article class="card pros-cons">
+          <div><p class="label">Pros</p><ul><li>Strongest trust coverage</li><li>Tests warnings without color</li><li>Exposes recovery semantics</li></ul></div>
+          <div><p class="label">Cons</p><ul><li>Less emphasis on routine flow</li><li>Heavier review burden</li><li>Could over-weight edge states</li></ul></div>
+        </article>
+      </div>
+      <div class="workspace" data-workspace="b"></div>
+      <div class="details" data-details="b"></div>
+    </section>
+
+    <section id="option-c" class="option">
+      <div class="option-head">
+        <article class="card">
+          <p class="label">Option C · Comprehensive · 7 screens</p>
+          <h2>End-to-end product slice</h2>
+          <p class="lead">A broader fixture from first connection through work, review, interruption, and completion. It provides the richest base for later app, component, and marketing previews.</p>
+        </article>
+        <article class="card pros-cons">
+          <div><p class="label">Pros</p><ul><li>Best end-to-end coverage</li><li>Includes empty and completed states</li><li>Useful across more later systems</li></ul></div>
+          <div><p class="label">Cons</p><ul><li>Largest fixture to maintain</li><li>More screens per design review</li><li>May dilute focus on risk states</li></ul></div>
+        </article>
+      </div>
+      <div class="workspace" data-workspace="c"></div>
+      <div class="details" data-details="c"></div>
+    </section>
+
+    <section class="card" style="margin-top:18px; overflow:auto">
+      <p class="label">Side-by-side coverage</p>
+      <h2>Coverage matrix</h2>
+      <table>
+        <thead><tr><th>Evaluation need</th><th>A · Core loop</th><th>B · Trust & recovery</th><th>C · End-to-end</th></tr></thead>
+        <tbody>
+          <tr><td>Connect owned laptop</td><td class="yes">Yes</td><td class="yes">Yes, deeper</td><td class="yes">Yes</td></tr>
+          <tr><td>Normal active session</td><td class="yes">Yes</td><td>Supporting</td><td class="yes">Yes</td></tr>
+          <tr><td>Consequential permission</td><td class="yes">Yes</td><td class="yes">Yes, plus stale state</td><td class="yes">Yes</td></tr>
+          <tr><td>File and diff review</td><td class="yes">Yes</td><td>Summary only</td><td class="yes">Yes</td></tr>
+          <tr><td>Offline / reconciliation</td><td class="yes">Yes</td><td class="yes">Yes, deeper</td><td class="yes">Yes</td></tr>
+          <tr><td>Empty state</td><td>—</td><td>—</td><td class="yes">Yes</td></tr>
+          <tr><td>Completed work</td><td>—</td><td>—</td><td class="yes">Yes</td></tr>
+          <tr><td>Fixture size</td><td>5 screens</td><td>6 screens</td><td>7 screens</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>Selection required before any brand-foundation options are created. Source: approved product packet, version 1.</footer>
+  </main>
+
+  <script>
+    const shared = {
+      host: "Studio MacBook",
+      workspace: "mobile-agentic-ide",
+      task: "Add retry handling to session sync",
+      branch: "feat/session-retry",
+      runtime: "MobileAgenticIDE Harness",
+      command: "swift test --filter SessionSyncTests",
+      file: "Sources/Sync/RetryPolicy.swift"
+    };
+
+    const sets = {
+      a: {
+        screens: [
+          ["connect", "Connect workspace", "Waiting · host identity"],
+          ["active", "Active session", "Normal · agent working"],
+          ["permission", "Permission request", "Risk · command approval"],
+          ["diff", "Review changes", "Normal · two-file diff"],
+          ["reconnect", "Reconnect", "Offline → reconciling"]
+        ],
+        rationale: "Best default when later comparisons need a stable mix of routine work, code density, action hierarchy, risk communication, and interruption handling.",
+        trace: "Strategy: Launch Jobs 1–4; Principles 1–4 and 8. Capability contract: session identity, ordered events, artifacts, permissions, and recovery. Trust: authentication, authorization, and recovery."
+      },
+      b: {
+        screens: [
+          ["identity", "Verify host", "Waiting · identity check"],
+          ["active", "Active session", "Normal · agent working"],
+          ["permission", "Permission request", "Risk · scoped approval"],
+          ["stale", "Approval expired", "Risk · host state changed"],
+          ["offline", "Connection lost", "Offline · local view only"],
+          ["reconnect", "Reconcile state", "Recovery · 12 events"]
+        ],
+        rationale: "Best when the design system must prove it can communicate powerful access, stale state, restricted actions, and recovery without leaning on brand color alone.",
+        trace: "Strategy: Trust problem and least privilege. Capability contract: ordered events, permission requests, interruption, recovery, and error model. Trust: host identity, stale permissions, auditability, and replay."
+      },
+      c: {
+        screens: [
+          ["empty", "No workspace", "Empty · first use"],
+          ["connect", "Connect workspace", "Waiting · host identity"],
+          ["active", "Active session", "Normal · agent working"],
+          ["permission", "Permission request", "Risk · command approval"],
+          ["diff", "Review changes", "Normal · two-file diff"],
+          ["reconnect", "Reconnect", "Recovery · state replay"],
+          ["complete", "Task complete", "Success · tests passed"]
+        ],
+        rationale: "Best when one fixture must support app-shell, component, onboarding, marketing, and product-story comparisons across the entire planned first-use journey.",
+        trace: "Strategy: core workflow and Launch Jobs 1–4. Capability contract: session lifecycle, streaming, artifacts, permissions, interruption, recovery, and typed outcomes. Trust: connection, approval, and recovery boundaries."
+      }
+    };
+
+    function chrome(title, subtitle, body) {
+      return '<div class="statusbar"><span>9:41</span><div class="island"></div><span>5G ▰</span></div>' +
+        '<header class="appbar"><div class="appbar-row"><div><div class="back">‹ Workspaces</div><h4>' + title + '</h4></div><span class="badge">FIXTURE</span></div><div class="meta">' + subtitle + '</div></header>' +
+        '<div class="body">' + body + '</div>';
+    }
+
+    function panel(title, meta, extra) {
+      return '<section class="panel"><div class="row"><div class="stack"><span class="title">' + title + '</span><span class="meta">' + meta + '</span></div></div>' + (extra || '') + '</section>';
+    }
+
+    function renderScreen(id) {
+      const s = shared;
+      const heads = {
+        empty: ["Workspaces", "No connection configured"],
+        connect: ["Connect a laptop", "Direct-host mode · planned"],
+        identity: ["Verify host", "Identity must be checked"],
+        active: [s.task, s.host + " · " + s.runtime],
+        permission: ["Approval required", s.host + " · exact request"],
+        stale: ["Approval expired", "Host state changed"],
+        offline: ["Connection lost", "Showing last confirmed state"],
+        reconnect: ["Reconnecting", s.host + " · reconciling"],
+        diff: ["Review changes", s.branch + " · 2 files"],
+        complete: ["Task complete", s.host + " · confirmed state"]
+      };
+      let body = "";
+      if (id === "empty") {
+        body = '<div style="height:95px"></div>' + panel("No workspaces yet", "Connect an owned laptop to begin", '<div class="rule"></div><p class="meta">The first planned flow uses the first-party harness. VPS and hosted sandbox setup are deferred.</p><div class="action-row"><div class="action primary" style="grid-column:1/-1">Connect laptop</div></div>');
+      } else if (id === "connect") {
+        body = panel("1 · Confirm this host", s.host + " · macOS · local account", '<div class="rule"></div><div class="code">Host key fingerprint\nSHA256:7mF2…kP9q</div>') +
+          panel("2 · Limit workspace access", s.workspace, '<div class="rule"></div><div class="code">~/Projects/' + s.workspace + '</div>') +
+          panel("3 · Review connection path", "Authenticated transport required", '<div class="rule"></div><p class="meta">Network path and provider boundaries must be documented before release.</p><div class="action-row"><div class="action">Cancel</div><div class="action primary">Connect</div></div>');
+      } else if (id === "identity") {
+        body = '<div class="banner"><strong>Do these details match your laptop?</strong><p class="meta" style="margin-top:5px">Stop if the name or fingerprint is unexpected.</p></div>' +
+          panel(s.host, "Owned laptop · direct-host mode", '<div class="rule"></div><div class="row"><span class="meta">Host fingerprint</span><strong style="font:11px ui-monospace">7mF2…kP9q</strong></div><div class="row" style="margin-top:7px"><span class="meta">Workspace</span><strong style="font:11px ui-monospace">' + s.workspace + '</strong></div><div class="action-row"><div class="action">Does not match</div><div class="action primary">Matches</div></div>');
+      } else if (id === "active") {
+        body = panel("Agent working", "Step 3 of 5 · editing retry policy", '<div class="rule"></div><div class="timeline"><div class="event"><span class="dot fill"></span><div><strong class="title">Inspected sync flow</strong><div class="meta">4 files read · 10:24</div></div></div><div class="event"><span class="dot fill"></span><div><strong class="title">Added retry policy</strong><div class="meta">' + s.file + '</div></div></div><div class="event"><span class="dot"></span><div><strong class="title">Preparing tests</strong><div class="meta">Waiting to run a command</div></div></div></div>') +
+          panel("Workspace state", s.branch, '<div class="rule"></div><div class="row"><span class="meta">Changed files</span><strong>2</strong></div><div class="row"><span class="meta">Pending approvals</span><strong>1</strong></div>');
+      } else if (id === "permission") {
+        body = '<div class="banner"><strong>Command needs approval</strong><p class="meta" style="margin-top:5px">Review the exact target and likely effect. Approval does not guarantee rollback.</p></div>' +
+          panel("Run test command", s.runtime + " · " + s.workspace, '<div class="rule"></div><div class="code">' + s.command + '</div><div class="rule"></div><div class="row"><span class="meta">Scope</span><strong>Once</strong></div><div class="row"><span class="meta">Working directory</span><strong style="font:10px ui-monospace">~/Projects/' + s.workspace + '</strong></div><div class="action-row"><div class="action">Deny</div><div class="action primary">Allow once</div></div>');
+      } else if (id === "stale") {
+        body = '<div class="banner"><strong>This request is no longer current</strong><p class="meta" style="margin-top:5px">The host changed after this approval was created. It cannot be approved.</p></div>' +
+          panel("Expired request", s.command, '<div class="rule"></div><div class="row"><span class="meta">Requested</span><strong>10:26:14</strong></div><div class="row"><span class="meta">Host changed</span><strong>10:26:41</strong></div><div class="action-row"><div class="action primary" style="grid-column:1/-1">Return to session</div></div>');
+      } else if (id === "offline") {
+        body = '<div class="banner"><strong>Offline</strong><p class="meta" style="margin-top:5px">The host may still be working. Actions are disabled until current state is confirmed.</p></div>' +
+          panel("Last confirmed state", "10:27:03 · event 184", '<div class="rule"></div><div class="timeline"><div class="event"><span class="dot fill"></span><div><strong class="title">Test command allowed</strong><div class="meta">One-time approval</div></div></div><div class="event"><span class="dot"></span><div><strong class="title">Outcome unknown</strong><div class="meta">Waiting for connection</div></div></div></div>') +
+          '<div class="action primary">Try reconnecting</div>';
+      } else if (id === "reconnect") {
+        body = '<div class="banner"><strong>Reconciling with host</strong><p class="meta" style="margin-top:5px">12 events found after the last confirmed event. Controls remain disabled.</p></div>' +
+          panel("Recovery progress", "Authoritative host state", '<div class="rule"></div><div class="stack"><div class="row"><span class="meta">Events received</span><strong>12 / 12</strong></div><div class="row"><span class="meta">Duplicates ignored</span><strong>2</strong></div><div class="row"><span class="meta">Current session state</span><span class="badge dark">VERIFYING</span></div></div>') +
+          panel("Last known task", s.task, '<div class="placeholder"></div><div class="placeholder short" style="margin-top:7px"></div>');
+      } else if (id === "diff") {
+        body = panel("2 changed files", "+24 −4 · not committed", '<div class="rule"></div><div class="row"><strong class="title">' + s.file + '</strong><span class="badge">+18 −2</span></div>') +
+          '<section class="panel diff"><div>@@ retry policy</div><div class="del">let attempts = 1</div><div class="add">let maxAttempts = 3</div><div class="add">let delay = backoff.next()</div><div>try await sync()</div><div class="add">catch { schedule(delay) }</div></section>' +
+          panel("Tests/SessionSyncTests.swift", "+6 −2", '<div class="action-row"><div class="action">Previous</div><div class="action primary">Next file</div></div>');
+      } else if (id === "complete") {
+        body = '<div class="banner"><strong>Task reached a confirmed end state</strong><p class="meta" style="margin-top:5px">Review changes before merging or deploying.</p></div>' +
+          panel(s.task, "Completed · 10:29", '<div class="rule"></div><div class="row"><span class="meta">Files changed</span><strong>2</strong></div><div class="row"><span class="meta">Tests</span><strong>12 passed</strong></div><div class="row"><span class="meta">Branch</span><strong style="font:10px ui-monospace">' + s.branch + '</strong></div><div class="action-row"><div class="action">View activity</div><div class="action primary">Review diff</div></div>');
+      }
+      return chrome(heads[id][0], heads[id][1], body);
+    }
+
+    function mount(key) {
+      const data = sets[key];
+      const root = document.querySelector('[data-workspace="' + key + '"]');
+      const details = document.querySelector('[data-details="' + key + '"]');
+      root.innerHTML =
+        '<aside class="controls">' +
+          '<div class="card"><p class="label">Screen inventory</p><div class="screen-list">' +
+          data.screens.map(function(screen, i) {
+            return '<button class="screen-btn ' + (i === 0 ? 'active' : '') + '" data-screen="' + screen[0] + '"><strong>' + (i + 1) + '. ' + screen[1] + '</strong><span>' + screen[2] + '</span></button>';
+          }).join('') +
+          '</div></div>' +
+          '<div class="card"><p class="label">Viewport</p><div class="viewport-controls"><button class="chip active" data-view="primary">393 × 852</button><button class="chip" data-view="compact">375 × 667</button></div><p class="trace">Primary: iPhone 15 Pro logical viewport. Compact check: 375 × 667. Respect system status area and a 34px minimum bottom safe area in later previews.</p></div>' +
+        '</aside>' +
+        '<div class="stage"><div class="phone" aria-live="polite">' + renderScreen(data.screens[0][0]) + '</div></div>';
+
+      details.innerHTML =
+        '<article class="card inventory"><p class="label">Screen inventory and purpose</p><div class="inventory-grid">' +
+        data.screens.map(function(screen) {
+          return '<div class="inventory-item"><strong>' + screen[1] + '</strong><p><b>State:</b> ' + screen[2] + '. Included to test hierarchy, density, status clarity, and touch actions under this condition.</p></div>';
+        }).join('') + '</div></article>' +
+        '<article class="card"><p class="label">Future system-test rationale</p><h3>' + data.rationale + '</h3><p class="trace"><b>Traceability:</b> ' + data.trace + '</p></article>' +
+        '<article class="card"><p class="label">Fixed sample data</p><p class="trace">Host: <b>' + shared.host + '</b> · Workspace: <b>' + shared.workspace + '</b> · Runtime: <b>' + shared.runtime + '</b> · Task: <b>' + shared.task + '</b> · Branch: <b>' + shared.branch + '</b> · Command: <b>' + shared.command + '</b>. Later previews must preserve these values and the state meaning.</p></article>';
+
+      root.querySelectorAll('.screen-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          root.querySelectorAll('.screen-btn').forEach(function(x) { x.classList.remove('active'); });
+          btn.classList.add('active');
+          root.querySelector('.phone').innerHTML = renderScreen(btn.dataset.screen);
+        });
+      });
+      root.querySelectorAll('[data-view]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          root.querySelectorAll('[data-view]').forEach(function(x) { x.classList.remove('active'); });
+          btn.classList.add('active');
+          root.querySelector('.phone').classList.toggle('compact', btn.dataset.view === 'compact');
+        });
+      });
+    }
+
+    ["a", "b", "c"].forEach(mount);
+    document.querySelectorAll('.tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.tab').forEach(function(x) { x.classList.remove('active'); });
+        document.querySelectorAll('.option').forEach(function(x) { x.classList.remove('active'); });
+        tab.classList.add('active');
+        document.getElementById('option-' + tab.dataset.option).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

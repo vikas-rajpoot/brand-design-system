@@ -1,3 +1,9 @@
+---
+status: approved
+version: 1
+owner: product
+---
+
 # Trust, Security Boundaries, and Data Flows
 
 **Status:** Product security requirements  
